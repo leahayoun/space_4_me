@@ -10,9 +10,97 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_12_09_103039) do
+ActiveRecord::Schema[7.1].define(version: 2025_12_09_110746) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appointments", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "address"
+    t.date "date"
+    t.string "type"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_appointments_on_user_id"
+  end
+
+  create_table "diaries", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_diaries_on_user_id"
+  end
+
+  create_table "feelings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_feelings_on_user_id"
+  end
+
+  create_table "hormonal_treatments", force: :cascade do |t|
+    t.integer "dosage"
+    t.string "product_name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_hormonal_treatments_on_user_id"
+  end
+
+  create_table "moods", force: :cascade do |t|
+    t.string "name"
+    t.string "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "operations", force: :cascade do |t|
+    t.date "date"
+    t.string "body_part"
+    t.string "type"
+    t.string "organization_name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_operations_on_user_id"
+  end
+
+  create_table "symptoms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.text "description"
+    t.string "title"
+    t.string "tag"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
+
+  create_table "user_moods", force: :cascade do |t|
+    t.bigint "mood_id", null: false
+    t.bigint "feeling_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feeling_id"], name: "index_user_moods_on_feeling_id"
+    t.index ["mood_id"], name: "index_user_moods_on_mood_id"
+  end
+
+  create_table "user_symptoms", force: :cascade do |t|
+    t.bigint "symptom_id", null: false
+    t.bigint "feeling_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feeling_id"], name: "index_user_symptoms_on_feeling_id"
+    t.index ["symptom_id"], name: "index_user_symptoms_on_symptom_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,4 +116,14 @@ ActiveRecord::Schema[7.1].define(version: 2025_12_09_103039) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "appointments", "users"
+  add_foreign_key "diaries", "users"
+  add_foreign_key "feelings", "users"
+  add_foreign_key "hormonal_treatments", "users"
+  add_foreign_key "operations", "users"
+  add_foreign_key "tasks", "users"
+  add_foreign_key "user_moods", "feelings"
+  add_foreign_key "user_moods", "moods"
+  add_foreign_key "user_symptoms", "feelings"
+  add_foreign_key "user_symptoms", "symptoms"
 end
