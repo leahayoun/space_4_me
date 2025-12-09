@@ -1,0 +1,15 @@
+<h1>Mes journaux (index)</h1>
+
+<ul>
+<% @diaries.each do |diary| %>
+  <li>
+    <%= diary.title %>
+  </li>
+ <% end %>
+</ul>
+
+# Ajouter lien vers création d'un nouveau journal
+
+# Ajouter lien vers un diary particulier grâce à /:id = show
+
+# Ajouter lien pour destroy

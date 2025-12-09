@@ -1,0 +1,17 @@
+<h1>Modifier mon journal(edit)</h1>
+
+<h1>Modifier mon journal</h1>
+
+<%= form_with model: @diary do |form| %>
+  <div>
+    <%= form.label :title, "Titre" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.submit "Mettre à jour mon journal" %>
+  </div>
+
+  # Ajouter lien vers index
+
+  # !! Partial pour le form
