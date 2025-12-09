@@ -10,5 +10,7 @@ class User < ApplicationRecord
   has_many :tasks, dependent: :destroy
   has_many :hormonal_treatments, dependent: :destroy
   has_many :operations, dependent: :destroy
+  has_many :user_moods, through: :feelings
+  has_many :user_symptoms, through: :feelings
 
 end
