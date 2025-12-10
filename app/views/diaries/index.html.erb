@@ -1,15 +1,18 @@
 <h1>Mes journaux (index)</h1>
 
 <ul>
-<% @diaries.each do |diary| %>
-  <li>
-    <%= diary.title %>
-  </li>
- <% end %>
+  <% @diaries.each do |diary| %>
+    <li>
+      <%= link_to diary.title, diary_path(diary) %>  </li> <%# lien vers un id journal%>
+      <%= link_to "Modifier", edit_diary_path(diary) %>
+      <%= link_to "Supprimer",
+                  diary_path(diary),
+                  data: { turbo_method: :delete,
+                          turbo_confirm: "Supprimer ce journal ?" } %>
+    </li>
+  <% end %>
 </ul>
 
-# Ajouter lien vers création d'un nouveau journal
-
-# Ajouter lien vers un diary particulier grâce à /:id = show
-
-# Ajouter lien pour destroy
+<p>
+  <%= link_to "Nouveau journal", new_diary_path %>
+</p>

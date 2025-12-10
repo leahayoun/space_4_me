@@ -16,8 +16,7 @@ class DiariesController < ApplicationController
 
   def create
     @diary = current_user.diaries.new(diary_params)
-
-    if diary.save
+    if @diary.save
       redirect_to @diary  # on pourrait rajouter une virgule notice: "Journal créé ✅"
     else
       render :new, status: :unprocessable_entity
@@ -29,7 +28,7 @@ class DiariesController < ApplicationController
   end
 
   def update
-    if @diary.update(diary.params)
+    if @diary.update(diary_params)
       redirect_to @diary # on pourrait rajouter une virgule puis notice: "Journal modifié ✅"
     else
       render :edit, status: :unprocessable_entity
@@ -41,8 +40,6 @@ class DiariesController < ApplicationController
     redirect_to diaries_path # on pourrait rajouter une virgule puis notice: "Journal supprimé 🗑️"
   end
 
-
-
 private
 
   def set_diary
@@ -53,5 +50,4 @@ private
     params.require(:diary).permit(:title)
   end
   # ça changera surement avec ATO ?
-
 end
