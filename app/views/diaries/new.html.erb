@@ -1,16 +1,21 @@
 <h1>Nouveau journal (new)</h1>
 
 <%= form_with model: @diary do |form| %>
-<div>
-  <%= form.label :title, "Titre" %>
-  <%= form.text_field :title %>
-</div>
+  <div>
+    <%= form.label :title, "Titre" %>
+    <%= form.text_field :title %>
+  </div>
 
-<div>
-  <%= form.submit "Créer le journal" %> <%# revoir le bouton%>
-</div>
-<% end %>
+  <div>
+      <%= form.label :content, "Contenu" %> <%# br pour saut de ligne ?%>
+      <%= form.rich_text_area :content %>
+    </div>
 
-<%# Ajouter le lien retour (vers index? ou show?)
+<%# Pour le form, remplir une date ?%>
 
-# Pour le form, remplir une date ?%>
+    <div>
+      <%= form.submit "Créer le journal" %>
+    </div>
+  <% end %>
+
+  <p><%= link_to "Retour", diaries_path %></p>
