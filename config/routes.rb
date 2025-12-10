@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+    resources :after_signup
 
     resources :hormonal_treatments, only: [:new, :create]
     resources :operations, only: [:new, :create]
