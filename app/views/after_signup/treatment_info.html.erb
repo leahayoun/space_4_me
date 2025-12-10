@@ -3,15 +3,15 @@
 <%= form_for @user, url: wizard_path, method: :put do |f| %>
   <p>
     <%= f.label :hormonal_treatment_status, "Prennez-vous actuellement un traitement hormonal ?" %><br>
-    <%= f.select :hormonal_treatment_status, ["Oui, j'ai déjà commencé", "Non, mais je compte commencer", "Je veux m'informer"] %>
+    <%= f.select :hormonal_treatment_status, ["Oui, j'ai déjà commencé", "Non, mais je compte commencer", "Non, je ne veux pas de THS",  "Je veux m'informer"] %>
   </p>
 
   <!-- Bloc FTM / FTX -->
   <div id="ftm_treatments" style="display:none;">
     <h3>Traitements hormonaux masculinisants</h3>
     <p> Quel est votre traitement ? </p>
-    <%= f.check_box :treatment_androtardyl %> Androtardyl<br>
-    <%= f.check_box :treatment_nebido %> Nebido<br>
+    <label><%= f.check_box :treatment_androtardyl %> Androtardyl</label><br>
+    <label><%= f.check_box :treatment_nebido %> Nebido</label><br>
   </div>
 
   <!-- Bloc MTF / MTX -->
@@ -20,46 +20,58 @@
     <p> Quel est votre traitement ?</p>
 
     <strong>Anti-androgènes et progestatifs :</strong><br>
-    <%= f.check_box :treatment_bicalutamide %> Bicalutamide<br>
-    <%= f.check_box :treatment_decapeptyl %> Décapeptyl, Lupron et bloqueurs de puberté<br>
-    <%= f.check_box :treatment_progesterone %> Progestérone<br>
+    <label><%= f.check_box :treatment_bicalutamide %> Bicalutamide</label><br>
+    <label><%= f.check_box :treatment_decapeptyl %> Décapeptyl, Lupron et bloqueurs de puberté</label><br>
+    <label><%= f.check_box :treatment_progesterone %> Progestérone</label><br>
 
     <strong>Œstrogènes :</strong><br>
-    <%= f.check_box :treatment_estreva %> Estreva (gel)<br>
-    <%= f.check_box :treatment_oestrodose %> Œstrodose (gel)<br>
-    <%= f.check_box :treatment_oesclim %> Oesclim (patch)<br>
-    <%= f.check_box :treatment_dermestril %> Dermestril (patch)<br>
-    <%= f.check_box :treatment_provames %> Provames (comprimés)<br>
-    <%= f.check_box :treatment_estrofem %> Estrofem (comprimés)<br>
-    <%= f.check_box :treatment_progynova %> Progynova (comprimés)<br>
-    <%= f.check_box :treatment_neofollin %> Neofollin (Injection)<br>
-    <%= f.check_box :treatment_gynodian %> Gynodian Depot (Injection)<br>
+    <label><%= f.check_box :treatment_estreva %> Estreva (gel)</label><br>
+    <label><%= f.check_box :treatment_oestrodose %> Œstrodose (gel)</label><br>
+    <label><%= f.check_box :treatment_oesclim %> Oesclim (patch)</label><br>
+    <label><%= f.check_box :treatment_dermestril %> Dermestril (patch)</label><br>
+    <label><%= f.check_box :treatment_provames %> Provames (comprimés)</label><br>
+    <label><%= f.check_box :treatment_estrofem %> Estrofem (comprimés)</label><br>
+    <label><%= f.check_box :treatment_progynova %> Progynova (comprimés)</label><br>
+    <label><%= f.check_box :treatment_neofollin %> Neofollin (Injection)</label><br>
+    <label><%= f.check_box :treatment_gynodian %> Gynodian Depot (Injection)</label><br>
   </div>
 
   <%= f.submit "Next" %>
 <% end %>
 
   <script>
+  document.addEventListener("DOMContentLoaded", () => {
     const birthSex = "<%= @user.birth_sex %>";
+    const gender = "<%= @user.gender %>";
     const hormonalStatus = document.getElementById("hormonal_status");
-    const ftm = document.getElementById("ftm_treatments");
-    const mtf = document.getElementById("mtf_treatments");
+    const ftmBlock = document.getElementById("ftm_treatments");
+    const mtfBlock = document.getElementById("mtf_treatments");
 
     function toggleTreatmentBlocks() {
-      if (hormonalStatus.value === "Oui, déjà commencé") {
+      // Cacher les deux blocs par défaut
+      ftmBlock.style.display = "none";
+      mtfBlock.style.display = "none";
+
+      // Si l'utilisateur a commencé ou compte commencer un traitement
+      if (hormonalStatus.value === "Oui, j'ai déjà commencé" ||
+          hormonalStatus.value === "Non, mais je compte commencer") {
+
         if (birthSex === "XX") {
-          ftm.style.display = "block";
-          mtf.style.display = "none";
+          ftmBlock.style.display = "block"; // bloc masculin
+        } else if (birthSex === "XY") {
+          mtfBlock.style.display = "block"; // bloc féminin
         } else {
-          mtf.style.display = "block";
-          ftm.style.display = "none";
+          if (gender === "Homme") {
+            ftmBlock.style.display = "block";
+          } else if (gender === "Femme") {
+            mtfBlock.style.display = "block";
+          }
         }
-      } else {
-        ftm.style.display = "none";
-        mtf.style.display = "none";
       }
+      // Sinon ("Je veux m'informer" ou autre) : les blocs restent cachés
     }
 
     hormonalStatus.addEventListener("change", toggleTreatmentBlocks);
-    document.addEventListener("DOMContentLoaded", toggleTreatmentBlocks);
-  </script>
+    toggleTreatmentBlocks(); // initialisation au chargement
+  });
+</script>
