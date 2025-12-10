@@ -1,0 +1,18 @@
+<h1>Modifier mon journal(edit)</h1>
+
+  <%= form_with model: @diary do |form| %>
+    <div>
+      <%= form.label :title, "Titre" %>
+      <%= form.text_field :title %>
+    </div>
+
+    <div>
+      <%= form.submit "Modifier mon journal" %>
+    </div>
+  <% end %>
+
+  <p>
+    <%= link_to "Retour au journal", diary_path(@diary) %>
+  </p>
+
+  <%# !! Partial pour le form%>

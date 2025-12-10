@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get "home", to: "pages#home"
   get "dashboard", to: "appointments#index", as: :dashboard # appointments en tant que home when users are connected
+  get "onboarding", to: "pages#onboarding", as: :onboarding
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
