@@ -7,6 +7,11 @@
     </div>
 
     <div>
+      <%= form.label :content, "Contenu" %> <%# br pour saut de ligne ?%>
+      <%= form.rich_text_area :content %>
+    </div>
+
+    <div>
       <%= form.submit "Modifier mon journal" %>
     </div>
   <% end %>
