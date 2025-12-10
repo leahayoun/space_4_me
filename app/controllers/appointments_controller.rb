@@ -5,7 +5,7 @@ class AppointmentsController < ApplicationController
   # 1-home
   def index
     # @appointments = Appointment.where(user: current_user)
-    @appointments = current_user.appointments
+    @appointments = current_user.appointments.order(date: :asc)
   end
 
   # 2-show action

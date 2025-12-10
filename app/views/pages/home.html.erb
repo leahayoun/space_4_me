@@ -1,2 +1,14 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%# <h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p> %>
+
+<div class="container">
+  <h1 class="text-center">Bienvenue sur Space4Me</h1>
+  <p class="text-center">Votre compagnon de transition personnel</p>
+
+  <% unless user_signed_in? %>
+    <div class="mt-4 text-center">
+      <%= link_to "Se connecter", new_user_session_path, class: "btn btn-primary" %>
+      <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-secondary" %>
+    </div>
+  <% end %>
+</div>
