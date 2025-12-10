@@ -1,0 +1,46 @@
+<%# app/views/appointments/_reminders_section.html.erb %>
+
+<section class="dashboard-section reminders-section">
+  <div class="section-header">
+    <h2>À venir</h2>
+    <%= link_to "Voir tout", appointments_path, class: "btn-link" %>
+  </div>
+
+  <% if appointments.any? %>
+    <div class="mobile-reminders">
+      <% appointments.limit(3).each do |appointment| %>
+        <div class="reminder-card">
+          <div class="reminder-date">
+            <span class="day"><%= appointment.date.day %></span>
+            <span class="month"><%= l(appointment.date, format: '%b') %></span>
+          </div>
+
+          <div class="reminder-content">
+            <h4><%= appointment.title %></h4>
+            <% if appointment.event_type.present? %>
+              <span class="reminder-type"><%= appointment.event_type %></span>
+            <% end %>
+
+            <% if appointment.address.present? %>
+              <p class="reminder-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <%= truncate(appointment.address, length: 30) %>
+              </p>
+            <% end %>
+          </div>
+
+          <div class="reminder-time">
+            <i class="fas fa-clock"></i>
+            <span>10:00</span>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="empty-state">
+      <i class="fas fa-calendar-plus fa-2x"></i>
+      <p>Aucun rendez-vous à venir</p>
+      <p class="text-muted">Ajoutez votre premier rendez-vous</p>
+    </div>
+  <% end %>
+</section>

@@ -1,0 +1,41 @@
+
+// mobile vers
+.mobile-dashboard {
+  padding-bottom: 80px; // espace prévu pour la navbar en bas
+  padding-top: 60px;    // espace prévu pour la navbar en haut
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+// les object commun de la page
+.dashboard-section {
+  background: white;
+  margin: 1rem;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+
+    h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .btn-link {
+      color: #007bff;
+      text-decoration: none;
+      font-size: 0.875rem;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+// responsive setting
+
+@media (min-width: 768px) {
+  .mobile-dashboard {
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 80px 1rem 100px;
+  }
+
+  .dashboard-section {
+    margin: 1rem 0;
+  }
+
+  .mobile-calendar .calendar-days .day-cell {
+    font-size: 0.875rem;
+  }
+}

@@ -10,9 +10,9 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
 
-    <%= render "shared/navbar" %> <!-- 👈 Navbar ici -->
   </head>
 
+  <%= render "shared/navbar" %> <!-- 👈 Navbar ici -->
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
@@ -21,6 +21,7 @@
       <%= render "shared/flashes" %> <!-- 👈 Messages d’alerte -->
       <%= yield %>
     </main>
+    <%= render "shared/footer" %>
   </body>
 
 </html>

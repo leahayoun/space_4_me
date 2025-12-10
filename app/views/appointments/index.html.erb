@@ -1,1 +1,11 @@
-<h1>Appointments</h1>
+<%# app/views/appointments/index.html.erb %>
+
+<div class="mobile-dashboard">
+
+  <%= render "calendar_section" %>
+
+  <%= render "reminders_section", appointments: @appointments %>
+
+  <%= render "fab_button" %>
+
+</div>

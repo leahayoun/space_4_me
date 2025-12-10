@@ -5,7 +5,18 @@ class AppointmentsController < ApplicationController
   # 1-home
   def index
     # @appointments = Appointment.where(user: current_user)
+    # Récupérer les rendez-vous de l'utilisateur
     @appointments = current_user.appointments.order(date: :asc)
+
+    # Déterminer le type de vue (mois ou semaine)
+    @view_type = params[:view] || 'month'
+
+    # Déterminer la date actuelle
+    if params[:date]
+      @current_date = Date.parse(params[:date])
+    else
+      @current_date = Date.today
+    end
   end
 
   # 2-show action
