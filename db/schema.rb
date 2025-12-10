@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_12_09_113237) do
+ActiveRecord::Schema[7.1].define(version: 2025_12_09_163913) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,10 +19,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_12_09_113237) do
     t.text "content"
     t.string "address"
     t.date "date"
-    t.string "type"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "event_type"
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
@@ -60,11 +60,11 @@ ActiveRecord::Schema[7.1].define(version: 2025_12_09_113237) do
   create_table "operations", force: :cascade do |t|
     t.date "date"
     t.string "body_part"
-    t.string "type"
     t.string "organization_name"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "operation_type"
     t.index ["user_id"], name: "index_operations_on_user_id"
   end
 
