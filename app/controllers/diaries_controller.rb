@@ -22,7 +22,6 @@ class DiariesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-  # ça changera surement avec ATO ?
 
   def edit
   end
@@ -47,7 +46,7 @@ private
   end
 
   def diary_params #strong params
-    params.require(:diary).permit(:title)
+    params.require(:diary).permit(:title, :content) # rajout de content grâce à ATO
   end
-  # ça changera surement avec ATO ?
+
 end
