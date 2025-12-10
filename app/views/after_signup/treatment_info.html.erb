@@ -7,37 +7,37 @@
   </p>
 
   <!-- Bloc FTM / FTX -->
-    <div id="ftm_treatments" style="display:none;">
-      <h3>Traitements hormonaux masculinisants</h3>
-      <p> Quel est votre traitement ? </p>
-      <%= f.check_box :treatment_androtardyl %> Androtardyl<br>
-      <%= f.check_box :treatment_nebido %> Nebido<br>
-    </div>
+  <div id="ftm_treatments" style="display:none;">
+    <h3>Traitements hormonaux masculinisants</h3>
+    <p> Quel est votre traitement ? </p>
+    <%= f.check_box :treatment_androtardyl %> Androtardyl<br>
+    <%= f.check_box :treatment_nebido %> Nebido<br>
+  </div>
 
-    <!-- Bloc MTF / MTX -->
-    <div id="mtf_treatments" style="display:none;">
-      <h3>Traitements hormonaux féminisants</h3>
-      <p> Quel est votre traitement ?</p>
+  <!-- Bloc MTF / MTX -->
+  <div id="mtf_treatments" style="display:none;">
+    <h3>Traitements hormonaux féminisants</h3>
+    <p> Quel est votre traitement ?</p>
 
-      <strong>Anti-androgènes et progestatifs :</strong><br>
-      <%= f.check_box :treatment_bicalutamide %> Bicalutamide<br>
-      <%= f.check_box :treatment_decapeptyl %> Décapeptyl, Lupron et bloqueurs de puberté<br>
-      <%= f.check_box :treatment_progesterone %> Progestérone<br>
+    <strong>Anti-androgènes et progestatifs :</strong><br>
+    <%= f.check_box :treatment_bicalutamide %> Bicalutamide<br>
+    <%= f.check_box :treatment_decapeptyl %> Décapeptyl, Lupron et bloqueurs de puberté<br>
+    <%= f.check_box :treatment_progesterone %> Progestérone<br>
 
-      <strong>Œstrogènes :</strong><br>
-      <%= f.check_box :treatment_estreva %> Estreva (gel)<br>
-      <%= f.check_box :treatment_oestrodose %> Œstrodose (gel)<br>
-      <%= f.check_box :treatment_oesclim %> Oesclim (patch)<br>
-      <%= f.check_box :treatment_dermestril %> Dermestril (patch)<br>
-      <%= f.check_box :treatment_provames %> Provames (comprimés)<br>
-      <%= f.check_box :treatment_estrofem %> Estrofem (comprimés)<br>
-      <%= f.check_box :treatment_progynova %> Progynova (comprimés)<br>
-      <%= f.check_box :treatment_neofollin %> Neofollin (Injection)<br>
-      <%= f.check_box :treatment_gynodian %> Gynodian Depot (Injection)<br>
-    </div>
+    <strong>Œstrogènes :</strong><br>
+    <%= f.check_box :treatment_estreva %> Estreva (gel)<br>
+    <%= f.check_box :treatment_oestrodose %> Œstrodose (gel)<br>
+    <%= f.check_box :treatment_oesclim %> Oesclim (patch)<br>
+    <%= f.check_box :treatment_dermestril %> Dermestril (patch)<br>
+    <%= f.check_box :treatment_provames %> Provames (comprimés)<br>
+    <%= f.check_box :treatment_estrofem %> Estrofem (comprimés)<br>
+    <%= f.check_box :treatment_progynova %> Progynova (comprimés)<br>
+    <%= f.check_box :treatment_neofollin %> Neofollin (Injection)<br>
+    <%= f.check_box :treatment_gynodian %> Gynodian Depot (Injection)<br>
+  </div>
 
-    <%= f.submit "Next" %>
-  <% end %>
+  <%= f.submit "Next" %>
+<% end %>
 
   <script>
     const birthSex = "<%= @user.birth_sex %>";
@@ -63,15 +63,3 @@
     hormonalStatus.addEventListener("change", toggleTreatmentBlocks);
     document.addEventListener("DOMContentLoaded", toggleTreatmentBlocks);
   </script>
-
-
-
-
-
-  <%# <p>
-    <%= f.label :hormonal_treatment_notes, "Informations complémentaires" %><br>
-    <%# <%= f.text_area :hormonal_treatment_notes %>
-  <%# </p>
-
-  <%= f.submit "Suivant" %>
-<%# <% end %>
