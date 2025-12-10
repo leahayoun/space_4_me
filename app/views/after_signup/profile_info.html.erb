@@ -1,0 +1,11 @@
+<%= form_for @user, url: wizard_path, method: :put do |f| %>
+  <%= f.text_field :first_name %>
+  <%= f.text_field :last_name %>
+  <%= f.date_field :date_of_birth %>
+  <%= f.select :gender, ["Homme", "Femme", "Non-binaire", "Agenre", "Autre"] %>
+  <%= f.select :birth_sex, ["XY", "XX", "Autre"] %>
+
+  <%= f.submit "Next" %>    <%# permets de passer à l étape suivante (l étape suivante est défini par l ordre du steps d AfterSignupController) %>
+<% end %>
+
+<%= link_to 'Skip', next_wizard_path %>
