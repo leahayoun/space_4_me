@@ -68,12 +68,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_12_09_113237) do
     t.index ["user_id"], name: "index_operations_on_user_id"
   end
 
-  create_table "symptoms", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "tasks", force: :cascade do |t|
     t.text "description"
     t.string "title"
@@ -91,15 +85,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_12_09_113237) do
     t.datetime "updated_at", null: false
     t.index ["feeling_id"], name: "index_user_moods_on_feeling_id"
     t.index ["mood_id"], name: "index_user_moods_on_mood_id"
-  end
-
-  create_table "user_symptoms", force: :cascade do |t|
-    t.bigint "symptom_id", null: false
-    t.bigint "feeling_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["feeling_id"], name: "index_user_symptoms_on_feeling_id"
-    t.index ["symptom_id"], name: "index_user_symptoms_on_symptom_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -127,6 +112,4 @@ ActiveRecord::Schema[7.1].define(version: 2025_12_09_113237) do
   add_foreign_key "tasks", "users"
   add_foreign_key "user_moods", "feelings"
   add_foreign_key "user_moods", "moods"
-  add_foreign_key "user_symptoms", "feelings"
-  add_foreign_key "user_symptoms", "symptoms"
 end
