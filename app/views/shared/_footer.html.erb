@@ -1,0 +1,31 @@
+<%# app/views/shared/_footer.html.erb %>
+
+<% if user_signed_in? %>
+  <footer class="mobile-footer">
+    <div class="footer-nav">
+      <%= link_to dashboard_path, class: "footer-nav-item" do %>
+        <i class="fas fa-home"></i>
+        <span>Accueil</span>
+      <% end %>
+
+      <%= link_to appointments_path, class: "footer-nav-item" do %>
+        <i class="fas fa-calendar-alt"></i>
+        <span>Calendrier</span>
+      <% end %>
+
+      <%# ajout peut être d'un div avec l'avatar de l'user qui redirect to path de profiles_setting ou autre %>
+
+      <div class="footer-nav-item fab-placeholder"></div>
+
+      <%= link_to "#", class: "footer-nav-item" do %>
+        <i class="fas fa-smile"></i>
+        <span>Humeurs</span>
+      <% end %>
+
+      <%= link_to diaries_path, class: "footer-nav-item" do %>
+        <i class="fas fa-book"></i>
+        <span>Journal</span>
+      <% end %>
+    </div>
+  </footer>
+<% end %>

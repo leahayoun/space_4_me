@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
   get "home", to: "pages#home"
-  get "dashboard", to: "appointments#index", as: :dashboard # appointments en tant que home when users are connected
+  get "dashboard", to: "appointments#dashboard", as: :dashboard # appointments en tant que home when users are connected
 
   resources :onboarding, only: [:show, :update]
 

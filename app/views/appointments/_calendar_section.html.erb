@@ -1,0 +1,24 @@
+<%# app/views/appointments/_calendar_section.html.erb %>
+
+<section class="dashboard-section calendar-section">
+  <div class="section-header">
+    <h2>Calendrier</h2>
+
+    <div class="view-switcher" data-controller="calendar-view">
+      <button class="view-btn active" data-calendar-view-target="monthBtn" data-action="click->calendar-view#showMonth">
+        Mois
+      </button>
+      <button class="view-btn" data-calendar-view-target="weekBtn" data-action="click->calendar-view#showWeek">
+        Semaine
+      </button>
+    </div>
+  </div>
+
+  <%# === Navigation Part === %>
+  <%= render "calendar_navigation" %>
+
+  <%# === Main calendar rendering === %>
+  <div class="mobile-calendar">
+    <%= render "simple_calendar", appointments: @appointments %>
+  </div>
+</section>

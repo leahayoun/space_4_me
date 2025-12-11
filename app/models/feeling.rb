@@ -6,4 +6,6 @@ class Feeling < ApplicationRecord
 
   has_many :user_symptoms, dependent: :destroy
   has_many :symptoms, through: :user_symptoms
+
+  scope :on_date, ->(date) { where("DATE(created_at) = ?", date) }
 end
