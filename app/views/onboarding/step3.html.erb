@@ -1,5 +1,53 @@
-<%# <onboarding treatment_info> %>
+<h2>Informations sur le traitement hormonal</h2>
+
+<%= form_for @user, url: wizard_path, method: :put,
+      data: { controller: "hormonal", hormonal_birth_sex: @user.birth_sex, hormonal_gender: @user.gender } do |f| %>
+
+  <p>
+    <%= f.label :hormonal_treatment_status, "Prennez-vous actuellement un traitement hormonal ?" %><br>
+    <%= f.select :hormonal_treatment_status,
+          ["Oui, j'ai déjà commencé", "Non, mais je compte commencer", "Non, je ne veux pas de THS", "Je veux m'informer"],
+          {},
+          { id: "hormonal_status",
+            data: { action: "change->hormonal#toggle", hormonal_target: "status" } } %>
+  </p>
+
+  <!-- Bloc FTM / FTX -->
+  <div id="ftm_treatments" data-hormonal-target="ftm" style="display:none;">
+    <h3>Traitements hormonaux masculinisants</h3>
+    <p>Quel est votre traitement ?</p>
+    <label><%= f.check_box :treatment_androtardyl %> Androtardyl</label><br>
+    <label><%= f.check_box :treatment_nebido %> Nebido</label><br>
+  </div>
+
+  <!-- Bloc MTF / MTX -->
+  <div id="mtf_treatments" data-hormonal-target="mtf" style="display:none;">
+    <h3>Traitements hormonaux féminisants</h3>
+    <p>Quel est votre traitement ?</p>
+    <strong>Anti-androgènes et progestatifs :</strong><br>
+    <label><%= f.check_box :treatment_bicalutamide %> Bicalutamide</label><br>
+    <label><%= f.check_box :treatment_decapeptyl %> Décapeptyl, Lupron et bloqueurs de puberté</label><br>
+    <label><%= f.check_box :treatment_progesterone %> Progestérone</label><br>
+
+    <strong>Œstrogènes :</strong><br>
+    <label><%= f.check_box :treatment_estreva %> Estreva (gel)</label><br>
+    <label><%= f.check_box :treatment_oestrodose %> Œstrodose (gel)</label><br>
+    <label><%= f.check_box :treatment_oesclim %> Oesclim (patch)</label><br>
+    <label><%= f.check_box :treatment_dermestril %> Dermestril (patch)</label><br>
+    <label><%= f.check_box :treatment_provames %> Provames (comprimés)</label><br>
+    <label><%= f.check_box :treatment_estrofem %> Estrofem (comprimés)</label><br>
+    <label><%= f.check_box :treatment_progynova %> Progynova (comprimés)</label><br>
+    <label><%= f.check_box :treatment_neofollin %> Neofollin (Injection)</label><br>
+    <label><%= f.check_box :treatment_gynodian %> Gynodian Depot (Injection)</label><br>
+  </div>
+
+  <div class="actions">
+    <%= link_to "Back", previous_wizard_path, class: "btn btn-secondary" %>
+    <%= f.submit "Next", class: "btn btn-primary" %>
+  </div>
+<% end %>
+<%#
 <div class="actions">
   <%= link_to "Back", previous_wizard_path, class: "btn btn-secondary" %>
-  <%= link_to "Next", next_wizard_path, class: "btn btn-primary" %>
-</div>
+  <%# <%= link_to "Next", next_wizard_path, class: "btn btn-primary" %>
+<%# </div> %> 
