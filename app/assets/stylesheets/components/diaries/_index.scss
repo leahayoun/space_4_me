@@ -4,6 +4,9 @@
   padding: 50px 40px;
 }
 
+// quand . = parent ; & = enfant
+// &: = état/pseudo
+// &__ = enfant
 
 .welcome {
   background: $warm-white;
@@ -113,6 +116,7 @@
     }
   }
 
+  // Excerpt = extrait = pour le content avec truncate
   &__excerpt {
     font-size: 0.95rem;
     color: $text-light;
@@ -129,23 +133,23 @@
     gap: 20px;
   }
 
-  &__action {
-    font-size: 0.85rem;
-    color: $text-muted;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    padding: 6px 12px;
-    border-radius: 8px;
+&__action {
+  font-size: 0.85rem;
+  color: $text-muted;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  padding: 14px 28px;
+  border-radius: 6px;
 
-    &:hover {
-      color: $olive;
-      background: rgba($sage, 0.1);
-    }
-
-    &--danger:hover {
-      color: $sage;
-      background: rgba($rouge, 0.1);
-    }
+  &:hover {
+    color: $olive;
+    background: rgba($sage, 0.1);
   }
+
+  &--danger:hover {
+    color: #C27070;
+    background: rgba(#C27070, 0.1);
+  }
+}
 }
