@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_12_10_132810) do
+ActiveRecord::Schema[7.1].define(version: 2025_12_11_155843) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -154,6 +154,23 @@ ActiveRecord::Schema[7.1].define(version: 2025_12_10_132810) do
     t.string "gender"
     t.date "date_of_birth"
     t.boolean "onboarding", default: false
+    t.string "gender_other"
+    t.string "birth_sex_other"
+    t.string "hormonal_treatment_status"
+    t.boolean "treatment_androtardyl"
+    t.boolean "treatment_nebido"
+    t.boolean "treatment_bicalutamide"
+    t.boolean "treatment_decapeptyl"
+    t.boolean "treatment_progesterone"
+    t.boolean "treatment_estreva"
+    t.boolean "treatment_oestrodose"
+    t.boolean "treatment_oesclim"
+    t.boolean "treatment_dermestril"
+    t.boolean "treatment_provames"
+    t.boolean "treatment_estrofem"
+    t.boolean "treatment_progynova"
+    t.boolean "treatment_neofollin"
+    t.boolean "treatment_gynodian"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

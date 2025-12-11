@@ -18,6 +18,13 @@ class OnboardingController < ApplicationController
     def user_params
       params.require(:user).permit(:on_hormones, :wants_hormones, :hormone_info,
                                   :had_operation, :wants_operations, :operation_info,
-                                  :expectations, :known_from)
+                                  :expectations, :known_from, :hormonal_treatment_status,
+                               :treatment_androtardyl, :treatment_nebido,
+                               :treatment_bicalutamide, :treatment_decapeptyl,
+                               :treatment_progesterone, :treatment_estreva,
+                               :treatment_oestrodose, :treatment_oesclim,
+                               :treatment_dermestril, :treatment_provames,
+                               :treatment_estrofem, :treatment_progynova,
+                               :treatment_neofollin, :treatment_gynodian)
     end
 end
