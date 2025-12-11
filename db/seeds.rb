@@ -27,7 +27,7 @@ user = User.create!(
   last_name: "Dupont",
   birth_sex: "Homme",
   gender: "Homme",
-  date_of_birth: Date.new(1990, 5, 15)
+  date_of_birth: Date.new(1990, 5, 15),
   onboarding: true
 )
 
