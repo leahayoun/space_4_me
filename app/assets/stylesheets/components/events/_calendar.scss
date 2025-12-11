@@ -1,339 +1,346 @@
 /* app/assets/stylesheets/components/events/_calendar.scss */
+@import "components/diaries/variables";
 
-// ==================== CALENDAR NAVIGATION ====================
+/* === Désactivation du style "striped" de Bootstrap pour ce tableau === */
+body .simple-calendar table.table-striped {
+  --bs-table-bg: transparent !important;
+  --bs-table-striped-bg: transparent !important;
+  --bs-table-striped-color: inherit !important;
+}
+
+/* === Navigation du calendrier (barre de contrôle) === */
 .calendar-navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: $cream;
+  border-radius: 10px;
+  border: 1px solid lighten($terracotta-light, 15%);
 
   h3 {
     margin: 0;
-    font-size: 1rem;
-    font-weight: 500;
-    color: #333;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $terracotta;
     text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
   .nav-btn {
-    background: none;
-    border: none;
-    color: #007bff;
-    font-size: 1rem;
-    padding: 0.5rem;
+    background: $warm-white;
+    border: 1px solid lighten($terracotta-light, 15%);
+    border-radius: 50%;
+    color: $terracotta;
+    font-size: 0.9rem;
+    width: 36px;
+    height: 36px;
+    padding: 0;
     cursor: pointer;
     text-decoration: none;
-
-    i {
-      display: block;
-    }
-  }
-}
-
-// ==================== SIMPLE CALENDAR - MONTH VIEW ====================
-.simple-calendar {
-  width: 100%;
-  border-radius: 12px; // NEW: Added border radius
-  overflow: hidden; // NEW: Added overflow hidden
-  background: white; // NEW: Added background color
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); // NEW: Added box shadow
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    border: none; // CHANGED: Removed border from original
-
-    // CHANGED: Completely restructured thead for better styling
-    thead {
-      tr:first-child {
-        th {
-          padding: 1rem 0; // CHANGED: Increased padding
-          font-size: 0.9rem;
-          color: #666; // CHANGED: Color
-          font-weight: 600; // CHANGED: Font weight
-          text-transform: uppercase;
-          letter-spacing: 0.5px; // NEW: Letter spacing
-          background: #f8f9fa; // NEW: Background color
-          border: none; // CHANGED: Removed border
-        }
-      }
-    }
-
-    // ==================== DATE CELLS ====================
-    td {
-      height: 70px; // CHANGED: Increased height (from 50px) for better spacing
-      padding: 8px 4px; // CHANGED: Padding (was 0.25rem)
-      border: 1px solid #f0f0f0; // CHANGED: Border color (was #e9ecef)
-      vertical-align: top;
-      text-align: center; // NEW: Center align
-      transition: background-color 0.2s; // NEW: Transition effect
-
-      &:hover {
-        background-color: #f8f9fa; // NEW: Hover effect
-      }
-
-      // ==================== TODAY CELL ====================
-      &.today {
-        background-color: #e7f3ff; // CHANGED: New background color
-
-        .calendar-day {
-          .day-number {
-            background: #007bff; // KEPT: Kept original
-            color: white; // KEPT: Kept original
-            width: 24px; // KEPT: Kept original
-            height: 24px; // KEPT: Kept original
-            line-height: 24px; // KEPT: Kept original
-            border-radius: 50%; // KEPT: Kept original
-            text-align: center; // KEPT: Kept original
-          }
-        }
-      }
-
-      // ==================== OTHER MONTH CELLS ====================
-      &.prev-month,
-      &.next-month {
-        opacity: 0.4; // CHANGED: Opacity (was 0.5)
-        background-color: #fafafa; // NEW: Background color
-
-        .calendar-day {
-          .day-number {
-            color: #999; // CHANGED: Color (was default)
-          }
-        }
-      }
-    }
-  }
-}
-
-
-// ==================== switch btn mois et semaine  ====================
-.view-switcher {
-  display: flex;
-  background: #f8f9fa;
-  border-radius: 8px;
-  padding: 4px;
-
-  .view-btn {
-    flex: 1;
-    padding: 0.5rem 1rem;
-    border: none;
-    background: transparent;
-    color: #6c757d;
-    font-size: 0.875rem;
-    font-weight: 500;
-    cursor: pointer;
-    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: all 0.2s;
 
     &:hover {
-      background: rgba(0, 123, 255, 0.1);
-      color: #007bff;
+      background: $terracotta-light;
+      color: white;
+      border-color: $terracotta;
+      transform: scale(1.05);
     }
 
-    &.active {
-      background: #007bff;
-      color: white;
-      box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
+    i {
+      display: block;
+      font-size: 0.8rem;
     }
   }
 }
 
+/* === Conteneur principal de Simple Calendar === */
+.simple-calendar {
+  .calendar-heading {
+    display: none !important; // Masque l’en-tête par défaut du plugin
+  }
 
-// ==================== CALENDAR DAY CELL INTERIOR ====================
+  width: 100%;
+  background: $cream !important;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  /* === Style général du tableau (mise en page du calendrier) === */
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 6px; // Espacement entre les cellules
+    background: $cream !important;
+
+    /* Neutralise toutes les alternances de lignes Bootstrap */
+    tr {
+      background: transparent !important;
+
+      &:nth-child(even),
+      &:nth-child(odd) {
+        background: transparent !important;
+      }
+    }
+
+    /* === Ligne des jours de semaine === */
+    thead {
+      tr:first-child {
+        th {
+          text-align: center;
+          padding: 1rem 0.5rem;
+          font-size: 0.85rem;
+          color: $terracotta;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          background: $cream !important;
+          border-bottom: 2px solid $terracotta-light;
+        }
+      }
+    }
+
+    /* === Cellules des jours === */
+    td {
+      background: white !important; // Fond par défaut
+      height: 90px;
+      padding: 10px 6px;
+      vertical-align: top;
+      text-align: center;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+
+      /* Maintien du ratio carré */
+      min-width: 0;
+      aspect-ratio: 1/1;
+
+      /* Hover feedback (un peu de relief visuel) */
+      &:hover {
+        background: lighten($cream, 2%) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba($terracotta, 0.1);
+
+        .calendar-day .day-number {
+          color: $terracotta;
+          transform: scale(1.05);
+        }
+      }
+
+      /* === Style pour "aujourd'hui" === */
+      &.today {
+        background: $cream-dark !important;
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          right: 2px;
+          bottom: 2px;
+          border: 2px solid $terracotta;
+          border-radius: 6px;
+          pointer-events: none;
+        }
+
+        .calendar-day .day-number {
+          background: $terracotta !important;
+          color: white !important;
+          font-weight: 700;
+        }
+
+        &:hover {
+          background: lighten($cream-dark, 2%) !important;
+          box-shadow: 0 4px 12px rgba($terracotta, 0.15);
+        }
+      }
+
+      /* === Jours hors du mois courant === */
+      &.prev-month,
+      &.next-month {
+        background: $warm-white !important;
+        opacity: 0.5;
+
+        .calendar-day .day-number {
+          color: lighten($terracotta, 25%) !important;
+        }
+
+        &:hover {
+          background: lighten($warm-white, 2%) !important;
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+}
+
+/* === Contenu interne de chaque cellule (numéro + événements) === */
 .calendar-day {
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between; // NEW: Better spacing
-  gap: 4px; // NEW: Gap between elements
+  justify-content: space-between;
+  gap: 4px;
 
-  // ==================== DAY NUMBER ====================
+  /* Numéro du jour */
   .day-number {
-    width: 28px; // CHANGED: Width (from unspecified)
-    height: 28px; // CHANGED: Height (from unspecified)
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.9rem; // CHANGED: Font size
-    font-weight: 500; // NEW: Font weight
-    color: #333; // CHANGED: Color
+    font-size: 1rem;
+    font-weight: 500;
+    color: darken($terracotta, 10%);
     border-radius: 50%;
-    transition: all 0.2s; // NEW: Transition
-
-    // Today class is handled in td.today above
-
-    &.other-month {
-      color: #aaa; // NEW: Other month color
-    }
+    transition: all 0.3s ease;
   }
 
-  // ==================== HAS EVENTS CLASS ====================
+  /* Marqueur pour les jours avec événements */
   &.has-events {
     .day-number {
-      font-weight: 700; // NEW: Bold for days with events
-    }
-  }
+      font-weight: 700;
+      position: relative;
 
-  // ==================== MOOD EMOJI AREA ====================
-  // CONFLICT NOTE: This is from the new version, but your original had .day-mood
-  // I'm keeping both but the new one has more features
-  .day-mood {
-    min-height: 20px; // NEW: Minimum height
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2px; // NEW: Gap between emojis
-
-    .mood-emoji {
-      font-size: 0.9rem; // CHANGED: Font size
-      line-height: 1;
-      transition: transform 0.2s; // NEW: Hover effect
-
-      &:hover {
-        transform: scale(1.2); // NEW: Scale on hover
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 6px;
+        height: 6px;
+        background: $terracotta;
+        border-radius: 50%;
+        border: 2px solid white;
       }
     }
   }
 
-  // ==================== APPOINTMENT DOTS ====================
-  // CONFLICT NOTE: New version uses .day-events with .event-dot
-  // Original uses .appointment-dot directly in calendar-day
-  // I'm keeping the new structure as it's more organized
+  /* Emoji humeur */
+  .day-mood {
+    .mood-emoji {
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.3);
+      }
+    }
+  }
+
+  /* Points d'événements */
   .day-events {
     display: flex;
     flex-direction: column;
     gap: 2px;
     width: 100%;
+    margin-top: auto;
 
     .event-dot {
-      width: 6px; // CHANGED: Width (was 6px in original)
-      height: 6px; // CHANGED: Height (was 6px in original)
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      margin: 0 auto; // CHANGED: Margin (was margin: 1px 0)
-      transition: transform 0.2s; // NEW: Transition
+      margin: 0 auto;
+      transition: all 0.3s ease;
 
       &:hover {
-        transform: scale(1.3); // NEW: Scale on hover
-      }
-    }
-  }
-
-  // KEPT: Original appointment dot as fallback
-  .appointment-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    margin: 1px 0; // KEPT: Original margin
-  }
-}
-
-// ==================== SIMPLE CALENDAR - WEEK VIEW ====================
-.week-calendar {
-  // CONFLICT NOTE: This entire section is from original
-  // New version didn't have week view styling
-
-  .week-header {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    border-bottom: 1px solid #dee2e6;
-    margin-bottom: 0.5rem;
-
-    .weekday-header {
-      text-align: center;
-      padding: 0.5rem;
-
-      &.today {
-        .weekday-date {
-          background: #007bff;
-          color: white;
-          border-radius: 50%;
-          width: 24px;
-          height: 24px;
-          line-height: 24px;
-          margin: 0 auto;
-        }
-      }
-
-      .weekday-name {
-        font-size: 0.75rem;
-        color: #6c757d;
-        text-transform: uppercase;
-      }
-
-      .weekday-date {
-        font-size: 1rem;
-        font-weight: 500;
-        margin-top: 0.25rem;
-      }
-    }
-  }
-
-  .week-days {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 0.5rem;
-    min-height: 200px;
-
-    .weekday {
-      border-right: 1px solid #e9ecef;
-      padding: 0.5rem;
-      min-height: 150px;
-
-      &:last-child {
-        border-right: none;
-      }
-
-      &.today {
-        background: #f8f9fa;
-      }
-
-      .week-appointment {
-        background: white;
-        border-left: 3px solid;
-        padding: 0.5rem;
-        margin-bottom: 0.5rem;
-        border-radius: 4px;
-        font-size: 0.75rem;
-
-        .appointment-time {
-          font-weight: 500;
-          color: #495057;
-        }
-
-        .appointment-title {
-          color: #6c757d;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-      }
-
-      .empty-day {
-        color: #adb5bd;
-        font-size: 0.75rem;
-        text-align: center;
-        padding: 1rem 0;
+        transform: scale(1.5);
       }
     }
   }
 }
 
-// ==================== RESPONSIVE DESIGN ====================
-// NEW: This entire section is new and provides responsive design
+/* === Boutons de changement de vue (mois / semaine etc.) === */
+.view-switcher {
+  display: flex;
+  background: $cream-dark;
+  border-radius: 8px;
+  padding: 4px;
+  border: 1px solid lighten($terracotta-light, 15%);
+  margin-bottom: 1.5rem;
+
+  .view-btn {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: none;
+    background: transparent;
+    color: lighten($terracotta, 15%);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s;
+    text-decoration: none;
+    text-align: center;
+
+    &:hover {
+      background: $terracotta-light;
+      color: white;
+    }
+
+    &.active {
+      background: $terracotta;
+      color: white;
+      box-shadow: 0 2px 4px rgba($terracotta, 0.3);
+    }
+  }
+}
+
+/* === Responsive (ajustements mobiles) === */
 @media (max-width: 768px) {
   .simple-calendar {
-    border-radius: 10px;
+    padding: 8px;
 
     table {
+      border-spacing: 4px;
+
       td {
-        height: 60px;
-        padding: 6px 2px;
+        height: 70px;
+        padding: 8px 4px;
+        border-radius: 6px;
       }
 
       thead tr:first-child th {
         font-size: 0.8rem;
-        padding: 0.75rem 0;
+        padding: 0.75rem 0.25rem;
+      }
+    }
+  }
+
+  .calendar-day {
+    gap: 3px;
+
+    .day-number {
+      width: 28px;
+      height: 28px;
+      font-size: 0.9rem;
+    }
+  }
+
+  .calendar-navigation {
+    padding: 0.75rem;
+
+    h3 {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .simple-calendar {
+    table {
+      border-spacing: 3px;
+
+      td {
+        height: 60px;
+        padding: 6px 3px;
       }
     }
   }
@@ -343,33 +350,6 @@
       width: 24px;
       height: 24px;
       font-size: 0.85rem;
-    }
-
-    .day-mood .mood-emoji {
-      font-size: 0.8rem;
-    }
-
-    .day-events .event-dot {
-      width: 5px;
-      height: 5px;
-    }
-  }
-}
-
-@media (max-width: 480px) {
-  .simple-calendar {
-    table td {
-      height: 55px;
-    }
-  }
-
-  .calendar-day {
-    gap: 2px;
-
-    .day-number {
-      width: 22px;
-      height: 22px;
-      font-size: 0.8rem;
     }
   }
 }

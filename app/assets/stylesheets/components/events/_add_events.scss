@@ -1,3 +1,6 @@
+@import "components/diaries/variables";
+
+
 .fab-container {
   position: fixed;
   bottom: 80px; // posiiton du btn
@@ -9,12 +12,12 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: #007bff;
+  background: $terracotta-light;
   border: none;
   color: white;
   font-size: 1.5rem;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(197, 207, 192, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,7 +68,7 @@
   &:nth-child(4) { transition-delay: 0.4s; }
 
   i {
-    color: #007bff;
+    color: $terracotta-light;//#007bff;
     font-size: 1rem;
   }
 }

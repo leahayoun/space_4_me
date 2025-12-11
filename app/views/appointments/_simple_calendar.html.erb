@@ -3,7 +3,10 @@
 <% if @view_type == 'month' %>
   <%= month_calendar(start_date: @current_date.beginning_of_month,
                      attribute: :date,
-                     events: appointments) do |date, day_appointments| %>
+                     events: appointments,
+                     title: false,
+                     table_classes: ""
+                    ) do |date, day_appointments| %>
 
     <% daily_feeling = current_user.feelings.where("DATE(created_at) = ?", date).first if current_user.present? %>
 

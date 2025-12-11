@@ -3,14 +3,14 @@
 <div class="calendar-navigation">
   <%# month navigation %>
   <% if @view_type == 'month' %>
-    <%= link_to appointments_path(date: @current_date.prev_month, view: 'month'),
+    <%= link_to dashboard_path(date: @current_date.prev_month, view: 'month'),
         class: "nav-btn" do %>
       <i class="fas fa-chevron-left"></i>
     <% end %>
 
     <h3><%= l(@current_date, format: "%B %Y") %></h3>
 
-    <%= link_to appointments_path(date: @current_date.next_month, view: 'month'),
+    <%= link_to dashboard_path(date: @current_date.next_month, view: 'month'),
         class: "nav-btn" do %>
       <i class="fas fa-chevron-right"></i>
     <% end %>
@@ -20,7 +20,7 @@
     <% week_start = @current_date.beginning_of_week %>
     <% week_end = @current_date.end_of_week %>
 
-    <%= link_to appointments_path(date: week_start - 1.week, view: 'week'),
+    <%= link_to dashboard_path(date: week_start - 1.week, view: 'week'),
         class: "nav-btn" do %>
       <i class="fas fa-chevron-left"></i>
     <% end %>
@@ -29,7 +29,7 @@
       Semaine du <%= l(week_start, format: :short) %> au <%= l(week_end, format: :short) %>
     </h3>
 
-    <%= link_to appointments_path(date: week_start + 1.week, view: 'week'),
+    <%= link_to dashboard_path(date: week_start + 1.week, view: 'week'),
         class: "nav-btn" do %>
       <i class="fas fa-chevron-right"></i>
     <% end %>
