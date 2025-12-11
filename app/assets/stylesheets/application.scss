@@ -25,3 +25,8 @@
 #main-content {
   margin-bottom: 80px;
 }
+// Pour feature diaries
+@import "components/diaries/variables";
+@import "components/diaries/index";
+@import "components/diaries/show";
+@import "components/diaries/form";

@@ -1,20 +1,31 @@
-<h1> <%= @diary.title %> (show) </h1>
+<div class="diaries-container">
 
-  <div>
-    <%= @diary.content %>
+  <%= link_to diaries_path, class: "back-button" do %>
+    ← Retour à mes entrées
+  <% end %>
+
+  <article class="diary-show">
+    <div class="diary-show__header">
+      <p class="diary-show__date"><%= l(@diary.created_at, format: :long) %></p>
+      <h1 class="diary-show__title"><%= @diary.title %></h1>
+    </div>
+
+  <div class="diary-show__content">
+    <div class="trix-content">
+      <%= @diary.content %>
+    </div>
   </div>
 
-  <%# Implémenter date ?%>
+    <div class="diary-show__actions">
+      <%= link_to edit_diary_path(@diary), class: "btn-action" do %>
+        Modifier
+      <% end %>
+      <%= link_to diary_path(@diary),
+          data: { turbo_method: :delete, turbo_confirm: "Tu es sûr·e de vouloir supprimer ?" },
+          class: "btn-action btn-action--danger" do %>
+        Supprimer
+      <% end %>
+    </div>
+  </article>
 
-<p>
-  <%= link_to "Modifier ce journal", edit_diary_path(@diary) %>
-</p>
-<p>
-  <%= link_to "Supprimer ce journal",
-              diary_path(@diary),
-              data: { turbo_method: :delete, turbo_confirm: "Tu es sûr·e de vouloir supprimer?" } %>
-</p>
-
-<p>
-  <%= link_to "Retour à l'index", diaries_path %>
-</p>
+</div>
