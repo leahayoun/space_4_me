@@ -153,6 +153,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_12_10_132810) do
     t.string "birth_sex"
     t.string "gender"
     t.date "date_of_birth"
+    t.boolean "onboarding", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
