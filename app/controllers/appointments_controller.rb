@@ -3,30 +3,43 @@ class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
 
   # 1-home
-  def index
+  def dashboard
     # @appointments = Appointment.where(user: current_user)
     # Récupérer les rendez-vous de l'utilisateur
     @appointments = current_user.appointments.order(date: :asc)
 
     # Déterminer le type de vue (mois ou semaine)
     @view_type = params[:view] || 'month'
-
     # Déterminer la date actuelle
     if params[:date]
       @current_date = Date.parse(params[:date])
     else
       @current_date = Date.today
     end
+
+  end
+
+  # 1.bis  index
+  def index
+    @appointments = current_user.appointments.order(date: :asc)
   end
 
   # 2-show action
   def show
     @appointment = Appointment.find(params[:id])
+    if @appointment.user != current_user
+    redirect_to appointments_path, alert: "You are not authorized to view this appointment."
+    end
   end
 
   # 3-new needs a form
   def new
     @appointment = Appointment.new
+
+    # facilité la manip à l'user si l'user vient du calendrier avec une date déjà selectioné * qui ne marche pas pour le moment
+    # if params[:date].present?
+    #   @appointment.date = Date.parse(params[:date])
+    # end
   end
 
   # 4-create pas de view
@@ -60,7 +73,7 @@ class AppointmentsController < ApplicationController
   def destroy
     @appointment = Appointment.find(params[:id])
     @appointment.destroy
-    redirect_to appointments_path
+    redirect_to appointments_path, notice: 'Appointment deleted successfully.'
   end
 
 
@@ -70,7 +83,7 @@ class AppointmentsController < ApplicationController
   # 8- Strong params
 
   def appointment_params
-    params.require(:appointment).permit(:title, :content, :date, :event_type)
+    params.require(:appointment).permit(:title, :content, :date, :event_type, :address)
   end
 
   def set_appointment

@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     if current_user.onboarding
       dashboard_path
     else
-      onboarding_path
+      onboarding_step_path
     end
   end
 

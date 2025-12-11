@@ -1,0 +1,36 @@
+<%# app/views/appointments/_form.html.erb %>
+
+<%= simple_form_for(@appointment) do |f| %>
+  <%= f.input :title,
+              label: "Title",
+              placeholder: "e.g. Doctor's appointment",
+              required: true %>
+
+  <%= f.input :date,
+              as: :date,
+              html5: true,
+              label: "Date",
+              required: true %>
+
+  <%= f.input :event_type,
+              label: "Event type",
+              collection: ["Medical", "Personal", "Work", "Other"],
+              include_blank: "Select a type",
+              required: true %>
+
+  <%= f.input :address,
+              label: "Address",
+              placeholder: "e.g. 123 Rue de Paris, 75001 Paris",
+              required: false %>
+
+  <%= f.input :content,
+              as: :text,
+              label: "Description",
+              placeholder: "Add notes, reminders, etc.",
+              rows: 4 %>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn btn-primary" %>
+    <%= link_to "Cancel", appointments_path, class: "btn btn-outline-secondary" %>
+  </div>
+<% end %>

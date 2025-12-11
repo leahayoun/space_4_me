@@ -16,4 +16,25 @@ module AppointmentsHelper
       '#6c757d' # Gris
     end
   end
+
+  #  pour bootstrap
+  def appointment_type_color(event_type)
+    case event_type&.downcase
+    when 'médical'
+      'danger'    # 对应红色
+    when 'social'
+      'success'   # 对应绿色
+    when 'professionnel'
+      'primary'   # 对应蓝色
+    when 'thérapie'
+      'warning'   # 对应黄色（或用 'info' 对应青色）
+    else
+      'secondary' # 对应灰色
+    end
+  end
+
+  def format_appointment_date(date)
+    l(date, format: '%A %d %B %Y') if date.present?
+  end
+
 end
