@@ -2,6 +2,9 @@
 
 <ul>
   <% @diaries.each do |diary| %>
+
+  <%= l(diary.created_at, format: :long) %>
+
     <li>
       <%= link_to diary.title, diary_path(diary) %>  </li> <%# lien vers un id journal%>
       <%= link_to "Modifier", edit_diary_path(diary) %>
