@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   get "home", to: "pages#home"
   get "dashboard", to: "appointments#index", as: :dashboard # appointments en tant que home when users are connected
 
-  get "onboarding/:id", to: "onboarding#show", as: :onboarding_step
-  patch "onboarding/:id", to: "onboarding#update"
+  resources :onboarding, only: [:show, :update]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
