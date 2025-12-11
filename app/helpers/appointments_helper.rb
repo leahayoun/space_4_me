@@ -21,15 +21,15 @@ module AppointmentsHelper
   def appointment_type_color(event_type)
     case event_type&.downcase
     when 'médical'
-      'danger'    # 对应红色
+      'danger'    # rouge
     when 'social'
-      'success'   # 对应绿色
+      'success'   # vert
     when 'professionnel'
-      'primary'   # 对应蓝色
+      'primary'   # blue
     when 'thérapie'
-      'warning'   # 对应黄色（或用 'info' 对应青色）
+      'warning'   # jaune
     else
-      'secondary' # 对应灰色
+      'secondary' # gris
     end
   end
 

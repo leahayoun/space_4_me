@@ -14,6 +14,12 @@
 @import "components/index";
 @import "pages/index";
 
+// Pour feature diaries
+@import "components/diaries/variables";
+@import "components/diaries/index";
+@import "components/diaries/show";
+@import "components/diaries/form";
+
 // import components appointments scss
 @import "components/appointments";
 @import "components/events/dashboard";
@@ -22,8 +28,6 @@
 @import "components/events/add_events";
 @import "components/events/m_footer";
 
-// Pour feature diaries
-@import "components/diaries/variables";
-@import "components/diaries/index";
-@import "components/diaries/show";
-@import "components/diaries/form";
+#main-content {
+  margin-bottom: 80px;
+}

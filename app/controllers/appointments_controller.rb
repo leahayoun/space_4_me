@@ -6,7 +6,9 @@ class AppointmentsController < ApplicationController
   def dashboard
     # @appointments = Appointment.where(user: current_user)
     # Récupérer les rendez-vous de l'utilisateur
-    @appointments = current_user.appointments.order(date: :asc)
+    @appointments = current_user.appointments
+                                .where("date >= ?", Date.today)
+                                .order(date: :asc)
 
     # Déterminer le type de vue (mois ou semaine)
     @view_type = params[:view] || 'month'
