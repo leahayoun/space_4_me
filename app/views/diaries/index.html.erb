@@ -1,21 +1,8 @@
-<h1>Mes journaux (index)</h1>
-
-<ul>
-  <% @diaries.each do |diary| %>
-
-  <%= l(diary.created_at, format: :long) %>
-
-    <li>
-      <%= link_to diary.title, diary_path(diary) %>  </li> <%# lien vers un id journal%>
-      <%= link_to "Modifier", edit_diary_path(diary) %>
-      <%= link_to "Supprimer",
-                  diary_path(diary),
-                  data: { turbo_method: :delete,
-                          turbo_confirm: "Supprimer ce journal ?" } %>
-    </li>
-  <% end %>
-</ul>
-
-<p>
-  <%= link_to "Nouveau journal", new_diary_path %>
-</p>
+<div class="welcome">
+      <div class="welcome__text">
+        <h2 class="welcome__title">Bienvenue dans journal</h2>
+        <p class="welcome__text">
+          Ici, tu peux écrire librement, documenter ton parcours, et célébrer chaque étape.
+        </p>
+      </div>
+    </div>

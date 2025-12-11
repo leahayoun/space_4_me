@@ -21,3 +21,9 @@
 @import "components/events/incoming_events";
 @import "components/events/add_events";
 @import "components/events/m_footer";
+
+// Pour feature diaries
+@import "components/diaries/variables";
+@import "components/diaries/index";
+@import "components/diaries/show";
+@import "components/diaries/form";
