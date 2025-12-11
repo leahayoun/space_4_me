@@ -42,5 +42,5 @@ fr:
 
   time:
     formats:
-      long: "%d %B %Y à %H:%M"
-      short: "%d %b %H:%M"
+      long: "%d %B %Y"
+      short: "%d %b"
