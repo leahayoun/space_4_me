@@ -11,6 +11,14 @@ fr:
       - jeudi
       - vendredi
       - samedi
+    abbr_day_names:
+      - dim
+      - lun
+      - mar
+      - mer
+      - jeu
+      - ven
+      - sam
     month_names:
       - ~
       - janvier
