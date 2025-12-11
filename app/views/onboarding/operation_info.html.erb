@@ -70,20 +70,16 @@
   document.addEventListener("DOMContentLoaded", () => {
     const birthSex = "<%= @user.birth_sex %>";
     const gender = "<%= @user.gender %>";
-    const hormonalStatus = document.getElementById("hormonal_status");
     const ftmBlock = document.getElementById("ftm_operations");
     const mtfBlock = document.getElementById("mtf_operations");
 
-    function toggleTreatmentBlocks() {
+    function toggleOperationtBlocks() {
       // Cacher les deux blocs par défaut
       ftmBlock.style.display = "none";
       mtfBlock.style.display = "none";
 
       // Si l'utilisateur a commencé ou compte commencer un traitement
-      if (hormonalStatus.value === "Oui, j'ai déjà commencé" ||
-          hormonalStatus.value === "Non, mais je compte commencer") {
-
-        if (birthSex === "XX") {
+      if (birthSex === "XX") {
           ftmBlock.style.display = "block"; // bloc masculin
         } else if (birthSex === "XY") {
           mtfBlock.style.display = "block"; // bloc féminin
@@ -92,13 +88,14 @@
             ftmBlock.style.display = "block";
           } else if (gender === "Femme") {
             mtfBlock.style.display = "block";
+          } else {
+            ftmBlock.style.display = "block";
+            mtfBlock.style.display = "block";
           }
         }
       }
-      // Sinon ("Je veux m'informer" ou autre) : les blocs restent cachés
     }
 
-    hormonalStatus.addEventListener("change", toggleTreatmentBlocks);
     toggleTreatmentBlocks(); // initialisation au chargement
   });
 </script>

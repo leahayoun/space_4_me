@@ -1,28 +1,3 @@
-<%# <h2>Informations personnelles</h2>
-
-<%= form_for @user, url: wizard_path, method: :put do |f| %>
-
-  <%# <p>
-    <%= f.label :date_of_birth, "Date de naissance" (rajouter les br)%>
-    <%# <%= f.date_field :date_of_birth %>
-  <%# </p>
-
-  <p>
-    <%= f.label :gender, "Identité de genre" rajoueter les br%>
-    <%# <%= f.select :gender, ["Homme", "Femme", "Non-binaire", "Agenre", "Autre (à préciser)"] %>
-  <%# </p>
-
-  <p>
-    <%= f.label :birth_sex, "Sexe de naissance"  rajouter les br%>
-    <%# <%= f.select :birth_sex, ["XY", "XX", "Intersexué·e (à préciser)"] %>
-  <%# </p>
-
-  <%= f.submit "Next" %>
-
-<%# <% end %>
-
-<%# <%= link_to 'Skip', next_wizard_path %>
-
 <h2>Informations personnelles</h2>
 
 <%= form_for @user, url: wizard_path, method: :put do |f| %>

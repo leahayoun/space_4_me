@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!  # Toutes les pages nécessitent login par défaut
-
-  # Pour ajouter des champs personnalisés à Devise
-  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller? # Pour ajouter des champs personnalisés à Devise
 
   def after_sign_in_path_for(resource)
     if current_user.onboarding
