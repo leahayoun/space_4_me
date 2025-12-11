@@ -28,6 +28,7 @@ user = User.create!(
   birth_sex: "Homme",
   gender: "Homme",
   date_of_birth: Date.new(1990, 5, 15)
+  onboarding: true
 )
 
 puts "✅ Utilisateur créé : #{user.first_name} #{user.last_name}"

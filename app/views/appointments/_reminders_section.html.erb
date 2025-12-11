@@ -9,7 +9,8 @@
   <% if appointments.any? %>
     <div class="mobile-reminders">
       <% appointments.limit(3).each do |appointment| %>
-        <div class="reminder-card">
+       <%# ajout d'un lien au path via cards %>
+        <%= link_to appointment_path(appointment), class: "reminder-card clickable-card" do %>
           <div class="reminder-date">
             <span class="day"><%= appointment.date.day %></span>
             <span class="month"><%= l(appointment.date, format: '%b') %></span>
@@ -33,7 +34,7 @@
             <i class="fas fa-clock"></i>
             <span>10:00</span>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
   <% else %>
