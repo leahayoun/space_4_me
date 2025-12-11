@@ -1,8 +1,46 @@
-<div class="welcome">
-      <div class="welcome__text">
-        <h2 class="welcome__title">Bienvenue dans journal</h2>
+<div class="diaries-container">
+
+  <div class="welcome">
+    <div class="welcome__text text-center">
+      <h1 class="welcome__title">Bienvenue dans ton journal</h1>
         <p class="welcome__text">
-          Ici, tu peux écrire librement, documenter ton parcours, et célébrer chaque étape.
+        Ici, tu peux écrire librement, documenter ton parcours et célébrer chaque étape.
         </p>
-      </div>
     </div>
+  </div>
+
+  <%= link_to new_diary_path, class: "btn-new-entry" do %>
+     Nouvelle entrée
+  <% end %>
+
+  <div class="section-header">
+    <h2 class="section-header__title"> Tes entrées récentes</h2>
+  </div>
+
+
+  <div class="diary-grid">
+    <% @diaries.each do |diary| %>
+      <div class="diary-card">
+        <p class="diary-card__date"><%= l(diary.created_at, format: :long) %></p>
+
+        <h3 class="diary-card__title">
+          <%= link_to diary.title, diary_path(diary) %>
+        </h3>
+
+        <p class="diary-card__excerpt">
+          <%= truncate(diary.content.to_plain_text, length: 100) %> <%# truncate = méthode rails qui coupe le texte après un certain nombre de caractères et rajoute ... %>
+        </p>
+
+      <div class="diary-card__footer">
+          <%= link_to "Modifier", edit_diary_path(diary), class: "diary-card__action" %>
+          <%= link_to "Supprimer", diary_path(diary),
+                  data: { turbo_method: :delete, turbo_confirm: "Supprimer ce journal ?" },
+                  class: "diary-card__action diary-card__action--danger" %>
+      </div>
+      </div>
+          <% end %>
+  </div>
+
+    </div>
+  </div>
+</div>
