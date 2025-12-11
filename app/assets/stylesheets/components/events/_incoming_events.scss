@@ -1,0 +1,96 @@
+.mobile-reminders {
+  .reminder-card {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #f8f9fa;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .reminder-date {
+      min-width: 60px;
+      text-align: center;
+      padding-right: 1rem;
+
+      .day {
+        display: block;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #007bff;
+        line-height: 1;
+      }
+
+      .month {
+        display: block;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        color: #6c757d;
+      }
+    }
+
+    .reminder-content {
+      flex: 1;
+
+      h4 {
+        margin: 0 0 0.25rem 0;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #333;
+      }
+
+      .reminder-type {
+        display: inline-block;
+        font-size: 0.75rem;
+        padding: 0.125rem 0.5rem;
+        background: #e9ecef;
+        color: #495057;
+        border-radius: 4px;
+        margin-bottom: 0.5rem;
+      }
+
+      .reminder-location {
+        margin: 0;
+        font-size: 0.875rem;
+        color: #6c757d;
+
+        i {
+          margin-right: 0.25rem;
+          font-size: 0.75rem;
+        }
+      }
+    }
+
+    .reminder-time {
+      text-align: center;
+      min-width: 50px;
+
+      i {
+        display: block;
+        color: #6c757d;
+        font-size: 0.875rem;
+        margin-bottom: 0.25rem;
+      }
+
+      span {
+        font-size: 0.75rem;
+        color: #495057;
+      }
+    }
+  }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: #6c757d;
+
+  p {
+    margin: 0.5rem 0;
+  }
+
+  .text-muted {
+    font-size: 0.875rem;
+  }
+}
