@@ -1,14 +1,16 @@
 <%# <h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p> %>
+<p>Find me in app/views/pages/home.html.erb</p> %><%# app/views/pages/home.html.erb %>
+<div class="home-container">
+  <%# Logo au-dessus du titre %>
 
-<div class="container">
-  <h1 class="text-center">Bienvenue sur Space4Me</h1>
-  <p class="text-center">Votre safespace pour vous accompagner durant votre parcours</p>
+
+  <h1 class="home-title">Bienvenue sur Space4Me</h1>
+  <p class="home-subtitle">Votre safespace pour vous accompagner durant votre parcours</p>
 
   <% unless user_signed_in? %>
-    <div class="mt-4 text-center">
-      <%= link_to "Se connecter", new_user_session_path, class: "btn btn-primary" %>
-      <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-secondary" %>
+    <div class="home-buttons">
+      <%= link_to "Se connecter", new_user_session_path, class: "home-btn home-btn-primary" %>
+      <%= link_to "S'inscrire", new_user_registration_path, class: "home-btn home-btn-secondary" %>
     </div>
   <% end %>
 </div>

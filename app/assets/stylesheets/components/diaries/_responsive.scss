@@ -171,27 +171,3 @@
     }
   }
 }
-
-// Pour le web app (optionnel, si vous voulez garder)
-@media (min-width: 768px) {
-  .diaries-container {
-    max-width: 768px;
-    margin: 0 auto;
-    padding: 80px 1rem 100px;
-  }
-
-  .diary-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 992px) {
-  .diaries-container {
-    max-width: 1000px;
-    padding: 50px 40px;
-  }
-
-  .diary-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}

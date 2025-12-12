@@ -217,29 +217,7 @@
   }
 }
 
-// Responsive mobile
-@media (max-width: 768px) {
-  .d-flex.align-items-center.mb-4 {
-    padding: 0.75rem;
 
-    h1 {
-      font-size: 1.1rem;
-    }
-  }
-
-  .mt-4.d-flex.gap-2 {
-    flex-direction: column;
-
-    .btn {
-      width: 100%;
-    }
-  }
-
-  .dashboard-section .mb-4 .d-flex.align-items-center,
-  .dashboard-section .mb-4 .d-flex.align-items-start {
-    padding: 0.75rem;
-  }
-}
 // responsive setting
 
 @media (min-width: 768px) {
