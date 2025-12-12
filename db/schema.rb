@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_12_11_155843) do
+ActiveRecord::Schema[7.1].define(version: 2025_12_12_095301) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -171,6 +171,27 @@ ActiveRecord::Schema[7.1].define(version: 2025_12_11_155843) do
     t.boolean "treatment_progynova"
     t.boolean "treatment_neofollin"
     t.boolean "treatment_gynodian"
+    t.string "operation_status"
+    t.boolean "operation_torsoplastie"
+    t.boolean "operation_phalloplastie"
+    t.boolean "operation_metaiodoplastie"
+    t.boolean "operation_hysterectomie"
+    t.boolean "exercices_voix_m"
+    t.boolean "operation_bodybuilding_followup"
+    t.boolean "operation_fronto_orbital_contouring"
+    t.boolean "operation_rhinoplastie"
+    t.boolean "operation_genioplastie"
+    t.boolean "operation_tracheal_shave"
+    t.boolean "operation_glottoplastie"
+    t.boolean "operation_vaginoplastie"
+    t.boolean "operation_labiaplastie"
+    t.boolean "operation_orchiectomie"
+    t.boolean "operation_liposculpture_feminisante"
+    t.boolean "operation_bbl"
+    t.boolean "exercices_voix_f"
+    t.boolean "operation_epilation_laser"
+    t.text "how_found"
+    t.text "expectations_info"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

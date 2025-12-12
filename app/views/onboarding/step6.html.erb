@@ -1,6 +1,15 @@
 <%# <onboarding expectations_info> %>
 
-<div class="actions">
-  <%= link_to "Back", previous_wizard_path, class: "btn btn-secondary" %>
-  <%= link_to "Finish", appointments_path, class: "btn btn-primary" %>
-</div>
+<h2>Quels sont vos attentes vis-à-vis de l'application ?</h2>
+
+<%= form_for @user, url: wizard_path, method: :put do |f| %>
+  <div class="field">
+    <%= f.label :expectations_info, "Votre réponse nous aidera à nous améliorer (max 500 caractères)" %><br>
+    <%= f.text_area :expectations_info, maxlength: 500, rows: 4, cols: 50, placeholder: "Ex: Inclusivité, parcours de transition, documentation, etc." %>
+  </div>
+
+  <div class="actions">
+    <%= link_to "Back", previous_wizard_path, class: "btn btn-secondary" %>
+    <%= link_to "Finish", dashboard_path, class: "btn btn-primary" %>
+  </div>
+<% end %>
