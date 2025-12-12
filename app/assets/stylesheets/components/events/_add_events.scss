@@ -3,7 +3,7 @@
 
 .fab-container {
   position: fixed;
-  bottom: 80px; // posiiton du btn
+  bottom: 80px; // position du btn
   right: 20px;
   z-index: 1000;
 }
@@ -73,50 +73,168 @@
   }
 }
 
+
 // ==================== APPOINTMENT FORM ====================
+
+
 .appointment-form-card {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border: none;
+  background: $warm-white;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  h1.text-center {
+    color: $warm-white;
+    font-weight: 700;
+    margin: 2rem 0;
+    font-size: 2.5rem;
+  }
 
   .card-header {
-    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
-    color: white;
+    background: linear-gradient(135deg, $terracotta 0%, $cream-dark 100%);
+    color: $text;
     border-radius: 12px 12px 0 0 !important;
     padding: 1.5rem;
+    border-bottom: 2px solid $cream-dark;
 
     h2 {
       margin: 0;
       font-weight: 600;
       font-size: 1.5rem;
+      color: $warm-white;
+      display: flex;
+      align-items: center;
+
+      i {
+        color: $warm-white;
+        font-size: 1.3rem;
+      }
     }
   }
 
   .card-body {
     padding: 2rem;
+    background: $cream;
   }
 }
 
+/* ==================== CHAMPS DU FORMULAIRE ==================== */
+.simple_form {
+  .form-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid $sage-light;
+    border-radius: 8px;
+    background: $warm-white;
+    color: $text;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+
+    &:focus {
+      outline: none;
+      border-color: $terracotta;
+      box-shadow: 0 0 0 3px rgba($terracotta, 0.2);
+    }
+
+    &::placeholder {
+      color: $text-light;
+      opacity: 0.7;
+    }
+  }
+
+  select.form-input {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%236B7B5E' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 16px 12px;
+    padding-right: 2.5rem;
+  }
+
+  textarea.form-input {
+    min-height: 120px;
+    resize: vertical;
+  }
+}
+
+/* ==================== BOUTONS ==================== */
 .form-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 2rem;
   padding-top: 1.5rem;
-  border-top: 1px solid #e9ecef;
+  border-top: 1px solid $sage-light;
 
   .btn {
     min-width: 120px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .btn-submit {
+    background: linear-gradient(135deg, $terracotta 0%, $terracotta-light 100%);
+    color: white;
+    border: none;
+
+    &:hover {
+      background: linear-gradient(135deg, darken($terracotta, 5%) 0%, darken($terracotta-light, 5%) 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .btn-ghost {
+    color: $olive;
+    border: 2px solid $olive;
+    background: transparent;
+    opacity: 0.8;
+
+    &:hover {
+      background: $olive;
+      color: white;
+      opacity: 1;
+    }
   }
 }
 
+/* ==================== BOUTON RETOUR ==================== */
+.btn-link {
+  color: $olive;
+  background: transparent;
+  border: none;
+  padding: 0.5rem 0;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s;
 
+  &:hover {
+    color: darken($olive, 10%);
+    transform: translateX(-4px);
 
-// index list of events
+    i {
+      transform: translateX(-2px);
+    }
+  }
+
+  i {
+    transition: transform 0.3s;
+    margin-right: 0.5rem;
+  }
+}
+
+/* ==================== LISTE DES ÉVÉNEMENTS ==================== */
 .appointment-list-card {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  border: 1px solid #cbd2d8;
+  border: 1px solid $sage-light;
   transition: transform 0.2s;
 
   &:hover {
@@ -125,26 +243,33 @@
   }
 
   .card-title {
-    color: #007bff;
+    color: $terracotta;
   }
-
 }
 
+/* ==================== RESPONSIVE MOBILE ==================== */
+@media (max-width: 768px) {
+  .appointment-form-card {
+    margin: 0;
+    border-radius: 0;
+    min-height: 100vh;
 
+    .card-header {
+      border-radius: 0 !important;
+    }
 
-  // mobile
-  @media (max-width: 768px) {
-    .appointment-form-card {
-      margin: 0;
-      border-radius: 0;
-      min-height: 100vh;
-
-      .card-header {
-        border-radius: 0 !important;
-      }
-
-      .card-body {
-        padding: 1.5rem;
-      }
+    .card-body {
+      padding: 1.5rem;
     }
   }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 1rem;
+
+    .btn {
+      width: 100%;
+      min-width: unset;
+    }
+  }
+}

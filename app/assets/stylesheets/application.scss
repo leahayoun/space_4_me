@@ -22,10 +22,10 @@
 
 // import components appointments scss
 @import "components/appointments";
+@import "components/events/add_events";
 @import "components/events/dashboard";
 @import "components/events/calendar";
 @import "components/events/incoming_events";
-@import "components/events/add_events";
 @import "components/events/m_footer";
 
 #main-content {
