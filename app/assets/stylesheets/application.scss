@@ -11,6 +11,7 @@
 // @import "actiontext"; = commenté car a tout fait sauter 🤷🏻‍♀️
 @import "trix";
 
+
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
@@ -20,6 +21,7 @@
 @import "components/diaries/index";
 @import "components/diaries/show";
 @import "components/diaries/form";
+@import "components/diaries/responsive";
 
 // import components appointments scss
 @import "components/appointments";

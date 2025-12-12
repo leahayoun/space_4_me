@@ -108,3 +108,61 @@
     }
   }
 }
+// ==================== DIARY SHOW RESPONSIVE ====================
+// Focus mobile: iPhone 14-16 Pro Max et mobiles similaires
+
+@media (max-width: 767px) {
+  .diaries-container {
+    padding: 20px 15px;
+  }
+
+  .back-button {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+  }
+
+  .diary-show {
+    padding: 30px 20px;
+    border-radius: 18px;
+
+    &__title {
+      font-size: 1.6rem;
+      line-height: 1.4;
+    }
+
+    &__content {
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    &__actions {
+      flex-direction: column;
+      gap: 12px;
+
+      .btn-action {
+        width: 100%;
+        justify-content: center;
+        padding: 16px 24px;
+      }
+    }
+  }
+}
+
+// Pour les iPhones Pro Max (écrans un peu plus larges)
+@media (max-width: 428px) { // iPhone 14/15/16 Pro Max width
+  .diary-show {
+    padding: 25px 18px;
+
+    &__title {
+      font-size: 1.5rem;
+    }
+
+    &__content {
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+  }
+}

@@ -273,3 +273,115 @@
     }
   }
 }
+
+
+// ==================== APPOINTMENT FORM SPECIFIC RESPONSIVE ====================
+// Cible seulement VOTRE formulaire d'appointment
+
+@media (max-width: 767px) {
+  // Container spécifique à VOTRE formulaire
+  .appointment-form-card .card-body .simple_form {
+    .form-input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid $sage-light;
+      border-radius: 8px;
+      background: $warm-white;
+      color: $text;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      box-sizing: border-box;
+
+      &:focus {
+        border-color: $terracotta;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba($terracotta, 0.2);
+      }
+    }
+
+    // Date picker sur mobile
+    input[type="date"].form-input {
+      appearance: none;
+      min-height: 44px; // Taille tactile minimum pour mobile
+    }
+
+    // Textarea
+    textarea.form-input {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    // Champs de date (année/mois/jour)
+    .appointment_date {
+      .d-flex {
+        flex-direction: column;
+        gap: 0.75rem;
+
+        .form-input {
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  // Form actions spécifiques
+  .appointment-form-card .form-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid $sage-light;
+
+    .btn {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-align: center;
+      border: 2px solid;
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, $terracotta 0%, $terracotta-light 100%);
+      color: white;
+      border-color: transparent;
+
+      &:hover {
+        background: linear-gradient(135deg, darken($terracotta, 5%) 0%, darken($terracotta-light, 5%) 100%);
+      }
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: $olive;
+      border-color: $olive;
+
+      &:hover {
+        background: $olive;
+        color: white;
+      }
+    }
+  }
+}
+
+// Très petits écrans
+@media (max-width: 375px) {
+  .appointment-form-card .card-body .simple_form {
+    .form-input {
+      padding: 0.65rem;
+      font-size: 0.95rem;
+    }
+
+    textarea.form-input {
+      min-height: 100px;
+    }
+  }
+
+  .appointment-form-card .form-actions {
+    .btn {
+      padding: 0.65rem;
+      font-size: 0.95rem;
+    }
+  }
+}
