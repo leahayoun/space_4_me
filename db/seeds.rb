@@ -143,34 +143,24 @@ end
 
 puts "✅ #{Operation.count} opérations créées"
 
-puts "📔 Création des journaux intimes..."
+user.diaries.delete_all
+
+puts "📔 Création des journaux ..."
 
 diaries = [
-  {
-    title: "Première consultation",
-    content: "Aujourd'hui j'ai franchi le pas. Le médecin était à l'écoute, bienveillant. Pour la première fois, quelqu'un m'a demandé comment je voulais qu'on m'appelle. Ce simple geste m'a fait monter les larmes aux yeux. Je me suis senti·e vu·e, reconnu·e. C'est le début de quelque chose, je le sens."
-  },
-  {
-    title: "Lettre à mon reflet",
-    content: "Cher reflet, je sais qu'on ne s'est pas toujours bien entendu. Mais aujourd'hui, pour la première fois, j'ai vu quelqu'un que je commence à reconnaître. Quelqu'un qui me ressemble enfin. On a encore du chemin, toi et moi, mais je crois qu'on va y arriver."
-  },
-  {
-    title: "Coming out à Maman",
-    content: "Elle a pleuré. Puis elle m'a serré·e dans ses bras et m'a dit 'Je t'aime, peu importe qui tu es'. Je ne m'attendais pas à ça. Le soulagement est immense. J'avais préparé des arguments, des explications, mais finalement on a juste pleuré ensemble. De joie, je crois."
-  },
-  {
-    title: "Les petites victoires",
-    content: "Un inconnu m'a genré correctement aujourd'hui. Sans effort, naturellement. J'ai souri pendant une heure entière. Ces moments valent tout l'or du monde. C'est fou comme un simple mot peut illuminer une journée entière. Je collectionne ces petites victoires précieusement."
+  { title: "Première consultation", days_ago: 30, content: "Aujourd'hui j'ai franchi le pas. Le médecin était à l'écoute, bienveillant. Pour la première fois, quelqu'un m'a demandé comment je voulais qu'on m'appelle. Ce simple geste m'a fait monter les larmes aux yeux. Je me suis senti·e vu·e, reconnu·e. C'est le début de quelque chose, je le sens." },
+  { title: "Lettre à mon reflet", days_ago: 21, content: "Cher reflet, je sais qu'on ne s'est pas toujours bien entendu. Mais aujourd'hui, pour la première fois, j'ai vu quelqu'un que je commence à reconnaître. Quelqu'un qui me ressemble enfin. On a encore du chemin, toi et moi, mais je crois qu'on va y arriver." },
+  { title: "Coming out à Maman", days_ago: 14, content: "Elle a pleuré. Puis elle m'a serré·e dans ses bras et m'a dit 'Je t'aime, peu importe qui tu es'. Je ne m'attendais pas à ça. Le soulagement est immense. J'avais préparé des arguments, des explications, mais finalement on a juste pleuré ensemble. De joie, je crois." },
+  { title: "Les petites victoires", days_ago: 3, content: "Un inconnu m'a genré correctement aujourd'hui. Sans effort, naturellement. J'ai souri pendant une heure entière. Ces moments valent tout l'or du monde. C'est fou comme un simple mot peut illuminer une journée entière. Je collectionne ces petites victoires précieusement."
   }
 ]
 
-diaries.each do |diary_data|
-  diary = user.diaries.create!(title: diary_data[:title])
-  diary.content = diary_data[:content]
-  diary.save!
-end
+diaries.each do |d|
+  t = d[:days_ago].days.ago
 
-puts "✅ #{Diary.count} journaux créés"
+  diary = user.diaries.create!(title: d[:title], content: d[:content])
+  diary.update_columns(created_at: t, updated_at: t)
+end
 
 puts "😊 Création des humeurs de base..."
 
