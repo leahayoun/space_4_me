@@ -1,12 +1,11 @@
 <div class="diaries-container">
 
-  <%= link_to diary_path(@diary), class: "back-button" do %>
+  <%= link_to diaries_path(@diary), class: "back-button" do %>
     ← Retour à l'entrée
   <% end %>
 
   <div class="diary-form">
     <div class="diary-form__header">
-      <h1 class="diary-form__title"> Modifier l'entrée</h1>
     </div>
 
     <%= render "form", diary: @diary, submit_text: "Modifier" %>
