@@ -7,8 +7,9 @@
 @import "bootstrap";
 @import "font-awesome";
 
-// Action Text
-@import "actiontext";
+// Action Text Overview
+// @import "actiontext"; = commenté car a tout fait sauter 🤷🏻‍♀️
+@import "trix";
 
 // Your CSS partials
 @import "components/index";
