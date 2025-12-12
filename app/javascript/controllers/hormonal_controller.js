@@ -1,7 +1,18 @@
 import { Controller } from "@hotwired/stimulus"
 
+connect() {
+  console.log("Hormonal controller CONNECTED")
+  console.log("birthSex:", this.birthSexValue, "gender:", this.genderValue)
+
+  this.toggleTreatmentBlocks()
+}
+
 export default class extends Controller {
   static targets = ["status", "ftm", "mtf"]
+  static values = {
+    birthSex: String,
+    gender: String
+  }
 
   connect() {
     this.toggleTreatmentBlocks()
@@ -12,15 +23,15 @@ export default class extends Controller {
   }
 
   toggleTreatmentBlocks() {
-    const birthSex = this.data.get("birthSex")
-    const gender = this.data.get("gender")
+    const birthSex = this.birthSexValue
+    const gender = this.genderValue
     const status = this.statusTarget.value
 
-    // Cacher les deux blocs par défaut
+    console.log("Status:", status)
+
     this.ftmTarget.style.display = "none"
     this.mtfTarget.style.display = "none"
 
-    // Afficher le bloc approprié selon le statut et le sexe/genre
     if (status === "Oui, j'ai déjà commencé" || status === "Non, mais je compte commencer") {
       if (birthSex === "XX") {
         this.ftmTarget.style.display = "block"
@@ -33,3 +44,4 @@ export default class extends Controller {
     }
   }
 }
+
