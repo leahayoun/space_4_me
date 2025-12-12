@@ -4,33 +4,38 @@
   <%= f.input :title,
               label: "Title",
               placeholder: "e.g. Doctor's appointment",
-              required: true %>
+              required: true,
+              input_html: { class: "form-input" } %>
 
   <%= f.input :date,
               as: :date,
               html5: true,
               label: "Date",
-              required: true %>
+              required: true,
+              input_html: { class: "form-input" } %>
 
   <%= f.input :event_type,
               label: "Event type",
               collection: ["Medical", "Personal", "Work", "Other"],
               include_blank: "Select a type",
-              required: true %>
+              required: false,
+              input_html: { class: "form-input" } %>
 
   <%= f.input :address,
               label: "Address",
               placeholder: "e.g. 123 Rue de Paris, 75001 Paris",
-              required: false %>
+              required: false,
+              input_html: { class: "form-input" } %>
 
   <%= f.input :content,
               as: :text,
               label: "Description",
               placeholder: "Add notes, reminders, etc.",
-              rows: 4 %>
+              rows: 4,
+              input_html: { class: "form-input" } %>
 
   <div class="form-actions">
-    <%= f.button :submit, class: "btn btn-primary" %>
-    <%= link_to "Cancel", appointments_path, class: "btn btn-outline-secondary" %>
+    <%= f.button :submit, class: "btn btn-submit" %>
+    <%= link_to "Cancel", appointments_path, class: "btn btn-ghost" %>
   </div>
 <% end %>
