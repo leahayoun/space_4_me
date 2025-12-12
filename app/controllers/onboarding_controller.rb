@@ -2,11 +2,9 @@ class OnboardingController < ApplicationController
   include Wicked::Wizard
   steps :step1, :step2, :step3, :step4, :step5, :step6
 
-
-
   def show
     @user = current_user
-    render_wizard
+    render_wizard #préciser la step associée
   end
 
   def update
