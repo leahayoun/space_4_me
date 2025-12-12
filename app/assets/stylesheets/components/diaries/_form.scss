@@ -1,0 +1,135 @@
+.diary-form {
+  background: $warm-white;
+  border-radius: 24px;
+  padding: 50px;
+  box-shadow: 0 8px 40px rgba($sage, 0.12);
+  border: 1px solid rgba($sage, 0.3);
+
+
+  &__header {
+    margin-bottom: 0px;
+    padding-bottom: 15px;
+    // border-bottom: 1px solid rgba($sage, 0.4);
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: $olive;
+    margin: 0;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    padding-top: 30px;
+    border-top: 1px solid rgba($sage, 0.4);
+  }
+}
+
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__label {
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $text-muted;
+    font-weight: 700;
+  }
+
+  &__input {
+    padding: 18px 22px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: $text;
+    border: 2px solid rgba($sage, 0.3);
+    border-radius: 12px;
+    background: $cream;
+    outline: none;
+    transition: all 0.3s ease;
+
+    &::placeholder {
+      color: $text-muted;
+      font-weight: 400;
+    }
+
+    &:focus {
+      border-color: $sage;
+      background: $warm-white;
+      box-shadow: 0 0 0 4px rgba($sage, 0.1);
+    }
+  }
+
+
+  &__textarea {
+    trix-editor {
+      min-height: 300px;
+      padding: 20px;
+      font-size: 1.1rem;
+      color: $text;
+      line-height: 1.8;
+      border: 2px solid rgba($sage, 0.3);
+      border-radius: 12px;
+      background: $cream;
+      transition: all 0.3s ease;
+
+      &:focus {
+        border-color: $sage;
+        background: $warm-white;
+        box-shadow: 0 0 0 4px rgba($sage, 0.1);
+      }
+    }
+
+    trix-toolbar {
+      padding: 12px;
+      background: rgba($sage, 0.1);
+      border-radius: 12px 12px 0 0;
+      border: 2px solid rgba($sage, 0.3);
+      border-bottom: none;
+
+      .trix-button {
+        border-radius: 6px;
+        border: none;
+        background: transparent;
+
+        &:hover {
+          background: rgba($sage, 0.2);
+        }
+
+        &.trix-active {
+          background: $sage;
+        }
+      }
+    }
+  }
+}
+
+
+.btn-submit {
+  padding: 16px 35px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(135deg, $sage 0%, darken($sage, 10%) 100%);
+  color: $warm-white;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba($sage, 0.3);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba($sage, 0.4);
+  }
+}

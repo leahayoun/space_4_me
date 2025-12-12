@@ -1,23 +1,15 @@
-<h1>Modifier mon journal(edit)</h1>
+<div class="diaries-container">
 
-  <%= form_with model: @diary do |form| %>
-    <div>
-      <%= form.label :title, "Titre" %>
-      <%= form.text_field :title %>
-    </div>
-
-    <div>
-      <%= form.label :content, "Contenu" %> <%# br pour saut de ligne ?%>
-      <%= form.rich_text_area :content %>
-    </div>
-
-    <div>
-      <%= form.submit "Modifier mon journal" %>
-    </div>
+  <%= link_to diary_path(@diary), class: "back-button" do %>
+    ← Retour à l'entrée
   <% end %>
 
-  <p>
-    <%= link_to "Retour au journal", diary_path(@diary) %>
-  </p>
+  <div class="diary-form">
+    <div class="diary-form__header">
+      <h1 class="diary-form__title"> Modifier l'entrée</h1>
+    </div>
 
-  <%# !! Partial pour le form%>
+    <%= render "form", diary: @diary, submit_text: "Modifier" %>
+  </div>
+
+</div>
