@@ -38,6 +38,20 @@ class OnboardingController < ApplicationController
         :treatment_estrofem, :treatment_progynova,
         :treatment_neofollin, :treatment_gynodian
       )
+    when :step4
+      params.require(:user).permit(
+        :operation_status,
+        :operation_torsoplastie, :operation_phalloplastie, :operation_metaiodoplastie,
+        :operation_hysterectomie, :exercices_voix_m, :sport, :operation_fronto_orbital_contouring,
+        :operation_rhinoplastie, :operation_genioplastie, :operation_tracheal_shave,
+        :operation_glottoplastie, :operation_augmentation_mammaire, :operation_vaginoplastie,
+        :operation_labiaplastie, :operation_orchiectomie, :operation_liposculpture_feminisante,
+        :operation_bbl, :exercices_voix_f, :operation_epilation_laser
+      )
+    when :step5
+      params.require(:user).permit(:how_found)
+    when :step6
+      params.require(:user).permit(:expectations_info)
     else
       {}
     end

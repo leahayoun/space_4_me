@@ -26,12 +26,12 @@
         <p class="dropdown-category">Opérations de réassignation masculinisantes</p><br>
         <label><%= f.check_box :operation_torsoplastie %> Torsoplastie (mastectomie)</label><br>
         <label><%= f.check_box :operation_phalloplastie %> Phalloplastie</label><br>
-        <label><%= f.check_box :operation_métaiodoplastie %> Méta</label><br>
-        <label><%= f.check_box :operation_hystérectomie %> Hystérectomie</label><br>
+        <label><%= f.check_box :operation_metaiodoplastie %> Méta</label><br>
+        <label><%= f.check_box :operation_hysterectomie %> Hystérectomie</label><br>
 
         <p class="dropdown-category">Autres accompagnements</p><br>
         <label><%= f.check_box :exercices_voix_m %> Exercices vocales </label><br>
-        <label><%= f.check_box :operation_bodybuilding_followup %> Sport·s</label><br>
+        <label><%= f.check_box :sport %> Sport·s</label><br>
 
       </div>
     </div>
@@ -47,7 +47,7 @@
     <strong> Visage :</strong><br>
     <label><%= f.check_box :operation_fronto_orbital_contouring %> Fronto-orbital contouring (opération des arcades sourcillières)</label><br>
     <label><%= f.check_box :operation_rhinoplastie %> Rhinoplastie</label><br>
-    <label><%= f.check_box :operation_génioplastie %> Génioplastie (Mandibular contouring)</label><br>
+    <label><%= f.check_box :operation_genioplastie %> Génioplastie (Mandibular contouring)</label><br>
     <label><%= f.check_box :operation_tracheal_shave %> Tracheal shave (réduction de la pomme d’Adam)</label><br>
     <label><%= f.check_box :operation_glottoplastie %> Glottoplastie (chirurgie des cordes vocales)</label><br>
     <strong> Haut du corps :</strong><br>
@@ -56,12 +56,12 @@
     <label><%= f.check_box :operation_vaginoplastie %> Vaginoplastie</label><br>
     <label><%= f.check_box :operation_labiaplastie %> Labiaplastie</label><br>
     <label><%= f.check_box :operation_orchiectomie %> Orchiectomie</label><br>
-    <label><%= f.check_box :operation_liposculpture_féminisante %>Liposculpture féminisante</label><br>
+    <label><%= f.check_box :operation_liposculpture_feminisante %>Liposculpture féminisante</label><br>
     <label><%= f.check_box :operation_bbl %>Brazilian Butt Lift (BBL)</label><br>
 
     <strong>Autres accompagnements :</strong><br>
     <label><%= f.check_box :exercices_voix_f %> Exercices vocales </label><br>
-    <label><%= f.check_box :operation_épilation_laser %> Epilation laser (définitve)</label><br>
+    <label><%= f.check_box :operation_epilation_laser %> Epilation laser (définitve)</label><br>
 
   <%= f.submit "Next" %>
 <% end %>

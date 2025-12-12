@@ -1,5 +1,95 @@
-<%# <onboarding operation_info> %>
-<div class="actions">
-  <%= link_to "Back", previous_wizard_path, class: "btn btn-secondary" %>
-  <%= link_to "Next", next_wizard_path, class: "btn btn-primary" %>
-</div>
+<h2>Informations sur le traitement hormonal</h2>
+
+<%= form_for @user, url: wizard_path, method: :put do |f| %>
+
+  <p>
+    <%= f.label :operation_status, "Avez-vous déjà effectué une opération ?" %><br>
+    <%= f.select :operation_status,
+          ["Oui, j'en ai déjà fait", "Non, mais je compte en faire", "Non, je ne veux pas faire d'opération.", "Je veux m'informer"],
+          {},
+          { id: "operation_status" } %>
+  </p>
+
+  <!-- Bloc FTM -->
+  <div id="ftm_block" style="display:none;">
+    <h3>Opérations de réassignation et accompagnements masculinisants</h3>
+    <p>
+    <strong>Opérations de réassignation masculinisantes</strong><br>
+    <p>
+      <label><%= f.check_box :operation_torsoplastie %> Torsoplastie (mastectomie)</label><br>
+      <label><%= f.check_box :operation_phalloplastie %> Phalloplastie</label><br>
+      <label><%= f.check_box :operation_metaiodoplastie %> Méta</label><br>
+      <label><%= f.check_box :operation_hysterectomie %> Hystérectomie</label><br>
+    </p>
+    <strong>Autres accompagnements :</strong><br>
+    <p>
+      <label><%= f.check_box :exercices_voix_m %> Exercices vocales </label><br>
+      <label><%= f.check_box :operation_bodybuilding_followup %> Sport·s</label><br>
+    </p>
+  </div>
+
+   <!-- Bloc MTF -->
+  <div id="mtf_block" style="display:none;">
+    <h3>Opérations de réassignation et accompagnements féminisants</h3>
+    <strong>Visage :</strong><br>
+    <p>
+      <label><%= f.check_box :operation_fronto_orbital_contouring %> Fronto-orbital contouring (opération des arcades sourcillières)</label><br>
+      <label><%= f.check_box :operation_rhinoplastie %> Rhinoplastie</label><br>
+      <label><%= f.check_box :operation_genioplastie %> Génioplastie (Mandibular contouring)</label><br>
+      <label><%= f.check_box :operation_tracheal_shave %> Tracheal shave (réduction de la pomme d’Adam)</label><br>
+      <label><%= f.check_box :operation_glottoplastie %> Glottoplastie (chirurgie des cordes vocales)</label><br>
+    </p>
+    <strong>Bas du corps :</strong><br>
+    <p>
+      <label><%= f.check_box :operation_vaginoplastie %> Vaginoplastie</label><br>
+      <label><%= f.check_box :operation_labiaplastie %> Labiaplastie</label><br>
+      <label><%= f.check_box :operation_orchiectomie %> Orchiectomie</label><br>
+      <label><%= f.check_box :operation_liposculpture_feminisante %>Liposculpture féminisante</label><br>
+      <label><%= f.check_box :operation_bbl %>Brazilian Butt Lift (BBL)</label><br>
+    </p>
+    <strong>Autres accompagnements :</strong><br>
+    <p>
+      <label><%= f.check_box :exercices_voix_f %> Exercices vocales </label><br>
+      <label><%= f.check_box :operation_epilation_laser %> Epilation laser (définitve)</label><br>
+    </p>
+  </div>
+
+  <div class="actions">
+    <%= link_to "Back", previous_wizard_path, class: "btn btn-secondary" %>
+    <%= f.submit "Next", class: "btn btn-primary" %>
+  </div>
+
+<% end %>
+
+<!-- Data attributes pour le JS -->
+<div id="operation_data" data-birth-sex="<%= @user.birth_sex %>" data-gender="<%= @user.gender %>"></div>
+
+<script>
+document.addEventListener("turbo:load", () => {
+  const statusSelect = document.getElementById("operation_status");
+  const ftmBlock = document.getElementById("ftm_block");
+  const mtfBlock = document.getElementById("mtf_block");
+
+  const dataDiv = document.getElementById("operation_data");
+  const birthSex = dataDiv.dataset.birthSex;
+  const gender = dataDiv.dataset.gender;
+
+  function toggleBlocks() {
+    const value = statusSelect.value;
+    ftmBlock.style.display = "none";
+    mtfBlock.style.display = "none";
+
+    if (value === "Oui, j'en ai déjà fait" || value === "Non, mais je compte en faire") {
+      if (birthSex === "XX") ftmBlock.style.display = "block";
+      else if (birthSex === "XY") mtfBlock.style.display = "block";
+      else {
+        if (gender === "Homme") ftmBlock.style.display = "block";
+        if (gender === "Femme") mtfBlock.style.display = "block";
+      }
+    }
+  }
+
+  statusSelect.addEventListener("change", toggleBlocks);
+  toggleBlocks(); // initial
+});
+</script>

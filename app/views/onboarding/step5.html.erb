@@ -1,5 +1,15 @@
 <%# <onboarding how_found> %>
-<div class="actions">
-  <%= link_to "Back", previous_wizard_path, class: "btn btn-secondary" %>
-  <%= link_to "Next", next_wizard_path, class: "btn btn-primary" %>
-</div>
+
+<h2>Comment avez-vous découvert l'application ?</h2>
+
+<%= form_for @user, url: wizard_path, method: :put do |f| %>
+  <div class="field">
+    <%= f.label :how_found, "Racontez-nous en quelques mots (max 500 caractères)" %><br>
+    <%= f.text_area :how_found, maxlength: 500, rows: 4, cols: 50, placeholder: "Ex: Recommandation d'un ami, réseaux sociaux, etc." %>
+  </div>
+
+  <div class="actions">
+    <%= link_to "Back", previous_wizard_path, class: "btn btn-secondary" %>
+    <%= f.submit "Next", class: "btn btn-primary" %>
+  </div>
+<% end %>
