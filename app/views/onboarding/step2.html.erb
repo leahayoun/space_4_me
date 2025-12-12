@@ -1,10 +1,3 @@
-<%# <onboarding profile_info> %>
-<%# <div class="actions">
-  <%= link_to "Back", previous_wizard_path, class: "btn btn-secondary" %>
-  <%# <%= link_to "Next", next_wizard_path, class: "btn btn-primary" %>
-<%# </div> %>
-
-
 <h2>Informations personnelles</h2>
 
 <%= form_for @user, url: wizard_path, method: :put do |f| %>
@@ -16,7 +9,8 @@
 
   <p>
     <%= f.label :gender, "Identité de genre" %><br>
-    <%= f.select :gender, ["Homme", "Femme", "Non-binaire", "Agenre", "Autre (à préciser)"], {}, { id: "gender_select" } %>
+    <%= f.select :gender, ["Homme", "Femme", "Non-binaire", "Agenre", "Autre (à préciser)"],
+          {}, { id: "gender_select" } %>
   </p>
 
   <p id="gender_other_container" style="display:none;">
@@ -25,7 +19,8 @@
 
   <p>
     <%= f.label :birth_sex, "Sexe de naissance" %><br>
-    <%= f.select :birth_sex, ["XY", "XX", "Intersexué·e (à préciser)"], {}, { id: "birth_sex_select" } %>
+    <%= f.select :birth_sex, ["XY", "XX", "Intersexué·e (à préciser)"],
+          {}, { id: "birth_sex_select" } %>
   </p>
 
   <p id="birth_sex_other_container" style="display:none;">
@@ -40,26 +35,25 @@
 <% end %>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const genderSelect = document.getElementById("gender_select");
-    const genderOtherContainer = document.getElementById("gender_other_container");
+document.addEventListener("DOMContentLoaded", () => {
+  const genderSelect = document.getElementById("gender_select");
+  const genderOther = document.getElementById("gender_other_container");
 
-    const birthSexSelect = document.getElementById("birth_sex_select");
-    const birthSexOtherContainer = document.getElementById("birth_sex_other_container");
+  const birthSexSelect = document.getElementById("birth_sex_select");
+  const birthSexOther = document.getElementById("birth_sex_other_container");
 
-    function toggleGenderOther() {
-      genderOtherContainer.style.display = genderSelect.value === "Autre (à préciser)" ? "block" : "none";
-    }
+  function toggleGenderOther() {
+    genderOther.style.display = genderSelect.value === "Autre (à préciser)" ? "block" : "none";
+  }
 
-    function toggleBirthSexOther() {
-      birthSexOtherContainer.style.display = birthSexSelect.value === "Intersexué·e (à préciser)" ? "block" : "none";
-    }
+  function toggleBirthSexOther() {
+    birthSexOther.style.display = birthSexSelect.value === "Intersexué·e (à préciser)" ? "block" : "none";
+  }
 
-    genderSelect.addEventListener("change", toggleGenderOther);
-    birthSexSelect.addEventListener("change", toggleBirthSexOther);
+  genderSelect.addEventListener("change", toggleGenderOther);
+  birthSexSelect.addEventListener("change", toggleBirthSexOther);
 
-    toggleGenderOther();
-    toggleBirthSexOther();
-  });
+  toggleGenderOther();
+  toggleBirthSexOther();
+});
 </script>
-
