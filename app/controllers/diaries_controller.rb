@@ -3,9 +3,8 @@ class DiariesController < ApplicationController
   before_action :set_diary, only: [:show, :edit, :update, :destroy]
 
   def index
-    @diaries = current_user.diaries
+    @diaries = current_user.diaries.order(created_at: :desc) # pour voir les entrées journal du plus récent au moins récent
   end
-  # implémenter plus tard un ordre des diaries, du plus récent au moins récent ?
 
   def show
   end
