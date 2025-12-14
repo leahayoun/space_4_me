@@ -34,3 +34,120 @@
 #main-content {
   margin-bottom: 80px;
 }
+
+body {
+  font-family: $body-font;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Centre tous les formulaires onboarding */
+.onboarding-form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Style global des boutons S4M */
+.btn.home-btn-primary {
+  padding: 4px 14px;
+  font-size: 1.1rem;
+  background: linear-gradient(135deg, #C4937A 0%, #D4AE9A 100%);
+  border-color: #C97C63;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 6px 0 #B86A52, 0 10px 20px rgba(0,0,0,0.12);
+  transition: all 0.2s ease;
+}
+
+.btn.home-btn-primary:hover {
+  background-color: #D1866F;
+  border-color: #D1866F;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 #B86A52, 0 14px 28px rgba(0,0,0,0.16);
+}
+
+.btn.home-btn-primary:active {
+  background-color: #B35F4A;
+  border-color: #B35F4A;
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #8F4A52, 0 6px 12px rgba(0,0,0,0.12);
+}
+
+/* Style global des boutons back S4M */
+.btn.home-btn-secondary {
+  padding: 4px 15px;
+  font-size: 1.1rem;
+  background: linear-gradient(135deg, #A8B2B9 0%, #63609c 100%);
+  border-color: 1px solid #A8B2B9;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 6px 0 #705d9f, 0 10px 20px rgba(0,0,0,0.12);
+  transition: all 0.2s ease;
+}
+
+.btn.home-btn-secondary:hover {
+  background-color: #A8B2B9;
+  border-color: #A8B2B9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 #4a469d, 0 14px 28px rgba(0,0,0,0.16);
+}
+
+.btn.home-btn-secondary:active {
+  background-color: #7397b1;
+  border-color: #577082;
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #403c90, 0 6px 12px rgba(0,0,0,0.12);
+}
+
+
+
+
+
+/* Style général des select dropdowns pour onboarding */
+.onboarding-form select,
+.onboarding-form .select-style {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px 14px;          /* confortable */
+  font-size: 1rem;
+  color: #5C3A2E;              /* texte brun doux */
+  background-color: #fff5f08a;   /* terracota pastel très clair */
+  border: 1px solid #E6CFC5;   /* bordure douce */
+  border-radius: 12px;          /* coins arrondis modernes */
+  appearance: none;             /* supprime la flèche par défaut */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 6px;
+  margin-bottom: 14px;
+}
+
+/* Survol */
+.onboarding-form select:hover,
+.onboarding-form .select-style:hover {
+  border-color: #b1948c;       /* terracota pour survol */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+}
+
+/* Focus (quand l’utilisateur clique dessus) */
+.onboarding-form select:focus,
+.onboarding-form .select-style:focus {
+  outline: none;
+  border-color: #b1948c;       /* accent terracota clair */
+  box-shadow: 0 0 0 3px rgba(201,124,99,0.2);
+}
+
+/* Petite flèche custom (optionnel) */
+.onboarding-form select {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20,50 70,100 120,50' stroke='%235C3A2E' stroke-width='15' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px;
+}
