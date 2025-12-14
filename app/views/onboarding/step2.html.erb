@@ -1,6 +1,5 @@
-<%= form_for @user, url: wizard_path, method: :put, html: { class: "onboarding-form" } do |f| %>
 
-<h2>Informations personnelles</h2>
+<%= form_for @user, url: wizard_path, method: :put, html: { class: "onboarding-form" } do |f| %>
 
   <p>
     <%= f.label :date_of_birth, "Date de naissance" %><br>
@@ -31,15 +30,6 @@
   </div>
 
 <% end %>
-
-<style>
-.actions .home-btn-primary {
-  padding: 12px 28px;
-  font-size: 1.1rem;
-  background: linear-gradient(135deg, #C4937A 0%, #D4AE9A 100%);
-  border-color: #C97C63;
-}
-</style>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
