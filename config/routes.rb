@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   get "home", to: "pages#home"
   get "dashboard", to: "appointments#dashboard", as: :dashboard # appointments en tant que home when users are connected
 
+  # page de profil de l'utilisateur connecté
+  get "profile", to: "users#profile", as: :profile
+
   resources :onboarding, only: [:show, :update]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -23,10 +26,12 @@ Rails.application.routes.draw do
 
     resources :diaries
 
-    resources :feelings, only: [:create, :show] do
-      resources :user_moods
-      resources :user_symptoms
-    end
+    # resources :feelings, only: [:create, :show] do
+    #   resources :user_moods
+    #   resources :user_symptoms
+    # end
+
+    resources :feelings, only: [:new, :create, :show]
 
     resources :tasks, only: [:index, :create, :update, :destroy]
     # update pour les checkbox

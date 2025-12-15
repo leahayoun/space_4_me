@@ -76,6 +76,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_12_15_102846) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "date"
+    t.text "dysphoria"
+    t.string "custom_mood"
+    t.string "custom_symptom"
     t.index ["user_id"], name: "index_feelings_on_user_id"
   end
 
@@ -193,6 +197,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_12_15_102846) do
     t.boolean "operation_epilation_laser"
     t.text "how_found"
     t.text "expectations_info"
+    t.boolean "sport"
+    t.boolean "epilation_laser"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

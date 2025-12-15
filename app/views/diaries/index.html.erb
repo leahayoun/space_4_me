@@ -1,46 +1,43 @@
-<div class="diaries-container">
+<%= render "shared/app_header" %>
 
-  <div class="welcome">
-    <div class="welcome__text text-center">
-      <h1 class="welcome__title">Bienvenue dans ton journal</h1>
-        <p class="welcome__text">
+<div class="diary-page-container">
+  <div class="diary-welcome">
+    <div class="diary-welcome__text text-center">
+      <h1 class="diary-welcome__title">Bienvenue dans ton journal</h1>
+      <p class="diary-welcome__text">
         Ici, tu peux écrire librement, documenter ton parcours et célébrer chaque étape.
-        </p>
+      </p>
     </div>
   </div>
 
-  <%= link_to new_diary_path, class: "btn-new-entry" do %>
-     Nouvelle entrée
+  <%= link_to new_diary_path, class: "diary-new-entry-btn" do %>
+    Nouvelle entrée
   <% end %>
 
-  <div class="section-header">
-    <h2 class="section-header__title"> Tes entrées récentes</h2>
+  <div class="diary-section-header">
+    <h2 class="diary-section-header__title">Tes entrées récentes</h2>
   </div>
 
-
-  <div class="diary-grid">
+  <div class="diary-page-grid">
     <% @diaries.each do |diary| %>
-      <div class="diary-card">
-        <p class="diary-card__date"><%= l(diary.created_at, format: :long) %></p>
+      <div class="diary-page-card">
+        <p class="diary-page-card__date"><%= l(diary.created_at, format: :long) %></p>
 
-        <h3 class="diary-card__title">
+        <h3 class="diary-page-card__title">
           <%= link_to diary.title, diary_path(diary) %>
         </h3>
 
-        <p class="diary-card__excerpt">
-          <%= truncate(diary.content.to_plain_text, length: 100) %> <%# truncate = méthode rails qui coupe le texte après un certain nombre de caractères et rajoute ... %>
+        <p class="diary-page-card__excerpt">
+          <%= truncate(diary.content.to_plain_text, length: 100) %>
         </p>
 
-      <div class="diary-card__footer">
-          <%= link_to "Modifier", edit_diary_path(diary), class: "diary-card__action" %>
+        <div class="diary-page-card__footer">
+          <%= link_to "Modifier", edit_diary_path(diary), class: "diary-page-card__action" %>
           <%= link_to "Supprimer", diary_path(diary),
-                  data: { turbo_method: :delete, turbo_confirm: "Supprimer ce journal ?" },
-                  class: "diary-card__action diary-card__action--danger" %>
+                data: { turbo_method: :delete, turbo_confirm: "Supprimer ce journal ?" },
+                class: "diary-page-card__action diary-page-card__action--danger" %>
+        </div>
       </div>
-      </div>
-          <% end %>
-  </div>
-
-    </div>
+    <% end %>
   </div>
 </div>

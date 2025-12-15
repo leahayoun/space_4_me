@@ -1,3 +1,5 @@
+// app/assets/stylesheets/components/events/_m_footer.scss
+
 .mobile-footer {
   position: fixed;
   bottom: 0;
@@ -7,10 +9,14 @@
   padding: 0.75rem 0;
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  border-top: 1px solid #e9ecef;
+  height: 60px;
 
   .footer-nav {
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    height: 100%;
 
     .footer-nav-item {
       display: flex;
@@ -19,19 +25,121 @@
       text-decoration: none;
       color: #6c757d;
       font-size: 0.75rem;
+      flex: 1;
+      transition: color 0.3s;
 
       i {
         font-size: 1.25rem;
         margin-bottom: 0.25rem;
-      }
-
-      &.fab-placeholder {
-        width: 56px; // 与FAB宽度相同，保持居中
+        transition: transform 0.3s;
       }
 
       &:hover, &.active {
-        color: #007bff;
+        color: #C4937A; // terracota highlight color
+
+        i {
+          transform: translateY(-2px);
+        }
+      }
+
+      // FAB placeholder styles
+      &.fab-placeholder {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 70px; //  fab button height
+
+        // FAB  button styles
+        .fab-main {
+          width: 66px;
+          height: 66px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #C4937A 0%, #D4AE9A 100%);
+          border: 3px solid white;
+          color: white;
+          font-size: 1.5rem;
+          cursor: pointer;
+          box-shadow: 0 4px 12px rgba(196, 147, 122, 0.3);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease;
+          position: absolute;
+          top: -20px; //  raise above footer
+
+          &:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(196, 147, 122, 0.4);
+          }
+        }
+
+        //  FAB menu styles
+        .fab-menu {
+          position: absolute;
+          bottom: 60px; //  above the fab button
+          left: 50%;
+          transform: translateX(-50%);
+          display: none;
+          flex-direction: column;
+          gap: 0.75rem;
+          background: white;
+          border-radius: 25px;
+          padding: 15px;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+          border: 1px solid #e9ecef;
+          z-index: 1001;
+          min-width: 160px;
+
+          &.show {
+            display: flex;
+            animation: fabMenuFadeIn 0.3s ease;
+          }
+
+          .fab-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: #f8f9fa;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #333;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            transition: all 0.3s;
+
+            &:hover {
+              background: #C4937A;
+              color: white;
+              transform: translateX(5px);
+
+              i {
+                color: white;
+              }
+            }
+
+            i {
+              color: #C4937A;
+              font-size: 1rem;
+              margin-bottom: 0;
+              transition: color 0.3s;
+            }
+          }
+        }
       }
     }
+  }
+}
+
+// FAB menu fade-in animation
+@keyframes fabMenuFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
   }
 }

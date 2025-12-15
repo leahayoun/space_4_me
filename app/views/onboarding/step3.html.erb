@@ -1,6 +1,6 @@
-<h2>Informations sur le traitement hormonal</h2>
+<%= form_for @user, url: wizard_path, method: :put, html: { class: "onboarding-form" } do |f| %>
 
-<%= form_for @user, url: wizard_path, method: :put do |f| %>
+<h2>Informations sur le traitement hormonal</h2>
 
   <p>
     <%= f.label :hormonal_treatment_status, "Prennez-vous actuellement un traitement hormonal ?" %><br>
@@ -14,8 +14,8 @@
   <div id="ftm_block" style="display:none;">
     <h3>Traitements hormonaux masculinisants</h3>
     <p>
-      <label><%= f.check_box :treatment_androtardyl %> Androtardyl</label><br>
-      <label><%= f.check_box :treatment_nebido %> Nebido</label><br>
+      <label><%= f.check_box :treatment_androtardyl %> Androtardyl (Injection)</label><br>
+      <label><%= f.check_box :treatment_nebido %> Nebido (Injection)</label><br>
     </p>
   </div>
 
@@ -25,7 +25,8 @@
     <strong>Anti-androgènes et progestatifs :</strong><br>
     <p>
       <label><%= f.check_box :treatment_bicalutamide %> Bicalutamide</label><br>
-      <label><%= f.check_box :treatment_decapeptyl %> Décapeptyl, Lupron et bloqueurs de puberté</label><br>
+      <label><%= f.check_box :treatment_decapeptyl %> Décapeptyl</label><br>
+      <label><%= f.check_box :treatment_lupron %> Lupron</label><br>
       <label><%= f.check_box :treatment_progesterone %> Progestérone</label><br>
     </p>
     <strong>Œstrogènes :</strong><br>
@@ -43,8 +44,8 @@
   </div>
 
   <div class="actions">
-    <%= link_to "Back", previous_wizard_path, class: "btn btn-secondary" %>
-    <%= f.submit "Next", class: "btn btn-primary" %>
+    <%= link_to "Back", previous_wizard_path, class: "btn home-btn-secondary" %>
+    <%= f.submit "Next", class: "btn home-btn-primary" %>
   </div>
 
 <% end %>

@@ -1,0 +1,147 @@
+<h1>Mon profil</h1>
+
+<p><strong>Prénom :</strong> <%= @user.first_name %></p>
+<p><strong>Nom :</strong> <%= @user.last_name %></p>
+<p><strong>Sexe à la naissance :</strong> <%= @user.birth_sex %></p>
+<p><strong>Date de naissance :</strong> <%= @user.date_of_birth %></p>
+<p><strong>Genre :</strong> <%= @user.gender %></p>
+
+<p><strong>Traitements hormonaux :</strong></p>
+<ul>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.treatment_androtardyl %> >
+    Androtardyl
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.treatment_nebido %> >
+    Nebido
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.treatment_bicalutamide %> >
+    Bicalutamide
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.treatment_decapeptyl %> >
+    Décapeptyl
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.treatment_lupron %> >
+    Lupron
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.treatment_progesterone %> >
+    Progestérone
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.treatment_estreva %> >
+    Estreva (gel)
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.treatment_oestrodose %> >
+    Œstrodose (gel)
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.treatment_oesclim %> >
+    Oesclim (patch)
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.treatment_dermestril %> >
+    Dermestril (patch)
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.treatment_provames %> >
+    Provames (comprimés)
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.treatment_estrofem %> >
+    Estrofem (comprimés)
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.treatment_progynova %> >
+    Progynova (comprimés)
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.treatment_neofollin %> >
+    Neofollin (Injection)
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.treatment_gynodian %> >
+    Gynodian Depot (Injection)
+  </li>
+</ul>
+
+<p><strong>Opérations :</strong></p>
+<ul>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.operation_torsoplastie %> >
+    Torsoplastie (mastectomie)
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.operation_phalloplastie %> >
+    Phalloplastie
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.operation_metaiodoplastie %> >
+    Méta (métaidoïoplastie)
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.operation_hysterectomie %> >
+    Hystérectomie
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.exercices_voix_m %> >
+    Exercices vocales
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.sport %> >
+    Sport·s
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.operation_fronto_orbital_contouring %> >
+    Fronto-orbital contouring (opération des arcades sourcillières)
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.operation_rhinoplastie %> >
+    Rhinoplastie
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.operation_genioplastie %> >
+    Génioplastie (Mandibular contouring)
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.operation_tracheal_shave %> >
+    Tracheal shave (réduction de la pomme d’Adam)
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.operation_glottoplastie %> >
+    Glottoplastie (chirurgie des cordes vocales)
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.operation_vaginoplastie %> >
+    Vaginoplastie
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.operation_labiaplastie %> >
+    Labiaplastie
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.operation_orchiectomie %> >
+    Orchiectomie
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.operation_liposculpture_feminisante %> >
+    Liposculpture féminisante
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.operation_bbl %> >
+    Brazilian Butt Lift (BBL)
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.exercices_voix_f %> >
+    Exercices vocales
+  </li>
+  <li>
+    <input type="checkbox" disabled <%= "checked" if @user.epilation_laser %> >
+    Epilation laser (définitve)
+  </li>
+</ul>

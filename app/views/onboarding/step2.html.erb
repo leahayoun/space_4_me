@@ -1,6 +1,5 @@
-<h2>Informations personnelles</h2>
 
-<%= form_for @user, url: wizard_path, method: :put do |f| %>
+<%= form_for @user, url: wizard_path, method: :put, html: { class: "onboarding-form" } do |f| %>
 
   <p>
     <%= f.label :date_of_birth, "Date de naissance" %><br>
@@ -9,8 +8,7 @@
 
   <p>
     <%= f.label :gender, "Identité de genre" %><br>
-    <%= f.select :gender, ["Homme", "Femme", "Non-binaire", "Agenre", "Autre (à préciser)"],
-          {}, { id: "gender_select" } %>
+    <%= f.select :gender, ["Homme", "Femme", "Non-binaire", "Agenre", "Autre (à préciser)"], {}, { id: "gender_select" } %>
   </p>
 
   <p id="gender_other_container" style="display:none;">
@@ -19,8 +17,7 @@
 
   <p>
     <%= f.label :birth_sex, "Sexe de naissance" %><br>
-    <%= f.select :birth_sex, ["XY", "XX", "Intersexué·e (à préciser)"],
-          {}, { id: "birth_sex_select" } %>
+    <%= f.select :birth_sex, ["XY", "XX", "Intersexué·e (à préciser)"], {}, { id: "birth_sex_select" } %>
   </p>
 
   <p id="birth_sex_other_container" style="display:none;">
@@ -28,8 +25,8 @@
   </p>
 
   <div class="actions">
-    <%= link_to "Back", previous_wizard_path, class: "btn btn-secondary" %>
-    <%= f.submit "Next", class: "btn btn-primary" %>
+    <%= link_to "Back", previous_wizard_path, class: "btn home-btn-secondary" %>
+    <%= f.submit "Next", class: "btn home-btn-primary" %>
   </div>
 
 <% end %>
