@@ -1,0 +1,95 @@
+<div class="diaries-container">
+    <h1>Mes tâches</h1>
+
+  <div class="tasks-columns">
+    <%# on parcout les tags un par un et récupérer les tâches qui correspondent à chaque tag%>
+    <% [
+      ["Médical", "medical"],
+      ["Administratif", "administratif"],
+      ["Autres", "autres"]
+    ].each do |label, key| %>
+
+      <% tasks = (@tasks_by_tag[key] || []) %>
+      <%# À chaque tour :
+        • label = "Médical", "Administratif", "Autres" = affiché à l'écran
+        • key = "medical", "administratif", "autres" = stocké dans la DB %>
+
+      <section class="tasks-column">
+        <header class="tasks-column-header">
+          <h2><%= label %></h2>
+          <%# permet afficher le titre du tag + le nombre de tâches dans ce tag%>
+          <span class="tasks-count"><%= tasks.size %></span>
+        </header>
+
+        <% if tasks.any? %>
+        <%# en gros, le code suivant sert à : pour chaque tâche on affiche une checkbox, si user clique on maj la tâche et on affiche le title, et si tâche faite on barre%>
+          <ul class="tasks-list">
+            <% tasks.each do |task| %>
+              <li class="task-item">
+                <%= form_with model: task, url: task_path(task), method: :patch, local: true do |f| %>
+                  <%= f.check_box :done, { checked: task.done, onchange: "this.form.submit()" }, "1", "0" %>
+                  <%# 1 et 0 =  sont les valeurs envoyées au serveur pour checkbox,
+                  en gros cochée = 1, décochée = 0
+                  Rails convertit ça en true/false%>
+                <% end %>
+
+                <div class="task-content">
+                  <div class="<%= task.done ? "task-title done" : "task-title" %>">
+                    <%= task.title %>
+                  </div>
+
+                  <%# ici on affiche la description que si elle existe%>
+                  <% if task.description.present? %>
+                    <div class="task-description">
+                      <%= task.description %>
+                    </div>
+                  <% end %>
+                </div>
+
+                <%= button_to "X",
+                  task_path(task),
+                  method: :delete,
+                  form: { data: { turbo_confirm: "Supprimer cette tâche ?" } } %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </section>
+
+    <% end %>
+  </div>
+
+  <div class="tasks-form">
+    <%= form_with model: @task, url: tasks_path, local: true do |f| %>
+      <div>
+        <%= f.label :tag, "Tag" %>
+        <%= f.select :tag, [["Médical", "medical"], ["Administratif", "administratif"], ["Autres", "autres"]] %>
+      </div>
+
+      <div>
+        <%= f.label :title, "Nom de la tâche" %>
+        <%= f.text_field :title %>
+      </div>
+
+      <div>
+        <%= f.label :description, "Notes" %>
+        <%= f.text_area :description, rows: 2 %>
+      </div>
+
+      <div>
+        <%= f.submit "Créer la tâche" %>
+      </div>
+    <% end %>
+
+    <% if @task.errors.any? %>
+      <div class="errors">
+        <ul>
+          <% @task.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+
+</div>
