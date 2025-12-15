@@ -1,0 +1,302 @@
+.diaries-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 50px 40px;
+}
+
+
+.tasks-header__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: $olive;
+  margin: 0 0 35px 0;
+  text-align: center;
+}
+
+
+.tasks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; // pour colonne, pour fraction de l'espace dispo
+  gap: 25px;
+  margin-bottom: 40px;
+}
+.tasks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.task-column {
+  background: $warm-white;
+  border-radius: 18px;
+  box-shadow: 0 4px 20px rgba($sage, 0.1);
+  border: 1px solid rgba($sage-light, 0.3);
+
+  &__header {
+    background: linear-gradient(135deg, $sage 0%, darken($sage, 5%) 100%);
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: $warm-white;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  &__count {
+    background: rgba($warm-white, 0.25);
+    color: $warm-white;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  &__body {
+    padding: 20px;
+    min-height: 150px;
+  }
+
+  &__empty {
+    text-align: center;
+    color: $text-muted;
+    font-size: 0.9rem;
+    padding: 30px 15px;
+    font-style: italic;
+  }
+}
+
+
+.tasks-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
+.task-card {
+  background: rgba($sage-light, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid transparent;
+
+  &__content {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    flex: 1;
+  }
+
+  &__checkbox {
+    padding-top: 2px;
+
+    input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: $sage;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+  }
+
+  &__title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: $olive;
+    line-height: 1.4;
+    margin-bottom: 4px;
+
+    &--done {
+      text-decoration: line-through;
+      color: $text-muted;
+      opacity: 0.7;
+    }
+  }
+
+  // pas propre mais permet que nom tâche + description soit barrées quand checkbox done
+  &__info {
+    flex: 1;
+
+    &--done {
+      text-decoration: line-through;
+      color: $text-muted;
+      opacity: 0.7;
+
+      // optionnel : un peu plus doux
+      .task-card__title,
+      .task-card__description {
+        color: $text-muted;
+      }
+    }
+  }
+
+  &__description {
+    font-size: 0.85rem;
+    color: $text-light;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  &__delete {
+    background: transparent;
+    border: none;
+    color: $text-muted;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    opacity: 0.6;
+  }
+}
+
+
+.task-form {
+  background: $warm-white;
+  border-radius: 20px;
+  padding: 35px 40px;
+  box-shadow: 0 4px 25px rgba($sage, 0.12);
+  border: 1px solid rgba($sage-light, 0.4);
+
+  &__row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+
+    &--full {
+      display: block;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+      margin-top: 25px;
+    }
+  }
+
+  &__group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__label {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $text-muted;
+    font-weight: 700;
+  }
+
+  &__input,
+  &__select,
+  &__textarea {
+    padding: 14px 18px;
+    border: 1px solid rgba($sage-light, 0.5);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: $olive;
+    background: rgba($sage-light, 0.08);
+    transition: all 0.3s ease;
+    font-family: inherit;
+
+    &::placeholder {
+      color: $text-muted;
+      opacity: 0.7;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $sage;
+      box-shadow: 0 0 0 3px rgba($sage, 0.15);
+      background: $warm-white;
+    }
+  }
+
+  &__textarea {
+    resize: none;
+  }
+
+  &__submit {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 16px 40px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, $sage 0%, darken($sage, 5%) 100%);
+    color: $warm-white;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba($sage, 0.3);
+    transition: all 0.3s ease;
+
+    &:active {
+      transform: translateY(-1px);
+    }
+  }
+
+  &__errors {
+    background: rgba(#C27070, 0.1);
+    border: 1px solid rgba(#C27070, 0.3);
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-top: 20px;
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    li {
+      color: #C27070;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+  }
+}
+
+// Pour responsive
+
+@media (max-width: 992px) {
+  .tasks-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .task-form {
+    padding: 28px 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .diaries-container {
+    padding: 30px 18px;
+  }
+
+  .tasks-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .task-form__row {
+    flex-direction: column;
+  }
+
+  .task-form__submit {
+    width: 100%;
+  }
+}
