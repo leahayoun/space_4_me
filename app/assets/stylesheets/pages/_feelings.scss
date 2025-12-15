@@ -1,0 +1,139 @@
+.page-title {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.page-subtitle {
+  text-align: center;
+  color: #777;
+  margin-bottom: 2rem;
+}
+
+/* Centrage des titres des sections */
+.feelings-container h2,
+.symptoms-container h2,
+.feelings-section h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.feelings-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+/* Grille responsive pour humeurs et symptômes */
+.feelings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colonnes fixes */
+  gap: 1rem;
+  justify-items: center;
+}
+
+
+/* Cases uniformes */
+.feeling-item,
+.symptom-item {
+  background: #f6f6f6;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s;
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 120px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.feeling-item:hover,
+.symptom-item:hover {
+  background: #ececec;
+}
+
+/* Checkbox invisible mais cliquable via label */
+/* Checkbox invisible mais cliquable */
+.hidden-checkbox {
+  opacity: 0.01;          /* presque invisible mais cliquable */
+  width: 100%;             /* occupe toute la case */
+  height: 100%;            /* idem */
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  position: absolute;      /* pour rester par-dessus la case */
+  top: 0;
+  left: 0;
+}
+
+
+
+/* Case sélectionnée */
+.feeling-item.selected,
+.symptom-item.selected {
+  border-color: #C4937A; /* terracota */
+  background: #F5E8E0; /* nuance claire */
+}
+
+/* Emoji et label */
+.emoji {
+  font-size: 2rem;
+  margin-bottom: 0.3rem;
+}
+
+.label {
+  font-size: 0.9rem;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+/* Input texte pour "Autre·s" */
+input[type="text"] {
+  margin-top: 0.3rem;
+  width: 100%;
+  font-size: 0.8rem;
+  border-radius: 8px;
+  padding: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Bouton d'enregistrement */
+.actions {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #C4937A 0%, #D4AE9A 100%);
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: 20px;
+  border: none;
+}
+
+/* Dysphorie */
+#feeling_dysphoria {
+  width: 100%;
+  max-width: 600px;
+  height: 150px;
+  margin: 0 auto;
+  display: block;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+#dysphoria_counter {
+  text-align: right;
+  color: #777;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
