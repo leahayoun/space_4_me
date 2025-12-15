@@ -1,0 +1,129 @@
+<div class="diaries-container">
+  <h1 class="tasks-header__title">Mes tâches</h1>
+
+  <div class="tasks-grid">
+    <%# on parcourt les tags un par un et on récupère les tâches correspondantes %>
+    <% [
+      ["Médical", "medical"],
+      ["Administratif", "administratif"],
+      ["Autres", "autres"]
+    ].each do |label, key| %>
+
+      <% tasks = (@tasks_by_tag[key] || []) %>
+
+      <%# À chaque tour :
+          • label = affiché à l'écran
+          • key = stocké dans la DB %>
+
+      <section class="task-column">
+        <header class="task-column__header">
+          <h2 class="task-column__title"><%= label %></h2>
+
+          <%# titre du tag + nombre de tâches %>
+          <span class="task-column__count"><%= tasks.size %></span>
+        </header>
+
+        <div class="task-column__body">
+          <% if tasks.any? %>
+
+            <%# checklist des tâches %>
+            <ul class="tasks-list">
+              <% tasks.each do |task| %>
+                <li class="task-card">
+                  <div class="task-card__content">
+                    <div class="task-card__checkbox">
+                      <%= form_with model: task,
+                                    url: task_path(task),
+                                    method: :patch,
+                                    local: true do |f| %>
+                        <%= f.check_box :done,
+                                        { checked: task.done,
+                                          onchange: "this.form.submit()" },
+                                        "1",
+                                        "0" %>
+                      <% end %>
+          <%# 1 et 0 sont les valeurs envoyées au serveur
+          quand checkbox cochée = 1 ; quand décochée = 0
+          Rails les convertit ensuite automatiquement en : true/false%>
+                    </div>
+
+                    <div class="task-card__info <%= 'task-card__info--done' if task.done %>">
+                      <div class="task-card__title">
+                        <%= task.title %>
+                      </div>
+                  <%# description affichée seulement si présente %>
+                      <% if task.description.present? %>
+                        <p class="task-card__description">
+                          <%= task.description %>
+                        </p>
+                      <% end %>
+                      </div>
+                  </div>
+
+                  <%= button_to "✕",
+                                task_path(task),
+                                method: :delete,
+                                form: {
+                                  data: { turbo_confirm: "Supprimer cette tâche ?" }
+                                },
+                                class: "task-card__delete" %>
+                </li>
+              <% end %>
+            </ul>
+
+          <% else %>
+            <div class="task-column__empty">
+              Aucune tâche pour l'instant
+            </div>
+          <% end %>
+        </div>
+      </section>
+
+    <% end %>
+  </div>
+
+  <div class="task-form">
+    <%= form_with model: @task, url: tasks_path, local: true do |f| %>
+
+      <div class="task-form__row">
+        <div class="task-form__group">
+          <%= f.label :tag, "Tag", class: "task-form__label" %>
+          <%= f.select :tag,
+                       [["Médical", "medical"],
+                        ["Administratif", "administratif"],
+                        ["Autres", "autres"]],
+                       {},
+                       class: "task-form__select" %>
+        </div>
+
+        <div class="task-form__group">
+          <%= f.label :title,
+                      "Nom de la tâche",
+                      class: "task-form__label" %>
+          <%= f.text_field :title,
+                           class: "task-form__input",
+                           placeholder: "Prendre rendez-vous pour un bilan sanguin" %>
+        </div>
+      </div>
+
+      <div class="task-form__row task-form__row--full">
+        <div class="task-form__group">
+          <%= f.label :description,
+                      "Notes",
+                      class: "task-form__label" %>
+          <%= f.text_area :description,
+                          rows: 2,
+                          class: "task-form__textarea",
+                          placeholder: "Penser à demander s'il faut être à jeun" %>
+        </div>
+      </div>
+
+      <div class="task-form__row">
+        <%= f.submit "Créer la tâche",
+                     class: "task-form__submit" %>
+      </div>
+
+    <% end %>
+
+  </div>
+</div>
