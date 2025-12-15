@@ -1,16 +1,63 @@
-// Import Google fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+// // Import Google fonts
+// @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
 
-// Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+// // Define fonts for body and headers
+// $body-font: "Work Sans", "Helvetica", "sans-serif";
+// $headers-font: "Nunito", "Helvetica", "sans-serif";
 
-// To use a font file (.woff) uncomment following lines
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
-// $my-font: "Font Name";
+// // To use a font file (.woff) uncomment following lines
+// // @font-face {
+// //   font-family: "Font Name";
+// //   src: font-url('FontFile.eot');
+// //   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
+// //        font-url('FontFile.woff') format('woff'),
+// //        font-url('FontFile.ttf') format('truetype')
+// // }
+// // $my-font: "Font Name";
+
+
+// Fonts used by Bootstrap
+$body-font: "Overlock", system-ui, -apple-system, "Helvetica", sans-serif;
+$headers-font: "Overlock", system-ui, -apple-system, "Helvetica", sans-serif;
+
+@font-face {
+  font-family: "Overlock";
+  src: asset-url("Overlock-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Overlock";
+  src: asset-url("Overlock-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Overlock";
+  src: asset-url("Overlock-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Overlock";
+  src: asset-url("Overlock-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Overlock";
+  src: asset-url("Overlock-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Overlock";
+  src: asset-url("Overlock-BlackItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+}

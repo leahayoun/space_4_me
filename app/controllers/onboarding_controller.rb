@@ -28,13 +28,11 @@ class OnboardingController < ApplicationController
     when :step3
       params.require(:user).permit(
         :hormonal_treatment_status,
-        :treatment_androtardyl, :treatment_nebido,
-        :treatment_bicalutamide, :treatment_decapeptyl,
-        :treatment_progesterone, :treatment_estreva,
-        :treatment_oestrodose, :treatment_oesclim,
-        :treatment_dermestril, :treatment_provames,
-        :treatment_estrofem, :treatment_progynova,
-        :treatment_neofollin, :treatment_gynodian
+        :treatment_androtardyl, :treatment_nebido, :treatment_bicalutamide,
+        :treatment_decapeptyl, :treatment_progesterone, :treatment_estreva,
+        :treatment_oestrodose, :treatment_oesclim, :treatment_dermestril,
+        :treatment_provames, :treatment_estrofem, :treatment_progynova,
+        :treatment_neofollin, :treatment_lupron, :treatment_gynodian
       )
     when :step4
       params.require(:user).permit(
@@ -44,7 +42,7 @@ class OnboardingController < ApplicationController
         :operation_rhinoplastie, :operation_genioplastie, :operation_tracheal_shave,
         :operation_glottoplastie, :operation_augmentation_mammaire, :operation_vaginoplastie,
         :operation_labiaplastie, :operation_orchiectomie, :operation_liposculpture_feminisante,
-        :operation_bbl, :exercices_voix_f, :operation_epilation_laser
+        :operation_bbl, :exercices_voix_f, :epilation_laser
       )
     when :step5
       params.require(:user).permit(:how_found)

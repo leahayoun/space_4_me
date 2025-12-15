@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get "home", to: "pages#home"
   get "dashboard", to: "appointments#dashboard", as: :dashboard # appointments en tant que home when users are connected
 
+  # page de profil de l'utilisateur connecté
+  get "profile", to: "users#profile", as: :profile
+
   resources :onboarding, only: [:show, :update]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

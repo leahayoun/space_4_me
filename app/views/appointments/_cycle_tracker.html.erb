@@ -1,0 +1,32 @@
+<div class="cycle-tracker">
+  <svg viewBox="0 0 120 120" class="cycle-ring">
+    <!-- cercle de fond -->
+    <circle
+      cx="60"
+      cy="60"
+      r="40"
+      fill="none"
+      stroke="#eee"
+      stroke-width="8"
+    />
+
+    <!-- cercle progressif -->
+    <circle
+      cx="60"
+      cy="60"
+      r="40"
+      fill="none"
+      stroke="#3b82f6"
+      stroke-width="8"
+      stroke-linecap="round"
+      stroke-dasharray="<%= @circumference %>"
+      stroke-dashoffset="<%= @dash_offset %>"
+      transform="rotate(-90 60 60)"
+    />
+  </svg>
+
+  <div class="cycle-center">
+    <p class="title"><%= @cycle_label %></p>
+    <p class="subtitle"><%= @cycle_subtitle %></p>
+  </div>
+</div>
