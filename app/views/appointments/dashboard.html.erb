@@ -1,7 +1,7 @@
 <%= render "shared/app_header" %>
 
 <div class="mobile-dashboard">
-  <!-- 1. 标题和视图切换器 -->
+  <!-- 1. title and view switcher -->
   <section class="dashboard-section calendar-section">
     <div class="section-header">
       <h2>Calendrier</h2>
@@ -17,11 +17,11 @@
       </div>
     </div>
 
-    <!-- 2. 日期导航栏 -->
+    <!-- 2. date navigation -->
     <%= render "calendar_navigation" %>
   </section>
 
-  <!-- 3. 日历主体（会自动根据@view_type显示月/周视图） -->
+  <!-- 3. calendar body (will automatically show month/week view based on @view_type) -->
 <section class="dashboard-section">
   <%= render "simple_calendar",
              appointments: @appointments,
@@ -29,6 +29,6 @@
              current_date: @current_date || Date.today %>
 </section>
 
-  <!-- 4. 提醒事项 -->
+  <!-- 4. reminders -->
   <%= render "reminders_section", appointments: @appointments %>
 </div>

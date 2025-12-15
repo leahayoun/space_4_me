@@ -5,6 +5,9 @@
   margin: 0 auto;
   padding: 50px 40px;
 
+// quand . = parent ; & = enfant
+// &: = état/pseudo
+// &__ = enfant
 
   &.container {
     max-width: 1000px !important;

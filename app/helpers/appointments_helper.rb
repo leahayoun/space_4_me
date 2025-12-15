@@ -1,25 +1,25 @@
 # app/helpers/appointments_helper.rb
 module AppointmentsHelper
   def appointment_color(appointment)
-    # 先获取event_type，处理可能的nil
+    # field 'event_type' peut être nil ou une chaîne vide
     event_type = appointment.event_type
 
-    return '#6c757d' if event_type.blank? # 默认灰色
+    return '#6c757d' if event_type.blank? # default gray color
 
-    # 去掉空格，转为小写进行比较
+    # enlever les espaces et mettre en minuscules pour comparaison
     normalized_type = event_type.strip.downcase
 
     case normalized_type
     when 'médical', 'medical'
-      '#dc3545' # 红色
+      '#dc3545' # red
     when 'social', 'personnel'
-      '#28a745' # 绿色
+      '#28a745' # green
     when 'professionnel', 'travail'
-      '#007bff' # 蓝色
+      '#007bff' # blue
     when 'thérapie', 'autre'
-      '#6f42c1' # 紫色
+      '#6f42c1' # purple
     else
-      '#6c757d' # 默认灰色
+      '#6c757d' # default gray
     end
   end
 

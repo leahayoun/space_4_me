@@ -379,7 +379,7 @@ body .simple-calendar table.table-striped {
 }
 
 
-/* ===================== 周视图完全重写 ===================== */
+/* ===================== week calendar css ===================== */
 .week-calendar {
   background: $cream;
   border-radius: 12px;
@@ -388,7 +388,7 @@ body .simple-calendar table.table-striped {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 
-  /* 隐藏滚动条但保持功能 */
+  /* hidden scrollbar */
   &::-webkit-scrollbar {
     height: 6px;
   }
@@ -398,13 +398,13 @@ body .simple-calendar table.table-striped {
     border-radius: 3px;
   }
 
-  /* 关键：统一的容器确保对齐 */
+  /* container qui aligne les élements */
   .calendar-inner {
-    min-width: 700px; /* 7列 × 100px */
+    min-width: 700px; /* 7columns × 100px */
     width: 100%;
   }
 
-  /* 星期头部 - 确保与下面列对齐 */
+  /* week header */
   .week-header {
     display: grid;
     grid-template-columns: repeat(7, minmax(100px, 1fr));
@@ -440,7 +440,7 @@ body .simple-calendar table.table-striped {
     }
   }
 
-  /* 星期内容 - 严格与头部对齐 */
+  /* week content */
   .week-days {
     display: grid;
     grid-template-columns: repeat(7, minmax(100px, 1fr));
@@ -450,7 +450,7 @@ body .simple-calendar table.table-striped {
       background: $warm-white;
       border-radius: 8px;
       padding: 0.75rem;
-      min-height: 180px; /* 固定高度确保对齐 */
+      min-height: 180px; /* fix the height */
       border: 1px solid lighten($terracotta-light, 20%);
       display: flex;
       flex-direction: column;
@@ -467,11 +467,11 @@ body .simple-calendar table.table-striped {
         flex-grow: 1;
       }
 
-      /* 心情emoji */
+      /* feeling emoji */
       .weekday-mood {
         text-align: center;
         margin-bottom: 0.5rem;
-        min-height: 24px; /* 固定高度，即使没有emoji */
+        min-height: 24px; /* fix the height */
 
         .mood-emoji {
           font-size: 1.1rem;
@@ -484,7 +484,7 @@ body .simple-calendar table.table-striped {
         }
       }
 
-      /* 事件项 - 修复文本溢出 */
+      /* event item */
       .week-appointment {
         background: white;
         border-left: 4px solid;
@@ -515,7 +515,7 @@ body .simple-calendar table.table-striped {
           font-weight: 500;
           color: $text;
           margin-bottom: 0.25rem;
-          /* 文本溢出处理 */
+          /* text overflow */
           display: -webkit-box;
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
@@ -532,7 +532,7 @@ body .simple-calendar table.table-striped {
         }
       }
 
-      /* 空的那天 */
+      /* when empty day */
       .empty-day {
         text-align: center;
         padding: 2rem 0;
@@ -587,12 +587,12 @@ body .simple-calendar table.table-striped {
     }
   }
 
-  /* 移动端周视图调整 */
+  /* mobile dashboard */
   .week-calendar {
     padding: 0.75rem;
 
     .calendar-inner {
-      min-width: 600px; /* 移动端稍小 */
+      min-width: 600px; /* litlle screen*/
     }
 
     .week-header {
@@ -626,7 +626,7 @@ body .simple-calendar table.table-striped {
 
           .appointment-title {
             font-size: 0.8rem;
-            -webkit-line-clamp: 3; /* 移动端可以显示更多行 */
+            -webkit-line-clamp: 3; /* mobile dashbord show multi line able */
             max-height: 3.9em;
           }
         }

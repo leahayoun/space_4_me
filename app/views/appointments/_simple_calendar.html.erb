@@ -1,12 +1,12 @@
 <%# app/views/appointments/_simple_calendar.html.erb %>
 
-<% # 从局部变量或实例变量获取数据 %>
+
 <% view_type = local_assigns[:view_type] || @view_type || 'month' %>
 <% current_date = local_assigns[:current_date] || @current_date || Date.today %>
 <% appointments = local_assigns[:appointments] || @appointments || [] %>
 
 <% if view_type == 'month' %>
-  <%# ============ 自定义月视图（不依赖gem） ============ %>
+  <%# ============ month view ============ %>
   <% month_start = current_date.beginning_of_month %>
   <% month_end = current_date.end_of_month %>
 
@@ -24,7 +24,7 @@
           <tr>
             <% week.each do |date| %>
               <td class="<%= 'today' if date == Date.today %> <%= 'other-month' if date.month != current_date.month %>">
-                <%# 获取当天的约会 %>
+                <%# get the appointments for this day %>
                 <% day_appointments = appointments.select { |a| a.date == date } %>
                 <% daily_feeling = current_user.feelings.where("DATE(created_at) = ?", date).first if current_user.present? %>
 
@@ -77,7 +77,7 @@
 
 
 <% else %>
-  <%# ============ 周视图 ============ %>
+  <%# ============ week view ============ %>
   <% week_start = current_date.beginning_of_week %>
   <% week_end = current_date.end_of_week %>
 
