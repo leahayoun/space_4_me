@@ -1,2 +1,19 @@
 // Import page-specific CSS files here.
 @import "home";
+
+  .logo {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .logo-img {
+    width: 160px;      /* ajuste ici si besoin */
+    height: auto;
+    opacity: 0.85;
+    margin-bottom: 40px;
+  }
+
+  .home-buttons {
+    margin-bottom: 20px;
+  }
