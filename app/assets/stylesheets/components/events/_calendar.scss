@@ -8,6 +8,7 @@ body .simple-calendar table.table-striped {
   --bs-table-striped-color: inherit !important;
 }
 
+
 /* === Navigation du calendrier (barre de contrôle) === */
 .calendar-navigation {
   display: flex;
@@ -71,12 +72,31 @@ body .simple-calendar table.table-striped {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 
+  .calendar-cell-link {
+  display: block;
+  height: 100%;
+  text-decoration: none !important;
+
+
+
+  &:link, &:visited, &:hover, &:active {
+    text-decoration: none !important;
+
+  }
+
+
+  .calendar-day {
+    cursor: pointer;
+  }
+}
+
   /* === Style général du tableau (mise en page du calendrier) === */
   table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 6px; // Espacement entre les cellules
     background: $cream !important;
+
 
     /* Neutralise toutes les alternances de lignes Bootstrap */
     tr {
@@ -292,6 +312,10 @@ body .simple-calendar table.table-striped {
     }
   }
 }
+
+
+
+
 
 /* === Responsive (ajustements mobiles) === */
 @media (max-width: 768px) {

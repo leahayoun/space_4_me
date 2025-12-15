@@ -6,8 +6,16 @@
 
   <%= render "calendar_section" %>
 
+<%#
+  <%= render "view_switcher" %>
   <%= render "reminders_section", appointments: @appointments %>
 
+  <% if @view_type == 'month' %>
 
+    <%= render "simple_calendar", appointments: @appointments %>
+  <% else %>
+
+    <%= render "week_calendar", appointments: @appointments %>
+  <% end %>
 
 </div>

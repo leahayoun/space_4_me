@@ -1,4 +1,5 @@
 <%# app/views/appointments/_form.html.erb %>
+
 <%= simple_form_for(@appointment) do |f| %>
   <%= f.input :title,
               label: "Titre",
@@ -6,12 +7,24 @@
               required: true,
               input_html: { class: "form-input" } %>
 
+  <!-- ============ Date field ============ -->
   <%= f.input :date,
               as: :date,
               html5: true,
               label: "Date",
               required: true,
               input_html: { class: "form-input" } %>
+
+  <!-- ============ Heure de début ============ -->
+  <%= f.input :start_time,
+              as: :time,
+              html5: true,
+              label: "Heure de début (optionnel)",
+              required: false,
+              input_html: {
+                class: "form-input",
+                step: 300  # options de 5 minutes
+              } %>
 
   <%= f.input :event_type,
               label: "Type",

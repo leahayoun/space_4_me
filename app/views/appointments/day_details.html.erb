@@ -1,0 +1,125 @@
+<%# app/views/appointments/day_details.html.erb %>
+<%# Version: avec support de start_time %>
+
+<div class="day-details-container">
+  <!-- Bouton retour -->
+  <div class="mb-4">
+    <%= link_to dashboard_path, class: "btn btn-outline-secondary" do %>
+      <i class="fas fa-arrow-left me-2"></i>
+      Calendrier
+    <% end %>
+  </div>
+
+  <!-- Titre et date -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h1 class="h3 mb-1">
+        <i class="fas fa-calendar-day me-2"></i>
+        Détails du jour
+      </h1>
+      <p class="text-muted mb-0">
+        <%= l(@date, format: :long) %>
+        <% if @date == Date.today %>
+          <span class="badge bg-primary ms-2">Aujourd'hui</span>
+        <% end %>
+      </p>
+    </div>
+
+    <!-- Bouton pour ajouter un nouveau rendez-vous -->
+    <div>
+      <%= link_to new_appointment_path(date: @date),
+                  class: "btn btn-primary" do %>
+        <i class="fas fa-plus me-2"></i>
+        Nouveau rendez-vous
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Liste des rendez-vous -->
+  <div class="card">
+    <div class="card-header bg-light">
+      <h5 class="mb-0">
+        <i class="fas fa-calendar-alt me-2"></i>
+        Rendez-vous du jour
+        <span class="badge bg-secondary ms-2"><%= @appointments.count %></span>
+      </h5>
+    </div>
+
+    <div class="card-body p-0">
+      <% if @appointments.any? %>
+        <div class="list-group list-group-flush">
+          <% @appointments.each do |appointment| %>
+            <div class="list-group-item">
+              <div class="d-flex justify-content-between align-items-start">
+                <div class="flex-grow-1">
+                  <h6 class="mb-1">
+                    <%= appointment.title %>
+                    <% if appointment.event_type.present? %>
+                      <span class="badge bg-secondary ms-2">
+                        <%= appointment.event_type %>
+                      </span>
+                    <% end %>
+                  </h6>
+
+                  <!-- Date et heure -->
+                  <div class="d-flex align-items-center mb-1">
+                    <span class="text-muted small me-3">
+                      <i class="fas fa-calendar-day me-1"></i>
+                      <%= l(appointment.date, format: :long) %>
+                    </span>
+
+                    <% if appointment.start_time.present? %>
+                      <span class="text-muted small">
+                        <i class="fas fa-clock me-1"></i>
+                        <%= appointment.start_time.strftime('%H:%M') %>
+                      </span>
+                    <% end %>
+                  </div>
+
+                  <% if appointment.address.present? %>
+                    <p class="mb-1 text-muted small">
+                      <i class="fas fa-map-marker-alt me-1"></i>
+                      <%= appointment.address %>
+                    </p>
+                  <% end %>
+
+                  <% if appointment.content.present? %>
+                    <p class="mb-0 mt-2">
+                      <%= truncate(appointment.content, length: 150) %>
+                    </p>
+                  <% end %>
+                </div>
+
+                <!-- Boutons d'action -->
+                <div class="btn-group ms-3 flex-shrink-0">
+                  <%= link_to "Voir", appointment_path(appointment),
+                              class: "btn btn-sm btn-outline-primary" %>
+                  <%= link_to "Modifier", edit_appointment_path(appointment),
+                              class: "btn btn-sm btn-outline-secondary" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <!-- Aucun rendez-vous -->
+        <div class="text-center py-5">
+          <i class="fas fa-calendar-times fa-3x text-muted mb-3"></i>
+          <h5 class="text-muted">Aucun rendez-vous ce jour</h5>
+          <p class="text-muted mb-4">Ajoutez votre premier rendez-vous</p>
+          <%= link_to "+ Nouveau rendez-vous",
+                      new_appointment_path(date: @date),
+                      class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Boutons supplémentaires -->
+  <div class="mt-4 d-flex justify-content-end">
+    <div>
+      <%= link_to "Voir tous les rendez-vous", appointments_path,
+                  class: "btn btn-outline-primary" %>
+    </div>
+  </div>
+</div>
