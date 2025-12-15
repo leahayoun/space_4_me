@@ -12,5 +12,23 @@
       <%= link_to "Se connecter", new_user_session_path, class: "home-btn home-btn-primary" %>
       <%= link_to "S'inscrire", new_user_registration_path, class: "home-btn home-btn-secondary" %>
     </div>
+
+    <div class="logo">
+    <%= image_tag "logo temp.png", alt: "Space for Me", class: "logo-img" %>
+    </div>
   <% end %>
 </div>
+
+<style>
+  .logo {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .logo-img {
+    width: 120px;      /* ajuste ici si besoin */
+    height: auto;
+    opacity: 0.85;
+  }
+</style>
