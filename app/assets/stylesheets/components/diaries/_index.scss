@@ -1,4 +1,4 @@
-
+// Container principal de la page des diaries
 .diary-page-container {
 
   max-width: 1000px;
@@ -21,6 +21,7 @@
   }
 }
 
+// Grille pour les cards des diary entries
 .diary-page-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -44,7 +45,7 @@
   }
 }
 
-
+// Card pour chaque diary entry
 .diary-page-card {
   background: $warm-white;
   padding: 30px;

@@ -58,9 +58,6 @@ fr:
 
   datetime:
     distance_in_words:
-      less_than_x_minutes:
-        one: "il y a moins d'une minute"
-        other: "il y a moins de %{count} minutes"
       x_minutes:
         one: "il y a 1 minute"
         other: "il y a %{count} minutes"
@@ -76,22 +73,7 @@ fr:
       x_years:
         one: "il y a 1 an"
         other: "il y a %{count} ans"
-      half_a_minute: "il y a une demi-minute"
-      less_than_x_seconds:
-        one: "il y a moins d'une seconde"
-        other: "il y a moins de %{count} secondes"
-      x_seconds:
-        one: "il y a 1 seconde"
-        other: "il y a %{count} secondes"
-      about_x_years:
-        one: "il y a environ 1 an"
-        other: "il y a environ %{count} ans"
-      over_x_years:
-        one: "il y a plus d'un an"
-        other: "il y a plus de %{count} ans"
-      almost_x_years:
-        one: "il y a presque 1 an"
-        other: "il y a presque %{count} ans"
+
 
   # ==================== general ====================
   hello: "Bonjour"

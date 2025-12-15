@@ -1,9 +1,8 @@
 <%# app/views/appointments/_form.html.erb %>
-
 <%= simple_form_for(@appointment) do |f| %>
   <%= f.input :title,
-              label: "Title",
-              placeholder: "e.g. Doctor's appointment",
+              label: "Titre",
+              placeholder: "Titre du rendez-vous",
               required: true,
               input_html: { class: "form-input" } %>
 
@@ -15,27 +14,31 @@
               input_html: { class: "form-input" } %>
 
   <%= f.input :event_type,
-              label: "Event type",
-              collection: ["Medical", "Personal", "Work", "Other"],
-              include_blank: "Select a type",
+              label: "Type",
+              collection: ["Médical", "Personnel", "Travail", "Autre"],
+              include_blank: "Choisir un type",
               required: false,
               input_html: { class: "form-input" } %>
 
   <%= f.input :address,
-              label: "Address",
-              placeholder: "e.g. 123 Rue de Paris, 75001 Paris",
+              label: "Adresse",
+              placeholder: "123 Rue de Paris, 75001 Paris",
               required: false,
               input_html: { class: "form-input" } %>
 
   <%= f.input :content,
               as: :text,
-              label: "Description",
-              placeholder: "Add notes, reminders, etc.",
+              label: "Notes",
+              placeholder: "Ajoutez des notes...",
               rows: 4,
               input_html: { class: "form-input" } %>
 
   <div class="form-actions">
-    <%= f.button :submit, class: "btn btn-submit" %>
-    <%= link_to "Cancel", appointments_path, class: "btn btn-ghost" %>
+    <% if @appointment.persisted? %>
+      <%= f.button :submit, "Mettre à jour", class: "btn btn-submit" %>
+    <% else %>
+      <%= f.button :submit, "Créer", class: "btn btn-submit" %>
+    <% end %>
+    <%= link_to "Annuler", appointments_path, class: "btn btn-ghost" %>
   </div>
 <% end %>
