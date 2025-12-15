@@ -196,6 +196,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_12_15_134354) do
     t.boolean "operation_epilation_laser"
     t.text "how_found"
     t.text "expectations_info"
+    t.boolean "treatment_lupron"
     t.boolean "sport"
     t.boolean "epilation_laser"
     t.index ["email"], name: "index_users_on_email", unique: true
