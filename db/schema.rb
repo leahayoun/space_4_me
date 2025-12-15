@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_12_14_211943) do
+ActiveRecord::Schema[7.1].define(version: 2025_12_15_134354) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -76,6 +76,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_12_14_211943) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "date"
+    t.text "dysphoria"
+    t.string "custom_mood"
+    t.string "custom_symptom"
     t.index ["user_id"], name: "index_feelings_on_user_id"
   end
 

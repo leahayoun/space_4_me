@@ -22,10 +22,12 @@ Rails.application.routes.draw do
 
     resources :diaries
 
-    resources :feelings, only: [:create, :show] do
-      resources :user_moods
-      resources :user_symptoms
-    end
+    # resources :feelings, only: [:create, :show] do
+    #   resources :user_moods
+    #   resources :user_symptoms
+    # end
+
+    resources :feelings, only: [:new, :create, :show]
 
     resources :tasks
     # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

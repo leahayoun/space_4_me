@@ -1,0 +1,64 @@
+<h1 class="page-title">Mon ressenti du jour</h1>
+<p class="page-subtitle"><%= l(@date, format: :long) %></p>
+
+<%= form_with model: @feeling, url: feelings_path, method: :post, local: true do |f| %>
+  <%= f.hidden_field :date, value: @date %>
+
+  <!-- HUMEURS -->
+  <div class="feelings-container feelings-section">
+    <h2>Humeurs</h2>
+    <div class="feelings-grid">
+      <% Mood.all.each do |mood| %>
+        <% existing = @feeling&.moods&.include?(mood) || false %>
+        <% disabled = @feeling&.created_at && @feeling.created_at < 48.hours.ago %>
+        <label class="feeling-item <%= 'selected' if existing %>">
+          <%= check_box_tag "feeling[mood_ids][]", mood.id, existing, disabled: disabled, class: "hidden-checkbox" %>
+          <span class="emoji"><%= mood.icon %></span>
+          <span class="label"><%= mood.name %></span>
+        </label>
+      <% end %>
+
+      <!-- Case pour "Autre humeur" -->
+      <label class="feeling-item">
+        <span class="emoji">✍️</span>
+        <span class="label">Autre·s</span>
+      <%= f.text_field :custom_mood, maxlength: 100, placeholder: "Écris ici ton humeur (max 100 caractères)" %>
+      </label>
+    </div>
+  </div>
+
+  <!-- SYMPTÔMES -->
+  <div class="symptoms-container feelings-section">
+    <h2>Symptômes</h2>
+    <div class="feelings-grid">
+      <% Symptom.all.each do |symptom| %>
+        <% existing = @feeling&.symptoms&.include?(symptom) || false %>
+        <% disabled = @feeling&.created_at && @feeling.created_at < 48.hours.ago %>
+
+        <label class="feeling-item <%= 'selected' if existing %>">
+          <span class="emoji">⚕️</span>
+          <span class="label"><%= symptom.name %></span>
+          <%= check_box_tag "feeling[symptom_ids][]", symptom.id, existing, disabled: disabled, class: "hidden-checkbox" %>
+        </label>
+      <% end %>
+
+      <!-- Case pour "Autre symptôme" -->
+      <label class="feeling-item">
+        <span class="emoji">✍️</span>
+        <span class="label">Autre·s</span>
+        <%= f.text_field :custom_symptom, maxlength: 100, placeholder: "Écris ici ton humeur (max 100 caractères)" %>
+      </label>
+    </div>
+  </div>
+
+  <!-- DYSHPORIE -->
+  <div class="feelings-section">
+    <h2>Dysphorie</h2>
+    <%= f.text_area :dysphoria, id: "feeling_dysphoria", maxlength: 5000, placeholder: "Décris ton ressenti..." %>
+    <div id="dysphoria_counter">5000 caractères restants</div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Enregistrer", class: "btn-primary" %>
+  </div>
+<% end %>
