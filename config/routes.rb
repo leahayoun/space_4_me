@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'tasks/index'
+  get 'tasks/create'
+  get 'tasks/update'
+  get 'tasks/destroy'
   devise_for :users
 
   root to: "pages#home"
@@ -24,7 +28,10 @@ Rails.application.routes.draw do
       resources :user_symptoms
     end
 
-    resources :tasks
+    resources :tasks, only: [:index, :create, :update, :destroy]
+    # update pour les checkbox
+
+
     # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
     # Can be used by load balancers and uptime monitors to verify that the app is live.
     get "up" => "rails/health#show", as: :rails_health_check
