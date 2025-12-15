@@ -90,7 +90,7 @@ appointments_data = [
     title: "Rendez-vous chez le coiffeur",
     content: "Coupe et brushing. Prévoir 1h30. Confirmer l'heure par SMS.",
     address: "Salon Éclat, 22 Rue des Cheveux, 75004 Paris",
-    date: Date.today,
+    date: Date.today + 2.days,
     event_type: "Personnel",
     user: user
   },
@@ -107,7 +107,7 @@ appointments_data = [
     title: "Thérapie hebdomadaire",
     content: "Session avec la psychologue. Points à aborder : gestion du stress au travail et relations familiales.",
     address: "45 Avenue des Ternes, 75017 Paris",
-    date: Date.today + 3.days,
+    date: Date.today + 1.days,
     event_type: "Thérapie",
     user: user
   },
@@ -123,7 +123,7 @@ appointments_data = [
     title: "Suivi post-opératoire",
     content: "Contrôle de la cicatrisation et évaluation des résultats. Questions à poser : massages, soins, activité physique autorisée.",
     address: "Clinique Esthétique, 8 Rue de la Paix, 75002 Paris",
-    date: Date.today - 5.days,
+    date: Date.today - 2.days,
     start_time: Time.now.change(hour: 10, min: 30),
     event_type: "Médical",
     user: user
@@ -159,7 +159,8 @@ appointments_data = [
     title: "Réunion associative",
     content: "Réunion mensuelle de l'association de quartier. Ordre du jour : organisation de la fête de printemps.",
     address: "Mairie du 14e, 2 Place Ferdinand Brunot, 75014 Paris",
-    date: Date.today + 12.days,
+    date: Date.today,
+    start_time: Time.now.change(hour: 15, min: 30),
     event_type: "Social",
     user: user
   },
