@@ -96,7 +96,7 @@
       <%# Lignes pour chaque jour %>
       <% (week_start..week_end).each do |day| %>
         <% day_feeling = current_user.feelings.where("DATE(created_at) = ?", day).first if current_user.present? %>
-        <% day_appointments = appointments.select { |a| a.date == day }.sort_by(&:start_time) %>
+        <% day_appointments = appointments.select { |a| a.date == day }.sort_by { |a| a.start_time || Time.current + 1.year }%>
         <% display_appointments = day_appointments.first(5) %> <%# Maximum 5 événements visibles %>
         <% has_more = day_appointments.size > 5 %>
 

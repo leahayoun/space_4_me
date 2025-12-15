@@ -37,6 +37,65 @@ puts "📅 Création des rendez-vous..."
 
 appointments_data = [
   {
+    title: "Petit-déjeuner d'équipe",
+    content: "Réunion informelle pour discuter des objectifs du trimestre. Café et viennoiseries offerts.",
+    address: "Bureau principal, 10 Rue de la Collaboration, 75008 Paris",
+    date: Date.today + 2.days,
+    event_type: "Professionnel",
+    user: user
+  },
+  {
+    title: "Rendez-vous chez le dentiste",
+    content: "Détartrage et contrôle annuel. Apporter la carte vitale et la mutuelle.",
+    address: "Dr. Dubois, 7 Rue du Sourire, 75012 Paris",
+    date: Date.today + 1.days,
+    start_time: Time.now.change(hour: 14, min: 30),
+    event_type: "Médical",
+    user: user
+  },
+  {
+    title: "Dîner en famille",
+    content: "Dîner organisé chez les parents pour célébrer l'anniversaire de ma mère. Prévoir un cadeau.",
+    address: "Chez les parents, 18 Rue des Fleurs, 92100 Boulogne-Billancourt",
+    date: Date.today + 1.days,
+    start_time: Time.now.change(hour: 19, min: 30),
+    event_type: "Social",
+    user: user
+  },
+  {
+    title: "Séance de kinésithérapie",
+    content: "Exercices de rééducation pour l'épaule. Prévoir une tenue confortable.",
+    address: "Cabinet KinéForme, 3 Rue du Mouvement, 75010 Paris",
+    date: Date.today + 5.days,
+    event_type: "Médical",
+    user: user
+  },
+  {
+    title: "Déjeuner avec un client",
+    content: "Rencontre avec M. Dupont pour finaliser le contrat. Réservation au restaurant Le Bistrot.",
+    address: "Le Bistrot, 15 Rue de la Gourmandise, 75003 Paris",
+    date: Date.today + 2.days,
+    event_type: "Professionnel",
+    user: user
+  },
+  {
+    title: "Cours de méditation",
+    content: "Séance guidée pour apprendre à gérer le stress. Durée : 1h. Apporter un coussin si possible.",
+    address: "Espace Calme, 8 Rue de la Sérénité, 75009 Paris",
+    date: Date.today + 4.days,
+    event_type: "Bien-être",
+    user: user
+  },
+  {
+    title: "Rendez-vous chez le coiffeur",
+    content: "Coupe et brushing. Prévoir 1h30. Confirmer l'heure par SMS.",
+    address: "Salon Éclat, 22 Rue des Cheveux, 75004 Paris",
+    date: Date.today,
+    event_type: "Personnel",
+    user: user
+  },
+
+  {
     title: "Consultation endocrinologue",
     content: "Contrôle des taux hormonaux et ajustement du traitement si nécessaire. Penser à apporter les résultats de la dernière prise de sang.",
     address: "Dr. Martin, 15 Rue de Médecine, 75006 Paris",
@@ -65,9 +124,46 @@ appointments_data = [
     content: "Contrôle de la cicatrisation et évaluation des résultats. Questions à poser : massages, soins, activité physique autorisée.",
     address: "Clinique Esthétique, 8 Rue de la Paix, 75002 Paris",
     date: Date.today - 5.days,
+    start_time: Time.now.change(hour: 10, min: 30),
     event_type: "Médical",
     user: user
   },
+  {
+    title: "Cours de yoga",
+    content: "Séance de yoga pour débutants. Prévoir un tapis et des vêtements confortables.",
+    address: "Studio Zen, 12 Rue de la Tranquillité, 75011 Paris",
+    date: Date.today + 2.days,
+    start_time: Time.now.change(hour: 18, min: 30), # Exemple : 18h30
+    event_type: "Bien-être",
+    user: user
+  },
+  {
+    title: "Atelier d'écriture créative",
+    content: "Atelier mensuel pour explorer des techniques d'écriture. Apporter un carnet et un stylo.",
+    address: "Bibliothèque municipale, 3 Rue des Livres, 75005 Paris",
+    date: Date.today + 15.days,
+    event_type: "Éducatif",
+    user: user
+  },
+
+  {
+    title: "Dîner en famille",
+    content: "Dîner organisé chez les parents pour célébrer l'anniversaire de ma mère. Prévoir un cadeau.",
+    address: "Chez les parents, 18 Rue des Fleurs, 92100 Boulogne-Billancourt",
+    date: Date.today + 8.days,
+    event_type: "Social",
+    user: user
+  },
+
+  {
+    title: "Réunion associative",
+    content: "Réunion mensuelle de l'association de quartier. Ordre du jour : organisation de la fête de printemps.",
+    address: "Mairie du 14e, 2 Place Ferdinand Brunot, 75014 Paris",
+    date: Date.today + 12.days,
+    event_type: "Social",
+    user: user
+  },
+
   {
     title: "Réunion de travail",
     content: "Présentation du projet TransTech aux investisseurs. Préparer le pitch et les données chiffrées.",
@@ -210,7 +306,10 @@ puts "💭 Création des états émotionnels..."
 feelings_data = [
   { user: user, created_at: Date.today },
   { user: user, created_at: Date.yesterday },
-  { user: user, created_at: Date.today - 2.days }
+  { user: user, created_at: Date.today - 2.days },
+  { user: user, created_at: Date.today - 3.days },
+  { user: user, created_at: Date.today - 4.days },
+  { user: user, created_at: Date.today - 5.days }
 ]
 
 feelings = []
@@ -229,7 +328,8 @@ if feelings.any? && Mood.any?
     { feeling: feelings[0], mood: Mood.find_by(name: "Fatigué") },
     { feeling: feelings[1], mood: Mood.find_by(name: "Stressé") },
     { feeling: feelings[2], mood: Mood.find_by(name: "Heureux") },
-    { feeling: feelings[2], mood: Mood.find_by(name: "Optimiste") }
+    { feeling: feelings[2], mood: Mood.find_by(name: "Optimiste") },
+    { feeling: feelings[3], mood: Mood.find_by(name: "Optimiste") }
   ])
 end
 
