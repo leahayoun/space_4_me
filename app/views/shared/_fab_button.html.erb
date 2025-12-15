@@ -1,0 +1,33 @@
+<%# app/views/shared/_fab_button.html.erb %>
+
+
+<button class="fab-main"
+        data-action="click->fab#toggleMenu"
+        data-fab-target="button">
+  <i class="fas fa-plus"></i>
+</button>
+
+<div class="fab-menu"
+     data-fab-target="menu"
+     data-action="click->fab#preventClose">
+
+  <%= link_to new_appointment_path, class: "fab-item" do %>
+    <i class="fas fa-calendar-plus"></i>
+    <span>Rendez-vous</span>
+  <% end %>
+
+  <%= link_to "#", class: "fab-item" do %>
+    <i class="fas fa-smile"></i>
+    <span>Humeur</span>
+  <% end %>
+
+  <%= link_to new_diary_path, class: "fab-item" do %>
+    <i class="fas fa-sticky-note"></i>
+    <span>Note</span>
+  <% end %>
+
+  <%= link_to "#", class: "fab-item" do %>
+    <i class="fas fa-tasks"></i>
+    <span>Tâche</span>
+  <% end %>
+</div>
