@@ -1,21 +1,34 @@
-<%# app/views/appointments/index.html.erb %>
 <%= render "shared/app_header" %>
 
 <div class="mobile-dashboard">
+  <!-- 1. 标题和视图切换器 -->
+  <section class="dashboard-section calendar-section">
+    <div class="section-header">
+      <h2>Calendrier</h2>
 
+      <div class="view-switcher">
+        <%= link_to "Mois",
+                    dashboard_path(view: 'month', date: @current_date || Date.today),
+                    class: "view-btn #{'active' if @view_type == 'month'}" %>
 
-  <%= render "calendar_section" %>
+        <%= link_to "Semaine",
+                    dashboard_path(view: 'week', date: @current_date || Date.today),
+                    class: "view-btn #{'active' if @view_type == 'week'}" %>
+      </div>
+    </div>
 
-<%#
-  <%= render "view_switcher" %>
+    <!-- 2. 日期导航栏 -->
+    <%= render "calendar_navigation" %>
+  </section>
+
+  <!-- 3. 日历主体（会自动根据@view_type显示月/周视图） -->
+<section class="dashboard-section">
+  <%= render "simple_calendar",
+             appointments: @appointments,
+             view_type: @view_type,
+             current_date: @current_date || Date.today %>
+</section>
+
+  <!-- 4. 提醒事项 -->
   <%= render "reminders_section", appointments: @appointments %>
-
-  <% if @view_type == 'month' %>
-
-    <%= render "simple_calendar", appointments: @appointments %>
-  <% else %>
-
-    <%= render "week_calendar", appointments: @appointments %>
-  <% end %>
-
 </div>
