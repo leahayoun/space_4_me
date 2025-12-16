@@ -66,11 +66,14 @@
         <div class="dropdown-divider"></div>
 
         <%= link_to destroy_user_session_path,
-                    method: :delete,
+                    data: { turbo_method: :delete },
                     class: "dropdown-item logout-item" do %>
           <i class="fas fa-sign-out-alt"></i>
           <span>Déconnexion</span>
         <% end %>
+
+
+
       </div>
     </div>
   </div>

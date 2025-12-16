@@ -77,6 +77,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_12_15_150135) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "date"
+    t.text "dysphoria"
+    t.string "custom_mood"
+    t.string "custom_symptom"
     t.index ["user_id"], name: "index_feelings_on_user_id"
   end
 
@@ -120,6 +124,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_12_15_150135) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "done", default: false, null: false
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 

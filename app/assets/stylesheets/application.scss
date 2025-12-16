@@ -23,6 +23,9 @@
 @import "components/diaries/show";
 @import "components/diaries/form";
 
+//Pour feature feelings
+@import "pages/feelings";
+
 // import components appointments scss
 @import "components/appointments";
 @import "components/events/add_events";
@@ -32,6 +35,9 @@
 @import "components/events/incoming_events";
 @import "components/events/m_footer";
 @import "components/app_header";
+
+// Pour feature tasks
+@import "components/tasks/index";
 
 #main-content {
   margin-bottom: 80px;

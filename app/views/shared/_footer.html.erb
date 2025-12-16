@@ -24,7 +24,7 @@
       </div>
       <%# =================================== %>
 
-      <%= link_to "#", class: "footer-nav-item" do %>
+      <%= link_to new_feeling_path(date: Date.today), class: "footer-nav-item" do %>
         <i class="fas fa-smile"></i>
         <span>Humeurs</span>
       <% end %>
@@ -34,7 +34,7 @@
 
       <%= link_to tasks_path, class: "footer-nav-item" do %>
         <i class="fas fa-tasks"></i>
-        <span>Tasks</span>
+        <span>Mes Tâches</span>
       <% end %>
     </div>
   </footer>
