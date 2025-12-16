@@ -59,204 +59,6 @@ body .simple-calendar table.table-striped {
   }
 }
 
-/* === Conteneur principal de Simple Calendar === */
-.simple-calendar {
-  .calendar-heading {
-    display: none !important; // Masque l’en-tête par défaut du plugin
-  }
-
-  width: 100%;
-  background: $cream !important;
-  padding: 12px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-
-  /* === Style général du tableau (mise en page du calendrier) === */
-  table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 6px; // Espacement entre les cellules
-    background: $cream !important;
-
-    /* Neutralise toutes les alternances de lignes Bootstrap */
-    tr {
-      background: transparent !important;
-
-      &:nth-child(even),
-      &:nth-child(odd) {
-        background: transparent !important;
-      }
-    }
-
-    /* === Ligne des jours de semaine === */
-    thead {
-      tr:first-child {
-        th {
-          text-align: center;
-          padding: 1rem 0.5rem;
-          font-size: 0.85rem;
-          color: $terracotta;
-          font-weight: 600;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-          background: $cream !important;
-          border-bottom: 2px solid $terracotta-light;
-        }
-      }
-    }
-
-    /* === Cellules des jours === */
-    td {
-      background: white !important; // Fond par défaut
-      height: 90px;
-      padding: 10px 6px;
-      vertical-align: top;
-      text-align: center;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
-
-      /* Maintien du ratio carré */
-      min-width: 0;
-      aspect-ratio: 1/1;
-
-      /* Hover feedback (un peu de relief visuel) */
-      &:hover {
-        background: lighten($cream, 2%) !important;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba($terracotta, 0.1);
-
-        .calendar-day .day-number {
-          color: $terracotta;
-          transform: scale(1.05);
-        }
-      }
-
-      /* === Style pour "aujourd'hui" === */
-      &.today {
-        background: $cream-dark !important;
-        position: relative;
-
-        &::before {
-          content: '';
-          position: absolute;
-          top: 2px;
-          left: 2px;
-          right: 2px;
-          bottom: 2px;
-          border: 2px solid $terracotta;
-          border-radius: 6px;
-          pointer-events: none;
-        }
-
-        .calendar-day .day-number {
-          background: $terracotta !important;
-          color: white !important;
-          font-weight: 700;
-        }
-
-        &:hover {
-          background: lighten($cream-dark, 2%) !important;
-          box-shadow: 0 4px 12px rgba($terracotta, 0.15);
-        }
-      }
-
-      /* === Jours hors du mois courant === */
-      &.prev-month,
-      &.next-month {
-        background: $warm-white !important;
-        opacity: 0.5;
-
-        .calendar-day .day-number {
-          color: lighten($terracotta, 25%) !important;
-        }
-
-        &:hover {
-          background: lighten($warm-white, 2%) !important;
-          opacity: 0.7;
-        }
-      }
-    }
-  }
-}
-
-/* === Contenu interne de chaque cellule (numéro + événements) === */
-.calendar-day {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  gap: 4px;
-
-  /* Numéro du jour */
-  .day-number {
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    font-weight: 500;
-    color: darken($terracotta, 10%);
-    border-radius: 50%;
-    transition: all 0.3s ease;
-  }
-
-  /* Marqueur pour les jours avec événements */
-  &.has-events {
-    .day-number {
-      font-weight: 700;
-      position: relative;
-
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 6px;
-        height: 6px;
-        background: $terracotta;
-        border-radius: 50%;
-        border: 2px solid white;
-      }
-    }
-  }
-
-  /* Emoji humeur */
-  .day-mood {
-    .mood-emoji {
-      font-size: 1rem;
-      transition: transform 0.3s ease;
-
-      &:hover {
-        transform: scale(1.3);
-      }
-    }
-  }
-
-  /* Points d'événements */
-  .day-events {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    width: 100%;
-    margin-top: auto;
-
-    .event-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      margin: 0 auto;
-      transition: all 0.3s ease;
-
-      &:hover {
-        transform: scale(1.5);
-      }
-    }
-  }
-}
-
 /* === Boutons de changement de vue (mois / semaine etc.) === */
 .view-switcher {
   display: flex;
@@ -293,8 +95,502 @@ body .simple-calendar table.table-striped {
   }
 }
 
-/* === Responsive (ajustements mobiles) === */
+/* ===================== VUE MOIS (GRILLE) ===================== */
+.simple-calendar {
+  .calendar-heading {
+    display: none !important; // Masque l'en-tête par défaut
+  }
+
+  width: 100%;
+  background: $cream !important;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+
+
+  .calendar-cell-link {
+    display: block;
+    height: 100%;
+    text-decoration: none !important;
+
+    &:link, &:visited, &:hover, &:active {
+      text-decoration: none !important;
+    }
+
+    .calendar-day {
+      cursor: pointer;
+    }
+  }
+
+  .calendar-day.other-month {
+  .day-number {
+    color: lighten($terracotta, 20%) !important;
+  }
+}
+
+/* ============ CORRECTION : Utiliser .other-month ============ */
+  td.other-month {
+  background: lighten($warm-white, 2%) !important;
+  opacity: 0.7 !important;
+
+  .calendar-day .day-number {
+    color: lighten($terracotta, 20%) !important;
+    font-weight: normal !important;
+    background: transparent !important;
+  }
+
+  .calendar-day .day-mood .mood-emoji {
+    opacity: 0.6;
+    filter: grayscale(20%);
+  }
+
+  .calendar-day .day-events .event-dot {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+
+  &:hover {
+    background: lighten($warm-white, 4%) !important;
+    opacity: 0.8 !important;
+    transform: translateY(-1px) !important;
+
+    .calendar-day .day-number {
+      color: lighten($terracotta, 15%) !important;
+      transform: scale(1.02) !important;
+    }
+  }
+}
+
+
+  /* Tableau principal */
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 6px;
+    background: $cream !important;
+
+    /* Désactive les alternances Bootstrap */
+    tr {
+      background: transparent !important;
+
+      &:nth-child(even),
+      &:nth-child(odd) {
+        background: transparent !important;
+      }
+    }
+
+    /* En-tête des jours */
+    thead {
+      tr:first-child {
+        th {
+          text-align: center;
+          padding: 1rem 0.5rem;
+          font-size: 0.85rem;
+          color: $terracotta;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          background: $cream !important;
+          border-bottom: 2px solid $terracotta-light;
+        }
+      }
+    }
+
+    /* Cellules des jours */
+    td {
+      background: white !important;
+      height: 90px;
+      padding: 10px 6px;
+      vertical-align: top;
+      text-align: center;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+      min-width: 0;
+      aspect-ratio: 1/1;
+
+      /* Effet hover */
+      &:hover {
+        background: lighten($cream, 2%) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba($terracotta, 0.1);
+
+        .calendar-day .day-number {
+          color: $terracotta;
+          transform: scale(1.05);
+        }
+      }
+
+      /* Aujourd'hui */
+      &.today {
+        background: $cream-dark !important;
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          right: 2px;
+          bottom: 2px;
+          border: 2px solid $terracotta;
+          border-radius: 6px;
+          pointer-events: none;
+        }
+
+        .calendar-day .day-number {
+          background: $terracotta !important;
+          color: white !important;
+          font-weight: 700;
+        }
+
+        &:hover {
+          background: lighten($cream-dark, 2%) !important;
+          box-shadow: 0 4px 12px rgba($terracotta, 0.15);
+        }
+      }
+
+      /* Jours des mois précédent/suivant - PLUS FONCÉS POUR MEILLEUR CONTRASTE */
+      &.prev-month,
+      &.next-month {
+        background: lighten($warm-white, 2%) !important;
+        opacity: 0.6; /* Augmenté pour mieux voir */
+
+        .calendar-day .day-number {
+          color: lighten($terracotta, 15%) !important; /* Plus clair */
+          font-weight: normal;
+        }
+
+        .calendar-day .day-mood .mood-emoji {
+          opacity: 0.7;
+        }
+
+        .calendar-day .day-events .event-dot {
+          opacity: 0.5;
+        }
+
+        &:hover {
+          background: lighten($warm-white, 4%) !important;
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
+
+/* === Contenu des cellules (jour + humeurs + événements) === */
+.calendar-day {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+
+  /* Numéro du jour */
+  .day-number {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 500;
+    color: darken($terracotta, 10%);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+
+  /* Indicateur pour jours avec événements */
+  &.has-events {
+    .day-number {
+      font-weight: 700;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 6px;
+        height: 6px;
+        background: $terracotta;
+        border-radius: 50%;
+        border: 2px solid white;
+      }
+    }
+  }
+
+  /* Émojis humeur - RÉPARÉ AVEC HOVER */
+  .day-mood {
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+    min-height: 20px; /* Garantit l'espace même sans émoji */
+
+    .mood-emoji {
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      display: inline-block;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.5) rotate(5deg);
+        z-index: 10;
+        position: relative;
+      }
+    }
+  }
+
+  /* Points d'événements */
+  .day-events {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 100%;
+    margin-top: auto;
+
+    .event-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin: 0 auto;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(1.5);
+      }
+    }
+  }
+}
+
+/* ===================== VUE SEMAINE (TIMELINE) ===================== */
+.timeline-week-view {
+  background: $cream;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-top: 1rem;
+  max-height: 500px; /* Hauteur limitée pour scroll vertical */
+  overflow-y: auto;  /* Scroll vertical */
+  -webkit-overflow-scrolling: touch;
+
+  .timeline-container {
+    min-width: 100%;
+  }
+
+  .timeline-day-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid lighten($terracotta-light, 25%);
+
+    &:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    &.today {
+      background: lighten($terracotta, 45%);
+      border-radius: 8px;
+      padding: 0.75rem;
+      margin: 0 -0.75rem 0.75rem;
+
+      .day-label {
+        .day-date {
+          color: $terracotta;
+          font-weight: 700;
+        }
+      }
+    }
+
+    /* Colonne date (largeur fixe) */
+    .day-label {
+      width: 80px;
+      flex-shrink: 0;
+      text-align: center;
+      padding-right: 1rem;
+
+      .day-name {
+        font-size: 0.9rem;
+        color: $terracotta;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .day-date {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: $text;
+        margin: 0.25rem 0;
+      }
+
+      /* Émojis humeur petite taille */
+      .day-mood-small {
+        .mood-emoji-small {
+          font-size: 0.9rem;
+          margin: 0 1px;
+          transition: transform 0.2s;
+          display: inline-block;
+
+          &:hover {
+            transform: scale(1.3);
+          }
+        }
+      }
+    }
+
+    /* Timeline des événements (scroll horizontal) */
+    .timeline-events {
+      flex-grow: 1;
+      overflow-x: auto; /* Scroll horizontal */
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 0.25rem; /* Espace pour scrollbar */
+
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+
+      /* Style scrollbar */
+      &::-webkit-scrollbar {
+        height: 4px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: $terracotta-light;
+        border-radius: 2px;
+      }
+
+      /* Bloc événement */
+      .timeline-event {
+        text-decoration: none;
+        color: inherit;
+        flex-shrink: 0;
+
+        .event-block {
+          width: 150px; /* Largeur fixe */
+          min-height: 70px;
+          padding: 0.75rem;
+          border-radius: 6px;
+          border-left: 4px solid;
+          background: white;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+          transition: all 0.2s;
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+          }
+
+          .event-time {
+            font-size: 0.75rem;
+            color: $text-muted;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+          }
+
+          .event-title {
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: $text;
+            margin-bottom: 0.25rem;
+            /* Gestion texte long */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.3;
+            max-height: 2.6em;
+          }
+
+          .event-type {
+            font-size: 0.7rem;
+            color: $text-light;
+          }
+        }
+      }
+
+      /* Bloc "Voir plus" */
+      .more-events {
+        text-decoration: none;
+
+        .more-events-block {
+          width: 100px;
+          height: 70px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background: $warm-white;
+          border: 1px dashed $terracotta-light;
+          border-radius: 6px;
+          color: $terracotta;
+          font-weight: 500;
+          font-size: 0.9rem;
+          transition: all 0.2s;
+
+          &:hover {
+            background: lighten($terracotta-light, 35%);
+            border-color: $terracotta;
+          }
+
+          small {
+            font-size: 0.7rem;
+            margin-top: 0.25rem;
+            color: $text-muted;
+          }
+        }
+      }
+
+      /* État "aucun événement" */
+      .no-events {
+        width: 100%;
+        text-align: center;
+        padding: 1.5rem 0;
+        color: $text-muted;
+        font-style: italic;
+
+        .add-event-link {
+          color: $terracotta;
+          text-decoration: none;
+          font-weight: 500;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ===================== RESPONSIVE ===================== */
+
+/* Tablettes (769px - 1023px) */
+@media (min-width: 769px) and (max-width: 1023px) {
+  .timeline-week-view {
+    max-height: 550px;
+
+    .timeline-day-row {
+      .day-label {
+        width: 90px;
+      }
+
+      .timeline-events {
+        .timeline-event .event-block {
+          width: 160px;
+        }
+      }
+    }
+  }
+}
+
+/* Mobiles (≤ 768px) */
 @media (max-width: 768px) {
+  /* Vue mois mobile */
   .simple-calendar {
     padding: 8px;
 
@@ -322,6 +618,10 @@ body .simple-calendar table.table-striped {
       height: 28px;
       font-size: 0.9rem;
     }
+
+    .day-mood .mood-emoji {
+      font-size: 0.9rem;
+    }
   }
 
   .calendar-navigation {
@@ -331,8 +631,59 @@ body .simple-calendar table.table-striped {
       font-size: 1rem;
     }
   }
+
+  /* Vue semaine mobile */
+  .timeline-week-view {
+    padding: 0.75rem;
+    max-height: 400px;
+
+    .timeline-day-row {
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.5rem;
+
+      &.today {
+        padding: 0.5rem;
+        margin: 0 -0.5rem 0.5rem;
+      }
+
+      .day-label {
+        width: 70px;
+        padding-right: 0.75rem;
+
+        .day-name {
+          font-size: 0.8rem;
+        }
+
+        .day-date {
+          font-size: 1.2rem;
+        }
+      }
+
+      .timeline-events {
+        .timeline-event {
+          .event-block {
+            width: 130px;
+            min-height: 65px;
+            padding: 0.5rem;
+
+            .event-title {
+              font-size: 0.85rem;
+              -webkit-line-clamp: 2;
+            }
+          }
+        }
+
+        .more-events .more-events-block {
+          width: 90px;
+          height: 65px;
+          font-size: 0.85rem;
+        }
+      }
+    }
+  }
 }
 
+/* Très petits écrans (≤ 480px) */
 @media (max-width: 480px) {
   .simple-calendar {
     table {
@@ -350,6 +701,114 @@ body .simple-calendar table.table-striped {
       width: 24px;
       height: 24px;
       font-size: 0.85rem;
+    }
+
+    .day-mood .mood-emoji {
+      font-size: 0.85rem;
+    }
+  }
+
+  .timeline-week-view {
+    max-height: 350px;
+
+    .timeline-day-row {
+      .day-label {
+        width: 65px;
+
+        .day-name {
+          font-size: 0.75rem;
+        }
+
+        .day-date {
+          font-size: 1.1rem;
+        }
+      }
+
+      .timeline-events {
+        .timeline-event .event-block {
+          width: 120px;
+          min-height: 60px;
+        }
+      }
+    }
+  }
+}
+
+/* Desktop (≥ 1024px) - Styles légers qui ne cassent pas le dashboard */
+@media (min-width: 1024px) {
+  .mobile-dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .simple-calendar {
+    padding: 1.5rem;
+
+    table {
+      border-spacing: 8px;
+
+      td {
+        height: 100px;
+        padding: 12px 8px;
+      }
+
+      thead tr:first-child th {
+        font-size: 1rem;
+        padding: 1.25rem 0.75rem;
+      }
+    }
+
+    .calendar-day {
+      .day-number {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+      }
+
+      .day-mood .mood-emoji {
+        font-size: 1.1rem;
+
+        &:hover {
+          transform: scale(1.8) rotate(5deg);
+        }
+      }
+    }
+  }
+
+  .timeline-week-view {
+    max-height: 600px;
+
+    .timeline-day-row {
+      .day-label {
+        width: 100px;
+        padding-right: 1.5rem;
+
+        .day-name {
+          font-size: 1rem;
+        }
+
+        .day-date {
+          font-size: 1.6rem;
+        }
+      }
+
+      .timeline-events {
+        .timeline-event .event-block {
+          width: 180px;
+          min-height: 80px;
+
+          .event-title {
+            font-size: 0.95rem;
+            -webkit-line-clamp: 3;
+            max-height: 3.9em;
+          }
+        }
+
+        .more-events .more-events-block {
+          width: 120px;
+          height: 80px;
+        }
+      }
     }
   }
 }

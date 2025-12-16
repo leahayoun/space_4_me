@@ -1,122 +1,168 @@
 <%# app/views/appointments/_simple_calendar.html.erb %>
 
-<% if @view_type == 'month' %>
-  <%= month_calendar(start_date: @current_date.beginning_of_month,
-                     attribute: :date,
-                     events: appointments,
-                     title: false,
-                     table_classes: ""
-                    ) do |date, day_appointments| %>
 
-    <% daily_feeling = current_user.feelings.where("DATE(created_at) = ?", date).first if current_user.present? %>
+<% view_type = local_assigns[:view_type] || @view_type || 'month' %>
+<% current_date = local_assigns[:current_date] || @current_date || Date.today %>
+<% appointments = local_assigns[:appointments] || @appointments || [] %>
+<% if view_type == 'month' %>
+  <%# ============ Vue mois personnalisée ============ %>
+  <% month_start = current_date.beginning_of_month %>
+  <% month_end = current_date.end_of_month %>
+  <% first_display_date = month_start.beginning_of_week(:monday) %>
+  <% last_display_date = month_end.end_of_week(:monday) %>
 
-    <div class="calendar-day
-                <%= 'today' if date == Date.today %>
-                <%= 'other-month' if date.month != @current_date.month %>
-                <%= 'has-events' if day_appointments.any? %>
-                <%= 'has-feeling' if daily_feeling.present? %>">
+  <div class="simple-calendar">
+    <table>
+      <thead>
+        <tr>
+          <%# Jours de la semaine en français %>
+          <% %w[Lun Mar Mer Jeu Ven Sam Dim].each do |day| %>
+            <th><%= day %></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% (first_display_date..last_display_date).each_slice(7) do |week| %>
+          <tr>
+            <% week.each do |date| %>
+              <td class="<%= 'today' if date == Date.today %> <%= 'other-month' if date.month != current_date.month %>">
 
-      <div class="day-number">
-        <%= date.day %>
-      </div>
+                <%# ============ ICI : RÉCUPÉRER LES DONNÉES ============ %>
+                <%# 1. Récupérer les rendez-vous du jour %>
+                <% day_appointments = appointments.select { |a| a.date == date } %>
 
-      <% if daily_feeling.present? %>
-        <div class="day-mood">
+                <%# 2. RÉCUPÉRER LE FEELING DU JOUR - C'EST ÇA QUI MANQUE ! %>
+                <% daily_feeling = current_user.feelings.where("DATE(created_at) = ?", date).first if current_user.present? %>
+                <%# ==================================================== %>
 
-          <% if daily_feeling.respond_to?(:moods) && daily_feeling.moods.any? %>
-            <% daily_feeling.moods.each do |mood| %>
-              <span class="mood-emoji"
-                    title="<%= mood.name %>"
-                    data-bs-toggle="tooltip">
-                <%= mood.icon %>
-              </span>
+                <%= link_to day_details_appointments_path(date: date),
+                            class: "calendar-cell-link" do %>
+                  <div class="calendar-day
+                              <%= 'today' if date == Date.today %>
+                              <%= 'other-month' if date.month != current_date.month %>
+                              <%= 'has-events' if day_appointments.any? %>
+                              <%= 'has-feeling' if daily_feeling.present? %>">
+
+                    <div class="day-number">
+                      <%= date.day %>
+                    </div>
+
+                    <%# ============ ICI : AFFICHER LES EMOJIS ============ %>
+                    <% if daily_feeling.present? %>
+                      <div class="day-mood">
+                        <% if daily_feeling.respond_to?(:moods) && daily_feeling.moods.any? %>
+                          <% daily_feeling.moods.each do |mood| %>
+                            <span class="mood-emoji"
+                                  title="<%= mood.name %>"
+                                  data-bs-toggle="tooltip">
+                              <%= mood.icon %>
+                            </span>
+                          <% end %>
+                        <% else %>
+                          <%# Si pas de mood spécifique mais feeling existant %>
+                          <span class="mood-emoji" title="Journalisé">📝</span>
+                        <% end %>
+                      </div>
+                    <% end %>
+                    <%# ==================================================== %>
+
+                    <% if day_appointments.any? %>
+                      <div class="day-events">
+                        <% day_appointments.each do |appointment| %>
+                          <div class="event-dot"
+                               style="background-color: <%= appointment_color(appointment) %>"
+                               title="<%= appointment.title %> - <%= appointment.event_type %>">
+                          </div>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  </div>
+                <% end %>
+              </td>
             <% end %>
-          <% else %>
-
-            <span class="mood-emoji" title="Journalisé">
-              📝
-            </span>
-          <% end %>
-        </div>
-      <% end %>
-
-      <% if day_appointments.any? %>
-        <div class="day-events">
-          <% day_appointments.each do |appointment| %>
-            <div class="event-dot"
-                 style="background-color: <%= appointment_color(appointment) %>"
-                 title="<%= appointment.title %> - <%= appointment.event_type %>"
-                 data-bs-toggle="tooltip">
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
 <% else %>
-  <% week_start = @current_date.beginning_of_week %>
-  <% week_end = @current_date.end_of_week %>
+  <%# ============ Vue semaine (timeline) ============ %>
+  <% week_start = current_date.beginning_of_week %>
+  <% week_end = current_date.end_of_week %>
 
-  <div class="week-calendar">
-    <div class="week-header">
-      <% (week_start..week_end).each do |day| %>
-        <div class="weekday-header <%= 'today' if day == Date.today %>">
-          <div class="weekday-name"><%= l(day, format: '%a') %></div>
-          <div class="weekday-date"><%= day.day %></div>
-        </div>
-      <% end %>
-    </div>
-
-    <div class="week-days">
+  <div class="timeline-week-view">
+    <div class="timeline-container">
+      <%# Lignes pour chaque jour %>
       <% (week_start..week_end).each do |day| %>
         <% day_feeling = current_user.feelings.where("DATE(created_at) = ?", day).first if current_user.present? %>
-        <% day_appointments = appointments.select { |a| a.date == day } %>
+        <% day_appointments = appointments.select { |a| a.date == day }.sort_by { |a| a.start_time || Time.current + 1.year }%>
+        <% display_appointments = day_appointments.first(5) %> <%# Maximum 5 événements visibles %>
+        <% has_more = day_appointments.size > 5 %>
 
-        <div class="weekday <%= 'today' if day == Date.today %>">
+        <div class="timeline-day-row <%= 'today' if day == Date.today %>">
+          <%# Colonne date (fixe) %>
+          <div class="day-label">
+            <div class="day-name"><%= l(day, format: :abbr_day) %></div>
+            <div class="day-date"><%= day.day %></div>
 
-          <% if day_feeling.present? %>
-            <div class="weekday-mood">
-              <% if day_feeling.respond_to?(:moods) && day_feeling.moods.any? %>
-                <% day_feeling.moods.each do |mood| %>
-                  <span class="mood-emoji" title="<%= mood.name %>">
-                    <%= mood.icon %>
-                  </span>
+            <% if day_feeling.present? %>
+              <div class="day-mood-small">
+                <% if day_feeling.respond_to?(:moods) && day_feeling.moods.any? %>
+                  <% day_feeling.moods.first(2).each do |mood| %> <%# Maximum 2 émojis %>
+                    <span class="mood-emoji-small" title="<%= mood.name %>">
+                      <%= mood.icon %>
+                    </span>
+                  <% end %>
+                <% else %>
+                  <span class="mood-emoji-small" title="Journalisé">📝</span>
                 <% end %>
-              <% else %>
-                <span class="mood-emoji" title="Journalisé">📝</span>
-              <% end %>
-            </div>
-          <% end %>
-
-          <% if day_appointments.any? %>
-            <% day_appointments.each do |appointment| %>
-              <div class="week-appointment"
-                   style="border-left-color: <%= appointment_color(appointment) %>">
-                <div class="appointment-time">
-                  <%= appointment.start_time.strftime('%H:%M') if appointment.start_time.present? %>
-                </div>
-                <div class="appointment-title"><%= appointment.title %></div>
               </div>
             <% end %>
-          <% else %>
-            <div class="empty-day">
-              <% if day_feeling.present? %>
-                <span class="text-muted">✔️ Journalisé</span>
-              <% else %>
-                <span class="text-muted">-</span>
-              <% end %>
-            </div>
-          <% end %>
+          </div>
 
-          <div class="weekday-actions">
-            <%= link_to new_feeling_path(date: day),
-                        class: "btn btn-sm btn-outline-secondary" do %>
-              <i class="fas fa-smile"></i>
-            <% end %>
-            <%= link_to new_appointment_path(date: day),
-                        class: "btn btn-sm btn-outline-primary" do %>
-              <i class="fas fa-calendar-plus"></i>
+          <%# Timeline des événements (scroll horizontal) %>
+          <div class="timeline-events">
+            <% if display_appointments.any? %>
+              <% display_appointments.each do |appointment| %>
+                <%= link_to appointment_path(appointment), class: "timeline-event" do %>
+                  <div class="event-block"
+                       style="background-color: <%= appointment_color(appointment) %>20;
+                              border-left-color: <%= appointment_color(appointment) %>">
+
+                    <div class="event-time">
+                      <% if appointment.start_time.present? %>
+                        <%= appointment.start_time.strftime('%H:%M') %>
+                      <% else %>
+                        <small class="text-muted">Journée</small>
+                      <% end %>
+                    </div>
+
+                    <div class="event-title"><%= appointment.title %></div>
+
+                    <% if appointment.event_type.present? %>
+                      <div class="event-type">
+                        <small><%= appointment.event_type %></small>
+                      </div>
+                    <% end %>
+                  </div>
+                <% end %>
+              <% end %>
+
+              <%# Si plus d'événements, afficher "Voir plus" %>
+              <% if has_more %>
+                <%= link_to day_details_appointments_path(date: day), class: "more-events" do %>
+                  <div class="more-events-block">
+                    +<%= day_appointments.size - 5 %> de plus
+                    <small>(Cliquer pour détails)</small>
+                  </div>
+                <% end %>
+              <% end %>
+            <% else %>
+              <%# Aucun événement %>
+              <div class="no-events">
+                <%= link_to "＋ Ajouter", new_appointment_path(date: day), class: "add-event-link" %>
+              </div>
             <% end %>
           </div>
         </div>

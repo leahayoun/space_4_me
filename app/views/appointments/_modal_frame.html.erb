@@ -1,0 +1,77 @@
+<div id="event-modal" class="event-modal-wrapper">
+  <div class="event-modal-overlay" data-action="click->close">
+    <!-- close -->
+  </div>
+
+  <div class="event-modal-content">
+    <!-- head-->
+    <div class="event-modal-header">
+      <h3>
+        <i class="fas fa-calendar-check me-2"></i>
+        <%= @appointment.title %>
+      </h3>
+      <button class="event-modal-close" data-action="click->close">
+        &times;
+      </button>
+    </div>
+
+    <!-- content -->
+    <div class="event-modal-body">
+      <div class="event-info">
+        <p>
+          <i class="fas fa-calendar-day me-2"></i>
+          <strong>Date :</strong> <%= l(@appointment.date, format: :long) %>
+        </p>
+
+        <% if @appointment.start_time.present? %>
+          <p>
+            <i class="fas fa-clock me-2"></i>
+            <strong>Heure :</strong> <%= @appointment.start_time.strftime('%H:%M') %>
+          </p>
+        <% end %>
+
+        <% if @appointment.event_type.present? %>
+          <p>
+            <i class="fas fa-tag me-2"></i>
+            <strong>Type :</strong> <%= @appointment.event_type %>
+          </p>
+        <% end %>
+
+        <% if @appointment.address.present? %>
+          <p>
+            <i class="fas fa-map-marker-alt me-2"></i>
+            <strong>Adresse :</strong> <%= @appointment.address %>
+          </p>
+        <% end %>
+      </div>
+
+      <% if @appointment.content.present? %>
+        <div class="event-notes">
+          <h4><i class="fas fa-sticky-note me-2"></i>Notes</h4>
+          <div class="notes-content">
+            <%= simple_format(@appointment.content) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- footer buttons -->
+    <div class="event-modal-footer">
+      <%= link_to "Modifier", edit_appointment_path(@appointment),
+                  class: "btn btn-edit",
+                  data: { turbo_frame: "event_modal" } %>
+
+      <%= link_to "Supprimer", appointment_path(@appointment),
+                  method: :delete,
+                  data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Supprimer cet événement ?"
+                  },
+                  class: "btn btn-delete" %>
+
+      <button class="btn btn-close" data-action="click->close">
+        Fermer
+      </button>
+    </div>
+  </div>
+</div>

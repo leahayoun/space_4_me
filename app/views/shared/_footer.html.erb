@@ -4,15 +4,16 @@
   <footer class="mobile-footer">
     <div class="footer-nav">
 
-      <%= link_to appointments_path, class: "footer-nav-item" do %>
-        <i class="fas fa-calendar-alt"></i>
-        <span>Events</span>
-      <% end %>
-
       <%= link_to dashboard_path, class: "footer-nav-item" do %>
         <i class="fas fa-home"></i>
         <span>Dashboard</span>
       <% end %>
+
+      <%= link_to diaries_path, class: "footer-nav-item" do %>
+        <i class="fas fa-book"></i>
+        <span>Journal</span>
+      <% end %>
+
       <%# ============ FAB btn zone ============ %>
       <div class="footer-nav-item fab-placeholder"
            data-controller="fab"
@@ -28,9 +29,12 @@
         <span>Humeurs</span>
       <% end %>
 
-      <%= link_to diaries_path, class: "footer-nav-item" do %>
-        <i class="fas fa-book"></i>
-        <span>Journal</span>
+
+
+
+      <%= link_to tasks_path, class: "footer-nav-item" do %>
+        <i class="fas fa-tasks"></i>
+        <span>Mes Tâches</span>
       <% end %>
     </div>
   </footer>

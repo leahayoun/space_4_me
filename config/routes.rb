@@ -22,7 +22,11 @@ Rails.application.routes.draw do
     resources :hormonal_treatments, only: [:new, :create]
     resources :operations, only: [:new, :create]
 
-    resources :appointments
+    resources :appointments do
+      collection do
+        get 'day_details' # GET /appointments/jour_detail?date=2024-01-15
+      end
+    end
 
     resources :diaries
 
