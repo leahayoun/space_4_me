@@ -23,3 +23,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :birth_sex, :birth_sex_other, :gender, :gender_other, :date_of_birth])
   end
 end
+
+def default_url_options
+{ host: ENV[“DOMAIN”] || "localhost:3000" }
+end
