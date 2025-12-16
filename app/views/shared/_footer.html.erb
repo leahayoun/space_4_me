@@ -9,9 +9,9 @@
         <span>Dashboard</span>
       <% end %>
 
-      <%= link_to tasks_path, class: "footer-nav-item" do %>
-        <i class="fas fa-calendar-alt"></i>
-        <span>Tasks</span>
+      <%= link_to diaries_path, class: "footer-nav-item" do %>
+        <i class="fas fa-book"></i>
+        <span>Journal</span>
       <% end %>
 
       <%# ============ FAB btn zone ============ %>
@@ -29,9 +29,12 @@
         <span>Humeurs</span>
       <% end %>
 
-      <%= link_to diaries_path, class: "footer-nav-item" do %>
-        <i class="fas fa-book"></i>
-        <span>Journal</span>
+
+
+
+      <%= link_to tasks_path, class: "footer-nav-item" do %>
+        <i class="fas fa-tasks"></i>
+        <span>Tasks</span>
       <% end %>
     </div>
   </footer>

@@ -47,6 +47,11 @@
           <i class="fas fa-user"></i>
           <span>Mon profil</span>
         <% end %>
+        <%= link_to appointments_path, class: "dropdown-item" do %>
+          <i class="fas fa-calendar-alt"></i>
+          <span>Les Evènements</span>
+        <% end %>
+
 
         <%= link_to "#", class: "dropdown-item" do %>
           <i class="fas fa-cog"></i>
