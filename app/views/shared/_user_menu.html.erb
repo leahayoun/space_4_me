@@ -1,0 +1,27 @@
+<% if user_signed_in? %>
+  <%= link_to profile_path, class: "dropdown-item" do %>
+    <i class="fas fa-user"></i>
+    <span>Mon profil</span>
+  <% end %>
+  <%= link_to appointments_path, class: "dropdown-item" do %>
+    <i class="fas fa-calendar-alt"></i>
+    <span>Les Evènements</span>
+  <% end %>
+  <%= link_to "#", class: "dropdown-item" do %>
+    <i class="fas fa-cog"></i>
+    <span>Paramètres</span>
+  <% end %>
+  <%= link_to "#", class: "dropdown-item" do %>
+    <i class="fas fa-moon"></i>
+    <span>Mode sombre</span>
+  <% end %>
+<% else %>
+  <%= link_to new_user_session_path, class: "dropdown-item" do %>
+    <i class="fas fa-sign-in-alt"></i>
+    <span>Connexion</span>
+  <% end %>
+  <%= link_to new_user_registration_path, class: "dropdown-item" do %>
+    <i class="fas fa-user-plus"></i>
+    <span>Inscription</span>
+  <% end %>
+<% end %>
