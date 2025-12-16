@@ -34,6 +34,34 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  # Nouvelle méthode pour afficher les détails d'une journée
+ def day_details
+  # Gérer la date avec résilience
+  if params[:date].present?
+    begin
+      @date = Date.parse(params[:date])
+    rescue ArgumentError
+      @date = Date.today
+      flash[:alert] = "Date invalide. Affichage d'aujourd'hui."
+    end
+  else
+    @date = Date.today
+  end
+
+  # Récupérer les rendez-vous de la journée
+  @appointments = current_user.appointments
+                              .where(date: @date)
+                              .order(:start_time)
+
+  # Récupérer le feeling du jour s'il existe
+  @feeling = current_user.feelings
+                         .where("DATE(created_at) = ?", @date)
+                         .first
+
+  # Ne pas utiliser request.xhr? pour l'instant
+  # On va toujours rendre la page complète
+end
+
   # 3-new needs a form
   def new
     @appointment = Appointment.new
@@ -42,6 +70,20 @@ class AppointmentsController < ApplicationController
     # if params[:date].present?
     #   @appointment.date = Date.parse(params[:date])
     # end
+
+
+    if params[:date].present?
+      begin
+        @appointment.date = Date.parse(params[:date])
+      rescue ArgumentError
+        # si la date est invalide, utiliser aujourd'hui
+        @appointment.date = Date.today
+      end
+    else
+    # si pas de date, mettre aujourd'hui par défaut
+        @appointment.date = Date.today
+    end
+
   end
 
   # 4-create pas de view
@@ -85,7 +127,8 @@ class AppointmentsController < ApplicationController
   # 8- Strong params
 
   def appointment_params
-    params.require(:appointment).permit(:title, :content, :date, :event_type, :address)
+    params.require(:appointment).permit(:title, :content, :date,
+                                        :event_type, :address, :start_time)
   end
 
   def set_appointment

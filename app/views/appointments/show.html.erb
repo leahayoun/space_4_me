@@ -1,5 +1,6 @@
 <%# app/views/appointments/show.html.erb %>
 
+
 <div class="container py-4">
   <!-- nav -->
   <div class="d-flex align-items-center mb-4">
@@ -10,27 +11,8 @@
     <h1 class="h4 mb-0 flex-grow-1 text-truncate">
       <%= @appointment.title %>
     </h1>
+<%# dropdown menu removed %>
 
-    <div class="dropdown">
-      <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="dropdown">
-        <i class="fas fa-ellipsis-v"></i>
-      </button>
-      <ul class="dropdown-menu">
-        <li>
-          <%= link_to "Edit", edit_appointment_path(@appointment), class: "dropdown-item" %>
-        </li>
-        <li><hr class="dropdown-divider"></li>
-        <li>
-          <%= link_to "Delete", @appointment,
-              method: :delete,
-              data: {
-                turbo_method: :delete,
-                turbo_confirm: "Delete this appointment?"
-              },
-              class: "dropdown-item text-danger" %>
-        </li>
-      </ul>
-    </div>
   </div>
 
   <!-- card style du dashboard-section -->
@@ -61,7 +43,7 @@
         <div class="d-flex align-items-start mb-3">
           <i class="fas fa-map-marker-alt text-primary me-3 fs-5 mt-1"></i>
           <div>
-            <p class="text-muted small mb-1">Address</p>
+            <p class="text-muted small mb-1">Adresse</p>
             <p class="mb-0"><%= @appointment.address %></p>
           </div>
         </div>
@@ -87,7 +69,7 @@
     <div class="border-top pt-3 mt-3">
       <div class="text-muted small">
         <i class="fas fa-clock me-1"></i>
-        Created <%= time_ago_in_words(@appointment.created_at) %> ago
+        Crée <%= time_ago_in_words(@appointment.created_at) %>
       </div>
     </div>
   </div>
@@ -97,23 +79,24 @@
     <%= link_to edit_appointment_path(@appointment),
                 class: "btn btn-primary flex-grow-1" do %>
       <i class="fas fa-edit me-2"></i>
-      Edit
+      Modifier
     <% end %>
 
     <%= link_to appointments_path,
                 class: "btn btn-outline-secondary flex-grow-1" do %>
       <i class="fas fa-list me-2"></i>
-      All Appointments
+      Les Evènements
     <% end %>
 
     <%= link_to @appointment,
                 method: :delete,
                 data: {
                   turbo_method: :delete,
-                  turbo_confirm: "Are you sure you want to delete this event?"
+                  turbo_confirm: "Êtes-vous sûr de vouloir supprimer cet événement ?"
                 },
                 class: "btn btn-outline flex-grow-1" do %>
       <i class="fas fa-trash me-2"></i>
+      Supprimer
     <% end %>
   </div>
 </div>

@@ -1,13 +1,34 @@
-<%# app/views/appointments/index.html.erb %>
 <%= render "shared/app_header" %>
 
 <div class="mobile-dashboard">
+  <!-- 1. title and view switcher -->
+  <section class="dashboard-section calendar-section">
+    <div class="section-header">
+      <h2>Calendrier</h2>
 
+      <div class="view-switcher">
+        <%= link_to "Mois",
+                    dashboard_path(view: 'month', date: @current_date || Date.today),
+                    class: "view-btn #{'active' if @view_type == 'month'}" %>
 
-  <%= render "calendar_section" %>
+        <%= link_to "Semaine",
+                    dashboard_path(view: 'week', date: @current_date || Date.today),
+                    class: "view-btn #{'active' if @view_type == 'week'}" %>
+      </div>
+    </div>
 
+    <!-- 2. date navigation -->
+    <%= render "calendar_navigation" %>
+  </section>
+
+  <!-- 3. calendar body (will automatically show month/week view based on @view_type) -->
+<section class="dashboard-section">
+  <%= render "simple_calendar",
+             appointments: @appointments,
+             view_type: @view_type,
+             current_date: @current_date || Date.today %>
+</section>
+
+  <!-- 4. reminders -->
   <%= render "reminders_section", appointments: @appointments %>
-
-
-
 </div>

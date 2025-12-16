@@ -32,7 +32,11 @@
 
           <div class="reminder-time">
             <i class="fas fa-clock"></i>
-            <span>10:00</span>
+            <% if appointment.start_time.present? %>
+              <span><%= appointment.start_time.strftime('%H:%M') %></span>
+            <% else %>
+              <span>Journée</span>
+            <% end %>
           </div>
         <% end %>
       <% end %>

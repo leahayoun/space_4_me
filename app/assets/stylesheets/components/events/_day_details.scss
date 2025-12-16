@@ -1,0 +1,254 @@
+// Ajouter ces règles de substitution au début de _day_details.scss
+@import "components/diaries/variables";
+
+/* ==================== SURCHARGES BOOTSTRAP ==================== */
+/* Forcer le remplacement des styles Bootstrap par défaut */
+
+body .day-details-container {
+  /* Remplacer tous les styles de conteneur Bootstrap */
+  .card.bg-light,
+  .card:has(.bg-light) {
+    background-color: $cream-dark !important;
+    border-color: rgba($sage, 0.4) !important;
+  }
+
+  // .fas.fa-calendar-day {
+  //   color: $olive !important;
+  // }
+
+  /* Remplacement global des cartes */
+  .card {
+    background-color: $warm-white !important;
+    border: 1px solid rgba($sage, 0.3) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 8px 40px rgba($sage, 0.12) !important;
+  }
+
+  /* Remplacement de l'en-tête de carte */
+  .card-header.bg-light {
+    background: linear-gradient(135deg, $cream-dark 0%, darken($cream-dark, 5%) 100%) !important;
+    border-bottom: 1px solid rgba($sage, 0.4) !important;
+    color: $olive !important;
+
+    h5, .h5 {
+      color: $olive !important;
+    }
+  }
+
+  /* Remplacement des éléments de liste */
+  .list-group-item {
+    background-color: $warm-white !important;
+    border-color: rgba($sage-light, 0.4) !important;
+    color: $text !important;
+
+    &:hover {
+      background-color: lighten($cream, 2%) !important;
+    }
+  }
+
+  /* Remplacement des boutons - Boutons principaux */
+  .btn-primary {
+    background: linear-gradient(135deg, $sage 0%, $sage-dark 100%) !important;
+    border-color: transparent !important;
+    color: $warm-white !important;
+
+    &:hover {
+      background: linear-gradient(135deg, darken($sage, 5%) 0%, darken($sage-dark, 5%) 100%) !important;
+    }
+  }
+
+  /* Remplacement des boutons - Boutons secondaires */
+  .btn-outline-secondary {
+    border-color: rgba($sage, 0.5) !important;
+    color: $text-light !important;
+
+    &:hover {
+      background-color: $sage !important;
+      border-color: $sage !important;
+      color: $warm-white !important;
+    }
+  }
+
+  /* Remplacement des boutons - outline primary */
+  .btn-outline-primary {
+    border-color: $sage !important;
+    color: $olive !important;
+
+    &:hover {
+      background-color: $sage !important;
+      color: $warm-white !important;
+    }
+  }
+
+  /* Remplacement des badges */
+  .badge.bg-primary {
+    background: linear-gradient(135deg, $sage 0%, $sage-dark 100%) !important;
+    border: none !important;
+  }
+
+  .badge.bg-secondary {
+    background-color: $sage-light !important;
+    color: $text !important;
+  }
+
+  /* Remplacement des couleurs de texte */
+  .text-muted {
+    color: $text-light !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $olive !important;
+  }
+}
+
+/* ==================== STYLES SPÉCIFIQUES POUR LES DÉTAILS DU JOUR ==================== */
+/* Ces styles s'appliquent après les surcharges Bootstrap */
+
+.day-details-container {
+  /* Conserver vos styles précédents, mais augmenter la spécificité */
+  padding: 50px 40px !important;
+  background: $cream !important;
+  max-width: 1000px !important;
+  margin: 0 auto !important;
+
+  @media (max-width: 767px) {
+    padding: 30px 20px !important;
+  }
+
+  /* Styles spécifiques des cartes */
+  > .card {
+    margin-bottom: 30px !important;
+    overflow: hidden !important;
+
+    .card-header {
+      padding: 1.5rem 1.75rem !important;
+
+      h5 {
+        font-weight: 700 !important;
+        display: flex !important;
+        align-items: center !important;
+
+        .badge {
+          margin-left: 10px !important;
+          font-size: 0.875rem !important;
+          padding: 0.25rem 0.75rem !important;
+        }
+      }
+    }
+
+    .list-group-item {
+      padding: 25px 30px !important;
+
+      @media (max-width: 767px) {
+        padding: 20px !important;
+      }
+
+      h6 {
+        font-size: 1.35rem !important;
+        margin-bottom: 15px !important;
+
+        .badge {
+          font-size: 0.75rem !important;
+          padding: 0.25rem 0.75rem !important;
+          border-radius: 4px !important;
+        }
+      }
+    }
+
+    .btn-group {
+      .btn {
+        padding: 10px 20px !important;
+        border-radius: 20px !important;
+        font-weight: 600 !important;
+
+        @media (max-width: 767px) {
+          padding: 8px 16px !important;
+        }
+      }
+    }
+  }
+}
+
+/* ==================== CLASSES UTILITAIRES ==================== */
+/* Ajouter des classes utilitaires pour forcer l'application de nos styles */
+
+.s4m-card {
+  background: $warm-white !important;
+  border: 1px solid rgba($sage, 0.3) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 8px 40px rgba($sage, 0.12) !important;
+}
+
+.s4m-card-header {
+  background: $cream-dark !important;
+  border-bottom: 1px solid rgba($sage, 0.4) !important;
+  color: $olive !important;
+}
+
+.s4m-btn-primary {
+  background: linear-gradient(135deg, $sage 0%, $sage-dark 100%) !important;
+  border: none !important;
+  color: $warm-white !important;
+  padding: 14px 32px !important;
+  border-radius: 30px !important;
+  font-weight: 700 !important;
+  box-shadow: 0 6px 20px rgba($sage, 0.3) !important;
+  transition: all 0.3s ease !important;
+
+  &:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 30px rgba($sage, 0.4) !important;
+  }
+}
+
+.s4m-btn-outline {
+  border: 2px solid $sage !important;
+  color: $olive !important;
+  background: transparent !important;
+  padding: 12px 28px !important;
+  border-radius: 25px !important;
+  font-weight: 666 !important;
+  transition: all 0.3s ease !important;
+
+  &:hover {
+    background: $sage !important;
+    color: $warm-white !important;
+  }
+}
+
+/* ==================== OPTION NUCLÉAIRE ==================== */
+/* Si rien ne fonctionne, utiliser cette solution ultime */
+
+body[data-controller="appointments"][data-action="day_details"],
+body.day-details-page {
+  /* Réinitialiser tous les styles Bootstrap */
+  .day-details-container {
+    * {
+      box-sizing: border-box !important;
+    }
+
+    /* Remplacer complètement les cartes */
+    .card,
+    div[class*="card"] {
+      all: unset !important;
+      display: block !important;
+      background: $warm-white !important;
+      border: 1px solid rgba($sage, 0.3) !important;
+      border-radius: 24px !important;
+      box-shadow: 0 8px 40px rgba($sage, 0.12) !important;
+      margin-bottom: 30px !important;
+      overflow: hidden !important;
+    }
+
+    /* Remplacer complètement les listes */
+    .list-group,
+    .list-group-item,
+    div[class*="list-group"] {
+      all: unset !important;
+      display: block !important;
+      background: $warm-white !important;
+      border-bottom: 1px solid rgba($sage-light, 0.4) !important;
+      padding: 25px 30px !important;
+    }
+  }
+}

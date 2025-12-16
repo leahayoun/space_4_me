@@ -30,6 +30,11 @@ module Space4Me
     #
     # config.time_zone = "Central Time (US & Canada)"
     config.i18n.default_locale = :fr
+
+    config.i18n.available_locales = [:fr, :en]
+
+    # load translation files from nested folders in config/locales
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
