@@ -264,14 +264,14 @@ puts "😊 Création des humeurs de base..."
 moods_data = [
   { name: "Heureux", icon: "😊" },
   { name: "Triste", icon: "😢" },
-  { name: "Stressé", icon: "😰" },
+  { name: "Stressé·e", icon: "😰" },
   { name: "Énergique", icon: "💪" },
-  { name: "Fatigué", icon: "😴" },
+  { name: "Fatigué·e", icon: "😴" },
   { name: "Anxieux", icon: "😥" },
   { name: "Calme", icon: "😌" },
-  { name: "Excité", icon: "🤩" },
+  { name: "Excité·e", icon: "🤩" },
   { name: "Optimiste", icon: "🌈" },
-  { name: "Déprimé", icon: "☁️" }
+  { name: "Déprimé·e", icon: "☁️" }
 ]
 
 moods_data.each do |mood_data|
@@ -305,18 +305,23 @@ puts "💭 Création des états émotionnels..."
 
 # Créer quelques feelings pour l'utilisateur
 feelings_data = [
-  { user: user, created_at: Date.today },
-  { user: user, created_at: Date.yesterday },
-  { user: user, created_at: Date.today - 2.days },
-  { user: user, created_at: Date.today - 3.days },
-  { user: user, created_at: Date.today - 4.days },
-  { user: user, created_at: Date.today - 5.days }
+  { user: user, date: Date.today },
+  { user: user, date: Date.yesterday },
+  { user: user, date: Date.today - 2.days },
+  { user: user, date: Date.today - 3.days },
+  { user: user, date: Date.today - 4.days },
+  { user: user, date: Date.today - 5.days }
 ]
 
-feelings = []
-feelings_data.each do |feeling_data|
-  feelings << Feeling.create!(feeling_data)
+feelings = feelings_data.map do |data|
+  feeling = Feeling.create!(data)
+  feeling.update_columns(
+    created_at: data[:date],
+    updated_at: data[:date]
+  )
+  feeling
 end
+
 
 puts "✅ #{Feeling.count} états émotionnels créés"
 
@@ -326,8 +331,8 @@ puts "🔗 Association des humeurs aux états émotionnels..."
 if feelings.any? && Mood.any?
   UserMood.create!([
     { feeling: feelings[0], mood: Mood.find_by(name: "Calme") },
-    { feeling: feelings[0], mood: Mood.find_by(name: "Fatigué") },
-    { feeling: feelings[1], mood: Mood.find_by(name: "Stressé") },
+    { feeling: feelings[0], mood: Mood.find_by(name: "Fatigué·e") },
+    { feeling: feelings[1], mood: Mood.find_by(name: "Stressé·e") },
     { feeling: feelings[2], mood: Mood.find_by(name: "Heureux") },
     { feeling: feelings[2], mood: Mood.find_by(name: "Optimiste") },
     { feeling: feelings[3], mood: Mood.find_by(name: "Optimiste") }
