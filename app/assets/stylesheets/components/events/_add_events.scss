@@ -385,3 +385,202 @@
     }
   }
 }
+
+// ==================== APPOINTMENT FILTERS ====================
+
+.appointments-filters {
+  margin-bottom: 2rem;
+  padding: 0 0.5rem;
+}
+
+// ===== 标签页样式 =====
+.appointments-filter-tabs {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-bottom: 2px solid $sage-light;
+  gap: 0.5rem;
+  overflow-x: auto; // 允许在 mobile 上水平滚动
+  scrollbar-width: none; // 隐藏滚动条
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.filter-tab-item {
+  flex-shrink: 0; // 防止标签在 mobile 上被压缩
+}
+
+.filter-tab-link {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  color: $text-light;
+  border: 2px solid transparent;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  background: transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  font-size: 0.95rem;
+  white-space: nowrap;
+
+  &:hover {
+    color: $olive;
+    background: rgba($sage-light, 0.2);
+    transform: translateY(-1px);
+  }
+
+  &.active {
+    color: $terracotta;
+    background: $warm-white;
+    border-color: $sage-light $sage-light transparent $sage-light;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+
+    // 添加一个下划线效果，覆盖底部边框
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(135deg, $terracotta 0%, $terracotta-light 100%);
+      border-radius: 2px;
+    }
+  }
+}
+
+// ===== 按钮组样式（替代方案） =====
+.appointments-filter-buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filter-btn {
+  flex: 1;
+  min-width: 100px;
+  padding: 0.75rem 1.25rem;
+  border: 2px solid $sage-light;
+  border-radius: 8px;
+  background: $warm-white;
+  color: $text;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  white-space: nowrap;
+
+  &:hover {
+    background: rgba($sage-light, 0.2);
+    color: $olive;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  &.active {
+    background: linear-gradient(135deg, $terracotta 0%, $terracotta-light 100%);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 2px 8px rgba($terracotta, 0.3);
+
+    &:hover {
+      background: linear-gradient(135deg, darken($terracotta, 5%) 0%, darken($terracotta-light, 5%) 100%);
+    }
+  }
+}
+
+// ==================== RESPONSIVE MOBILE ====================
+
+@media (max-width: 768px) {
+  .appointments-filters {
+    margin-bottom: 1.5rem;
+    padding: 0;
+  }
+
+  // mobile label tabs
+  .appointments-filter-tabs {
+    justify-content: space-between; // on mobile, space between
+    gap: 0.25rem;
+
+    .filter-tab-item {
+      flex: 1; // even distribution
+      text-align: center;
+    }
+
+    .filter-tab-link {
+      padding: 0.75rem 0.5rem; // less padding
+      font-size: 0.9rem;
+      border-radius: 6px 6px 0 0;
+      min-height: 44px; // target touch size
+      align-items: center;
+      justify-content: center;
+
+      &.active {
+        border-width: 1px;
+
+        &::after {
+          height: 2px;
+          bottom: -1px;
+        }
+      }
+    }
+  }
+
+  // btn group
+  .appointments-filter-buttons {
+    .filter-btn {
+      flex: 1 0 calc(33.333% - 0.5rem); // 3 btn
+      min-width: auto;
+      padding: 0.75rem 0.5rem;
+      font-size: 0.9rem;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+// petit écran responsive
+@media (max-width: 480px) {
+  .appointments-filter-tabs {
+    .filter-tab-link {
+      font-size: 0.85rem;
+      padding: 0.65rem 0.25rem;
+    }
+  }
+
+  .appointments-filter-buttons {
+    gap: 0.5rem;
+
+    .filter-btn {
+      flex: 1 0 calc(50% - 0.25rem);
+      font-size: 0.85rem;
+      padding: 0.65rem 0.25rem;
+    }
+  }
+}
+
+// xs écran
+@media (max-width: 375px) {
+  .appointments-filter-tabs {
+    .filter-tab-link {
+      font-size: 0.8rem;
+    }
+  }
+
+  .appointments-filter-buttons {
+    .filter-btn {
+      font-size: 0.8rem;
+    }
+  }
+}
