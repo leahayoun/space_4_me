@@ -7,6 +7,9 @@
 @import "bootstrap";
 @import "font-awesome";
 
+// Pages
+@import "pages/auth";
+
 // Action Text Overview
 // @import "actiontext"; = commenté car a tout fait sauter 🤷🏻‍♀️
 @import "trix";
@@ -122,7 +125,6 @@ body {
   }
 }
 
-
 /* Style général des select dropdowns pour onboarding */
 .onboarding-form select,
 .onboarding-form .select-style {
@@ -166,10 +168,6 @@ body {
   background-position: right 12px center;
   background-size: 14px;
 }
-
-
-
-
 
 .diary-page-container {
   &:not(.container) {
