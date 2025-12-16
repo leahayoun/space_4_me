@@ -28,7 +28,8 @@
         </h3>
 
         <p class="diary-page-card__excerpt">
-          <%= truncate(diary.content.to_plain_text, length: 100) %>
+          <% cleaned = diary.content.to_plain_text.gsub(/\[[^\]]+\]/, "") %>
+          <%= truncate(cleaned.squish, length: 100) %>
         </p>
 
         <div class="diary-page-card__footer">
@@ -41,3 +42,10 @@
     <% end %>
   </div>
 </div>
+
+
+
+<%# modif après la ligne 30, avant code : <%= truncate(diary.content.to_plain_text, length: 100)%>
+<%# avant : affichage du nom de la photo dans la preview du journal car diary.content.to_plain_text = [photo]
+après : grâce à regex, remplace ce qu'il y a entre [] par du vide
+truncate length: 100 = coupe le texte pour la preview à max 100 caractères %>

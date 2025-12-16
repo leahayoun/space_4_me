@@ -93,15 +93,19 @@
   word-wrap: break-word;
 }
 
+// Note pour Orion : j'ai (Léa) rajouté la ligne 97 pour que ça ne change pas tous les inputs de l'app
+// Je l'ai pris de ton feelings/new.html.erb
+.feelings-section {
 /* Input texte pour "Autre·s" */
-input[type="text"] {
-  margin-top: 0.3rem;
-  width: 100%;
-  font-size: 0.8rem;
-  border-radius: 8px;
-  padding: 4px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
+  input[type="text"] {
+    margin-top: 0.3rem;
+    width: 100%;
+    font-size: 0.8rem;
+    border-radius: 8px;
+    padding: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
 }
 
 /* Bouton d'enregistrement */
