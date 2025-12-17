@@ -219,3 +219,25 @@
     margin: 0;
   }
 }
+
+
+.diary-empty-message {
+  background: $warm-white;
+  border-radius: 20px;
+  padding: 50px 40px;
+  text-align: text-align-left;
+  box-shadow: 0 4px 25px rgba($sage, 0.1);
+  border: 1px rgba($sage-light, 0.5);
+
+  @media (max-width: 767px) {
+    padding: 35px 25px;
+  }
+
+  &__text {
+    font-size: 1.1rem;
+    color: $text-muted;
+    line-height: 1.7;
+    font-style: italic;
+    margin: 0;
+  }
+}
