@@ -188,3 +188,16 @@
     }
   }
 }
+
+// Problème sur la toolbar action text overview, on devait scroller horizontalement
+// Résolution :
+@media (max-width: 640px) {
+  trix-toolbar .trix-button-row {
+    flex-wrap: wrap;        // retour à la ligne
+    row-gap: 6px;
+  }
+
+  trix-toolbar .trix-button-group {
+    // margin: 0 6px 0 0;      // mets des espaces pour toolbar
+  }
+}
