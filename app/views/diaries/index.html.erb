@@ -16,6 +16,15 @@
     <h2 class="diary-section-header__title">Tes entrées récentes</h2>
   </div>
 
+    <% if @diaries.any? %>
+      <% @diaries.each do |diary| %>
+      <% end %>
+    <% else %>
+      <p class="diary-empty-message">
+        Il n'y a pas encore d'entrée.
+      </p>
+    <% end %>
+
   <div class="diary-page-grid">
     <% @diaries.each do |diary| %>
       <div class="diary-page-card">
