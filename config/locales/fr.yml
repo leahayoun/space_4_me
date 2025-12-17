@@ -1,6 +1,13 @@
 # config/locales/fr.yml
 
 fr:
+  # ==================== errors (fallback) ====================
+  errors:
+    messages:
+      blank: "ne peut pas être vide"
+      taken: "est déjà utilisé(e)"
+      invalid: "n'est pas valide"
+
   # ==================== date and time ====================
   date:
     formats:
