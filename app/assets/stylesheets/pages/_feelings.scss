@@ -73,7 +73,6 @@
 }
 
 
-
 /* Case sélectionnée */
 .feeling-item.selected,
 .symptom-item.selected {
@@ -125,9 +124,9 @@
 /* Dysphorie */
 #feeling_dysphoria {
   width: 100%;
-  max-width: 600px;
+  max-width: 390px;
   height: 150px;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
   display: block;
   padding: 10px;
   border-radius: 12px;

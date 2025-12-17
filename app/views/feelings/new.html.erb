@@ -9,10 +9,9 @@
     <h2>Humeurs</h2>
     <div class="feelings-grid">
       <% Mood.all.each do |mood| %>
-        <% existing = @feeling&.moods&.include?(mood) || false %>
-        <% disabled = @feeling&.created_at && @feeling.created_at < 48.hours.ago %>
+        <% existing = @feeling&.moods&.include?(mood) %>
         <label class="feeling-item <%= 'selected' if existing %>">
-          <%= check_box_tag "feeling[mood_ids][]", mood.id, existing, disabled: disabled, class: "hidden-checkbox" %>
+          <%= f.check_box :mood_ids, { multiple: true, class: 'display:none' }, mood.id, nil %>
           <span class="emoji"><%= mood.icon %></span>
           <span class="label"><%= mood.name %></span>
         </label>
@@ -22,7 +21,7 @@
       <label class="feeling-item">
         <span class="emoji">✍️</span>
         <span class="label">Autre·s</span>
-      <%= f.text_field :custom_mood, maxlength: 100, placeholder: "Écris ici ton humeur (max 100 caractères)" %>
+        <%= f.text_field :custom_mood, maxlength: 100, placeholder: "Écris ici ton humeur (max 100 caractères)" %>
       </label>
     </div>
   </div>
@@ -32,21 +31,17 @@
     <h2>Symptômes</h2>
     <div class="feelings-grid">
       <% Symptom.all.each do |symptom| %>
-        <% existing = @feeling&.symptoms&.include?(symptom) || false %>
-        <% disabled = @feeling&.created_at && @feeling.created_at < 48.hours.ago %>
-
+        <% existing = @feeling&.symptoms&.include?(symptom) %>
         <label class="feeling-item <%= 'selected' if existing %>">
-          <span class="emoji">⚕️</span>
+          <%= f.check_box :symptom_ids, { multiple: true, class: 'display:none' }, symptom.id, nil %>
           <span class="label"><%= symptom.name %></span>
-          <%= check_box_tag "feeling[symptom_ids][]", symptom.id, existing, disabled: disabled, class: "hidden-checkbox" %>
         </label>
       <% end %>
 
       <!-- Case pour "Autre symptôme" -->
       <label class="feeling-item">
-        <span class="emoji">✍️</span>
         <span class="label">Autre·s</span>
-        <%= f.text_field :custom_symptom, maxlength: 100, placeholder: "Écris ici ton humeur (max 100 caractères)" %>
+        <%= f.text_field :custom_symptom, maxlength: 100, placeholder: "Écris ici ton symptôme (max 100 caractères)" %>
       </label>
     </div>
   </div>
@@ -55,10 +50,29 @@
   <div class="feelings-section">
     <h2>Dysphorie</h2>
     <%= f.text_area :dysphoria, id: "feeling_dysphoria", maxlength: 5000, placeholder: "Décris ton ressenti..." %>
-    <div id="dysphoria_counter">5000 caractères restants</div>
   </div>
 
   <div class="actions">
     <%= f.submit "Enregistrer", class: "btn-primary" %>
   </div>
 <% end %>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  // Pour toutes les cases à cocher humeurs et symptômes
+    document.querySelectorAll('.feeling-item input[type="checkbox"]').forEach((checkbox) => {
+      // Mettre la classe selected initialement selon l'état checked
+      const label = checkbox.closest('.feeling-item');
+      if (checkbox.checked) label.classList.add('selected');
+
+      // Ajouter l'événement change pour mettre à jour la classe
+      checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+          label.classList.add('selected');
+        } else {
+          label.classList.remove('selected');
+        }
+      });
+    });
+  });
+</script>
