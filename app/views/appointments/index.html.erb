@@ -19,6 +19,25 @@
     <% end %>
   </div>
 
+<%# events filters %>
+  <div class="appointments-filters mb-4">
+    <ul class="appointments-filter-tabs">
+      <li class="filter-tab-item">
+        <%= link_to "À venir", appointments_path(filter: 'upcoming'),
+                    class: "filter-tab-link #{'active' if @filter == 'upcoming'}" %>
+      </li>
+      <li class="filter-tab-item">
+        <%= link_to "Passés", appointments_path(filter: 'past'),
+                    class: "filter-tab-link #{'active' if @filter == 'past'}" %>
+      </li>
+      <li class="filter-tab-item">
+        <%= link_to "Tous", appointments_path(filter: 'all'),
+                    class: "filter-tab-link #{'active' if @filter == 'all'}" %>
+      </li>
+    </ul>
+  </div>
+
+
   <% if @appointments.any? %>
     <div class="row">
       <% @appointments.each do |appointment| %>

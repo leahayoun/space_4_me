@@ -26,6 +26,22 @@ class AppointmentsController < ApplicationController
     @appointments = current_user.appointments.order(date: :asc)
   end
 
+  def index
+    # 1. obtenir le filtre depuis les paramètres (par défaut 'upcoming')
+    @filter = params[:filter] || 'upcoming'
+
+    # 2. avec le filtre, récupérer les rendez-vous appropriés
+    @appointments = current_user.appointments.order(date: :asc)
+
+    case @filter
+    when 'past'
+      @appointments = @appointments.where("date < ?", Date.today)
+    when 'all'
+    else # 'upcoming'
+      @appointments = @appointments.where("date >= ?", Date.today)
+    end
+  end
+
   # 2-show action
   def show
     @appointment = Appointment.find(params[:id])

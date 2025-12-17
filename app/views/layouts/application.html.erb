@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= favicon_link_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
@@ -13,7 +14,7 @@
   <body>
     <%= link_to "Skip to main content", "#main-content", class: "visually-hidden-focusable" %>
 
-    <%= render "shared/navbar" %>
+    <%= render "shared/app_header" %>
 
 
     <main id="main-content">
