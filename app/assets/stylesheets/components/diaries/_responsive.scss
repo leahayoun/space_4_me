@@ -1,173 +1,190 @@
-// ==================== DIARIES RESPONSIVE UNIFIED ====================
-// Toutes les règles responsive pour les pages diaries
+.diaries-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 50px 40px;
+}
 
-// MOBILE FIRST (< 767px) - Toutes les pages
-@media (max-width: 767px) {
-  // === CONTAINER COMMUN ===
-  .diaries-container {
-    padding: 20px 15px;
+.back-button {
+  width: fit-content; // ou alors on met auto ?
+  justify-content: center;
+  padding: 14px 20px;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+}
+
+.welcome {
+  padding: 30px 28px;
+  margin-bottom: 35px;
+}
+
+.btn-new-entry {
+  display: block;
+  width: fit-content;
+  padding: 16px 34px;
+  font-size: 1.05rem;
+  border-radius: 24px;
+  margin: 0 auto 30px auto;
+  text-align: center;
+}
+
+.diary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.diary-card {
+  padding: 22px;
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    .diary-card__action {
+      width: fit-content;
+      text-align: center;
+    }
+  }
+}
+
+.diary-show {
+  padding: 35px 40px;
+  border-radius: 20px;
+
+  &__title {
+    font-size: 1.8rem;
+    line-height: 1.35;
   }
 
-  // === BOUTON RETOUR (commun à show/edit) ===
+  &__content {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+
+    .btn-action {
+      width: fit-content;
+      justify-content: center;
+      padding: 14px 22px;
+    }
+  }
+}
+
+.diary-form {
+  padding: 35px 40px;
+  border-radius: 20px;
+
+  &__title {
+    font-size: 1.6rem;
+  }
+}
+
+.form-group {
+  &__input {
+    padding: 14px 18px;
+    font-size: 1rem;
+  }
+
+  &__textarea {
+    trix-editor {
+      min-height: 220px;
+      padding: 16px;
+      font-size: 1rem;
+    }
+  }
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+
+  .btn-submit {
+    width: fit-content;
+    padding: 16px 34px;
+  }
+}
+
+@media (max-width: 992px) {
+  .diaries-container {
+    padding: 40px 28px;
+  }
+
+  .diary-show,
+  .diary-form {
+    padding: 28px 24px;
+  }
+
+  .diary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .diaries-container {
+    padding: 30px 18px;
+  }
+
   .back-button {
     width: 100%;
-    justify-content: center;
-    padding: 14px 20px;
-    margin-bottom: 25px;
-    font-size: 0.95rem;
-  }
-
-  // === PAGE INDEX ===
-  .welcome {
-    padding: 25px 20px;
-    margin-bottom: 30px;
   }
 
   .btn-new-entry {
     width: 100%;
-    padding: 16px 24px;
-    font-size: 1.1rem;
-    border-radius: 20px;
-    margin: 0 auto 25px auto;
-    text-align: center;
   }
 
   .diary-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
   }
 
   .diary-card {
-    padding: 20px;
-
     &__footer {
       flex-direction: column;
-      gap: 12px;
 
       .diary-card__action {
         width: 100%;
-        text-align: center;
       }
     }
   }
 
-  // === PAGE SHOW ===
   .diary-show {
-    padding: 30px 20px;
-    border-radius: 18px;
+    padding: 25px 18px;
 
     &__title {
-      font-size: 1.6rem;
-      line-height: 1.4;
+      font-size: 1.5rem;
     }
 
     &__content {
-      font-size: 1rem;
-      line-height: 1.8;
+      font-size: 0.95rem;
     }
 
     &__actions {
       flex-direction: column;
-      gap: 12px;
 
       .btn-action {
         width: 100%;
-        justify-content: center;
         padding: 16px 24px;
       }
     }
   }
 
-  // === FORMULAIRE (new/edit) ===
   .diary-form {
-    padding: 30px 20px;
-    border-radius: 18px;
-
-    &__title {
-      font-size: 1.5rem;
-    }
-  }
-
-  .form-group {
-    &__input {
-      padding: 16px 18px;
-      font-size: 1.1rem;
-    }
-
-    &__textarea {
-      trix-editor {
-        min-height: 200px;
-        padding: 16px;
-        font-size: 1rem;
-      }
-    }
+    padding: 25px 18px;
   }
 
   .form-actions {
     flex-direction: column;
-    gap: 12px;
 
     .btn-submit {
       width: 100%;
       padding: 18px 24px;
-    }
-  }
-}
-
-// iPhone Pro Max spécifique (428px)
-@media (max-width: 428px) {
-  .diary-show {
-    padding: 25px 18px;
-
-    &__title {
-      font-size: 1.5rem;
-    }
-
-    &__content {
-      font-size: 0.95rem;
-    }
-  }
-
-  .diary-form {
-    padding: 25px 18px;
-  }
-}
-
-// Petits écrans (iPhone mini, etc.)
-@media (max-width: 375px) {
-  .diaries-container {
-    padding: 15px 12px;
-  }
-
-  .diary-show {
-    padding: 22px 15px;
-
-    &__title {
-      font-size: 1.4rem;
-    }
-
-    &__content {
-      font-size: 0.9rem;
-    }
-  }
-
-  .welcome {
-    padding: 20px 15px;
-
-    &__title {
-      font-size: 1.3rem;
-    }
-
-    &__text {
-      font-size: 0.95rem;
-    }
-  }
-
-  .diary-card {
-    padding: 18px;
-
-    &__title {
-      font-size: 1.2rem;
     }
   }
 }
