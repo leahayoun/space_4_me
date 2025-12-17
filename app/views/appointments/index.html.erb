@@ -69,16 +69,13 @@
             </div>
 
             <div class="card-footer">
-              <div class="d-flex justify-content-between">
+              <div class="appointment-card-actions">
                 <%= link_to "Voir", appointment_path(appointment), class: "btn btn-outline-primary btn-sm" %>
-
-                <div class="btn-group">
-                  <%= link_to "Modifier", edit_appointment_path(appointment), class: "btn btn-outline-secondary btn-sm" %>
-                  <%= link_to "Supprimer", appointment_path(appointment),
-                        method: :delete,
-                        data: { confirm: "Êtes-vous sûr ?" },
-                        class: "btn btn-outline-secondary btn-sm" %>
-                </div>
+                <%= link_to "Modifier", edit_appointment_path(appointment), class: "btn btn-outline-secondary btn-sm" %>
+                <%= link_to "Supprimer", appointment_path(appointment),
+                      method: :delete,
+                      data: { confirm: "Êtes-vous sûr ?" },
+                      class: "btn btn-outline-danger btn-sm" %>
               </div>
             </div>
           </div>
@@ -88,9 +85,9 @@
   <% else %>
     <div class="text-center py-5">
       <i class="fas fa-calendar-plus fa-3x text-muted mb-3"></i>
-      <h3>Aucun rendez-vous</h3>
-      <p class="text-muted">Ajoutez votre premier rendez-vous</p>
-      <%= link_to "+ Nouveau rendez-vous", new_appointment_path, class: "btn btn-primary mt-3" %>
+      <h3>Aucun événement</h3>
+      <p class="text-muted">Ajoutez votre premier événement</p>
+      <%= link_to "+ Nouvel événement", new_appointment_path, class: "btn btn-primary mt-3" %>
     </div>
   <% end %>
 </div>

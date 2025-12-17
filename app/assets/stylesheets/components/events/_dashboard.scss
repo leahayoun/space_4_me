@@ -2,8 +2,8 @@
 
 // Styles communs pour la page dashboard
 .mobile-dashboard {
+  padding: 50px 40px;
   padding-bottom: 80px;
-  padding-top: 60px;
   min-height: 100vh;
   background: $cream-dark;
 }
@@ -94,27 +94,29 @@
   }
 }
 
-// Cartes d'événements
+// Cartes d'événements (style similaire aux diaries)
 .appointment-list-card {
-  border: 2px solid $sage-light;
-  border-radius: 12px;
+  border: 1px solid rgba($sage-light, 0.3);
+  border-radius: 18px;
   background: $warm-white;
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba($sage, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    transform: translateY(-4px);
-    border-color: $terracotta-light;
-    box-shadow: 0 6px 16px rgba($terracotta, 0.15);
+    transform: translateY(-6px);
+    border-color: $sage;
+    box-shadow: 0 15px 40px rgba($sage, 0.18);
   }
 
   .card-body {
-    padding: 1.5rem;
+    padding: 30px;
   }
 
   .card-title {
     color: $olive-dark;
-    font-weight: 600;
-    font-size: 1.1rem;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
   }
 
   // Badge de type d'événement
@@ -125,6 +127,7 @@
     font-weight: 500;
     padding: 0.35rem 0.75rem;
     border-radius: 20px;
+    font-size: 0.8rem;
   }
 
   // Icônes et texte
@@ -139,58 +142,66 @@
   .card-text {
     color: $text;
     font-size: 0.95rem;
-    line-height: 1.5;
+    line-height: 1.75;
     margin-top: 1rem;
     padding-top: 1rem;
-    border-top: 1px solid $sage-light;
+    border-top: 1px solid rgba($sage-light, 0.4);
   }
 
   // Pied de carte
   .card-footer {
-    background: $cream !important;
-    border-top: 1px solid $sage-light;
-    padding: 1rem 1.5rem;
+    background: rgba($sage-light, 0.1) !important;
+    border-top: 1px solid rgba($sage-light, 0.4);
+    padding: 1.25rem 30px;
 
-    .btn {
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-weight: 500;
-      font-size: 0.9rem;
-      transition: all 0.3s;
+    .appointment-card-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
 
-      &:hover {
-        transform: translateY(-2px);
+      .btn {
+        padding: 0.6rem 1.25rem;
+        border-radius: 25px !important;
+        font-weight: 600;
+        font-size: 0.85rem;
+        transition: all 0.3s ease;
+        flex: 1;
+        text-align: center;
+
+        &:hover {
+          transform: translateY(-2px);
+        }
       }
-    }
 
-    .btn-outline-primary {
-      color: $terracotta;
-      border: 2px solid $terracotta;
+      .btn-outline-primary {
+        color: $terracotta;
+        border: 2px solid $terracotta;
 
-      &:hover {
-        background: $terracotta;
-        color: white;
+        &:hover {
+          background: $terracotta;
+          color: white;
+        }
       }
-    }
 
-    .btn-outline-secondary {
-      color: $sage-dark;
-      border: 2px solid $sage-dark;
-
-      &:hover {
-        background: $sage-dark;
-        color: white;
-      }
-    }
-
-    .btn-group {
       .btn-outline-secondary {
-        &:last-child {
-          &:hover {
-            background: #dc3545;
-            border-color: #dc3545;
-            color: white;
-          }
+        color: $olive;
+        border: 2px solid $sage;
+
+        &:hover {
+          background: $sage;
+          color: white;
+        }
+      }
+
+      .btn-outline-danger {
+        color: #C27070;
+        border: 2px solid #C27070;
+
+        &:hover {
+          background: #C27070;
+          color: white;
         }
       }
     }
@@ -201,7 +212,7 @@
 .dashboard-section {
   background: $warm-white;
   margin: 1rem;
-  border-radius: 12px;
+  border-radius: 18px;
   padding: 1.25rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border: 1px solid $sage-light;
@@ -221,8 +232,21 @@
   }
 }
 
+// Responsive tablet
+@media (max-width: 992px) {
+  .mobile-dashboard {
+    padding: 40px 30px;
+    padding-bottom: 80px;
+  }
+}
+
 // Responsive mobile
-@media (max-width: 768px) {
+@media (max-width: 640px) {
+  .mobile-dashboard {
+    padding: 30px 18px;
+    padding-bottom: 80px;
+  }
+
   .d-flex.justify-content-between {
     flex-direction: column;
     gap: 1rem;
@@ -233,17 +257,24 @@
   }
 
   .appointment-list-card {
+    .card-body {
+      padding: 20px;
+    }
+
     .card-footer {
-      .d-flex {
-        flex-direction: column;
-        gap: 0.5rem;
+      padding: 1rem 20px;
 
-        .btn-group {
-          width: 100%;
-          justify-content: space-between;
+      .appointment-card-actions {
+        flex-wrap: wrap;
+        gap: 10px;
 
-          .btn {
-            flex: 1;
+        .btn {
+          flex: 1 1 calc(50% - 5px);
+          padding: 0.5rem 1rem;
+          font-size: 0.8rem;
+
+          &:first-child {
+            flex: 1 1 100%;
           }
         }
       }

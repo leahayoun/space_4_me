@@ -1,11 +1,15 @@
 .mobile-reminders {
-  // todo : mix avec le hover en bas line 99
+  background: $warm-white;
+  border-radius: 18px;
+  box-shadow: 0 4px 20px rgba($sage, 0.1);
+  border: 1px solid rgba($sage-light, 0.3);
+  overflow: hidden;
 
   .reminder-card {
     display: flex;
     align-items: center;
     padding: 1rem;
-    border-bottom: 1px solid #f8f9fa;
+    border-bottom: 1px solid rgba($sage-light, 0.3);
 
     &:last-child {
       border-bottom: none;
@@ -86,7 +90,7 @@
 .empty-state {
   text-align: center;
   padding: 2rem 1rem;
-  color: #6c757d;
+  color: $text-muted;
 
   p {
     margin: 0.5rem 0;
@@ -99,15 +103,16 @@
 
 .clickable-card {
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: all 0.3s ease;
   text-decoration: none !important;
   color: inherit;
   display: block;
+  border-radius: 18px;
 
   &:hover, &:focus, &:active {
     text-decoration: none !important;
     color: inherit;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba($sage, 0.15);
   }
 }

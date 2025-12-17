@@ -104,7 +104,7 @@ body .simple-calendar table.table-striped {
   width: 100%;
   background: $cream !important;
   padding: 12px;
-  border-radius: 12px;
+  border-radius: 18px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 
 
@@ -368,7 +368,7 @@ body .simple-calendar table.table-striped {
 /* ===================== VUE SEMAINE (TIMELINE) ===================== */
 .timeline-week-view {
   background: $cream;
-  border-radius: 12px;
+  border-radius: 18px;
   padding: 1rem;
   margin-top: 1rem;
   max-height: 500px; /* Hauteur limitée pour scroll vertical */
@@ -569,8 +569,8 @@ body .simple-calendar table.table-striped {
 
 /* ===================== RESPONSIVE ===================== */
 
-/* Tablettes (769px - 1023px) */
-@media (min-width: 769px) and (max-width: 1023px) {
+/* Tablettes (≤ 992px) */
+@media (max-width: 992px) {
   .timeline-week-view {
     max-height: 550px;
 
@@ -586,10 +586,23 @@ body .simple-calendar table.table-striped {
       }
     }
   }
+
+  .simple-calendar {
+    padding: 10px;
+
+    table {
+      border-spacing: 5px;
+
+      td {
+        height: 80px;
+        padding: 8px 5px;
+      }
+    }
+  }
 }
 
-/* Mobiles (≤ 768px) */
-@media (max-width: 768px) {
+/* Mobiles (≤ 640px) */
+@media (max-width: 640px) {
   /* Vue mois mobile */
   .simple-calendar {
     padding: 8px;
@@ -683,59 +696,9 @@ body .simple-calendar table.table-striped {
   }
 }
 
-/* Très petits écrans (≤ 480px) */
-@media (max-width: 480px) {
-  .simple-calendar {
-    table {
-      border-spacing: 3px;
 
-      td {
-        height: 60px;
-        padding: 6px 3px;
-      }
-    }
-  }
-
-  .calendar-day {
-    .day-number {
-      width: 24px;
-      height: 24px;
-      font-size: 0.85rem;
-    }
-
-    .day-mood .mood-emoji {
-      font-size: 0.85rem;
-    }
-  }
-
-  .timeline-week-view {
-    max-height: 350px;
-
-    .timeline-day-row {
-      .day-label {
-        width: 65px;
-
-        .day-name {
-          font-size: 0.75rem;
-        }
-
-        .day-date {
-          font-size: 1.1rem;
-        }
-      }
-
-      .timeline-events {
-        .timeline-event .event-block {
-          width: 120px;
-          min-height: 60px;
-        }
-      }
-    }
-  }
-}
-
-/* Desktop (≥ 1024px) - Styles légers qui ne cassent pas le dashboard */
-@media (min-width: 1024px) {
+/* Desktop (> 992px) - Styles légers qui ne cassent pas le dashboard */
+@media (min-width: 993px) {
   .mobile-dashboard {
     max-width: 1200px;
     margin: 0 auto;
