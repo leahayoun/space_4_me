@@ -4,7 +4,7 @@
 .d-flex.align-items-center.mb-4 {
   padding: 1rem;
   background: $warm-white;
-  border-radius: 12px;
+  border-radius: 18px;
   border: 1px solid $sage-light;
   margin-bottom: 1.5rem !important;
 
@@ -55,7 +55,7 @@
 
     .dropdown-menu {
       border: 1px solid $sage-light;
-      border-radius: 8px;
+      border-radius: 18px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
       .dropdown-item {
@@ -92,7 +92,7 @@
     .d-flex.align-items-start {
       padding: 1rem;
       background: $cream;
-      border-radius: 8px;
+      border-radius: 18px;
       margin-bottom: 0.75rem;
       border: 1px solid transparent;
       transition: border-color 0.3s;
@@ -165,10 +165,12 @@
 // Boutons d'action
 .mt-4.d-flex.gap-2 {
   margin-top: 2rem !important;
+  gap: 1rem !important;
+  flex-wrap: wrap;
 
   .btn {
-    padding: 0.75rem;
-    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
     font-weight: 600;
     transition: all 0.3s;
     border: 2px solid;
@@ -220,11 +222,11 @@
 
 // responsive setting
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .mobile-dashboard {
-    max-width: 768px;
+    max-width: 992px;
     margin: 0 auto;
-    padding: 80px 1rem 100px;
+    padding: 50px 40px;
   }
 
   .dashboard-section {
@@ -233,5 +235,11 @@
 
   .mobile-calendar .calendar-days .day-cell {
     font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .mobile-dashboard {
+    padding: 30px 18px;
   }
 }

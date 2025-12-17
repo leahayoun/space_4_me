@@ -170,38 +170,64 @@ fr:
     logout: "Déconnexion"
     login: "Connexion"
 
-  # ========== add extra translations ==========
+  # ========== ActiveRecord / Model Attributes ==========
+  activerecord:
+    models:
+      user:
+        one: "Utilisateur"
+        other: "Utilisateurs"
+      appointment:
+        one: "Événement"
+        other: "Événements"
+      diary:
+        one: "Journal"
+        other: "Journaux"
+      task:
+        one: "Tâche"
+        other: "Tâches"
+      feeling:
+        one: "Humeur"
+        other: "Humeurs"
+    attributes:
+      user:
+        email: "Adresse email"
+        password: "Mot de passe"
+        password_confirmation: "Confirmer le mot de passe"
+        current_password: "Mot de passe actuel"
+        remember_me: "Se souvenir de moi"
+        first_name: "Prénom"
+        last_name: "Nom"
+      appointment:
+        title: "Titre"
+        date: "Date"
+        start_time: "Heure de début"
+        event_type: "Type"
+        address: "Adresse"
+        content: "Notes"
+      diary:
+        title: "Titre"
+        content: "Contenu"
+      task:
+        title: "Titre"
+        description: "Description"
+        status: "Statut"
+    errors:
+      messages:
+        blank: "ne peut pas être vide"
+        taken: "est déjà utilisé(e)"
+        invalid: "n'est pas valide"
+        too_short: "est trop court (minimum %{count} caractères)"
+        too_long: "est trop long (maximum %{count} caractères)"
+        confirmation: "ne correspond pas à la confirmation"
 
-  # basic actions
-  back: "Retour"
-  edit: "Modifier"
-  delete: "Supprimer"
-  cancel: "Annuler"
-  save: "Enregistrer"
-  create: "Créer"
-  update: "Mettre à jour"
-  show: "Voir"
-  new: "Nouveau"
-
-  # Appointments core translations
-  appointments:
-    title: "Rendez-vous"
-
-    index:
-      title: "Mes rendez-vous"
-      new_button: "+ Nouveau"
-
-    form:
-      title: "Titre"
-      title_placeholder: "Titre du rendez-vous"
-      date: "Date"
-      event_type: "Type"
-      address: "Adresse"
-      content: "Notes"
-
-    # Event types
-    types:
-      medical: "Médical"
-      personal: "Personnel"
-      work: "Travail"
-      other: "Autre"
+  # ========== Helpers ==========
+  helpers:
+    submit:
+      create: "Créer"
+      update: "Mettre à jour"
+      submit: "Enregistrer"
+    label:
+      email: "Adresse email"
+      password: "Mot de passe"
+      password_confirmation: "Confirmer le mot de passe"
+      remember_me: "Se souvenir de moi"

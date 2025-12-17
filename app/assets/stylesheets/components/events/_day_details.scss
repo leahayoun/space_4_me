@@ -111,8 +111,12 @@ body .day-details-container {
   max-width: 1000px !important;
   margin: 0 auto !important;
 
-  @media (max-width: 767px) {
-    padding: 30px 20px !important;
+  @media (max-width: 992px) {
+    padding: 40px 30px !important;
+  }
+
+  @media (max-width: 640px) {
+    padding: 30px 18px !important;
   }
 
   /* Styles spécifiques des cartes */
@@ -139,7 +143,7 @@ body .day-details-container {
     .list-group-item {
       padding: 25px 30px !important;
 
-      @media (max-width: 767px) {
+      @media (max-width: 640px) {
         padding: 20px !important;
       }
 
@@ -158,10 +162,10 @@ body .day-details-container {
     .btn-group {
       .btn {
         padding: 10px 20px !important;
-        border-radius: 20px !important;
+        border-radius: 25px !important;
         font-weight: 600 !important;
 
-        @media (max-width: 767px) {
+        @media (max-width: 640px) {
           padding: 8px 16px !important;
         }
       }
@@ -190,7 +194,7 @@ body .day-details-container {
   border: none !important;
   color: $warm-white !important;
   padding: 14px 32px !important;
-  border-radius: 30px !important;
+  border-radius: 25px !important;
   font-weight: 700 !important;
   box-shadow: 0 6px 20px rgba($sage, 0.3) !important;
   transition: all 0.3s ease !important;
@@ -207,7 +211,7 @@ body .day-details-container {
   background: transparent !important;
   padding: 12px 28px !important;
   border-radius: 25px !important;
-  font-weight: 666 !important;
+  font-weight: 600 !important;
   transition: all 0.3s ease !important;
 
   &:hover {

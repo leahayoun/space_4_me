@@ -1,36 +1,37 @@
 .auth-container {
-min-height: 80vh;
-display: flex;
-justify-content: center;
-align-items: center;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 80px;
 }
 
 .auth-card {
-background: #fff;
-border-radius: 24px;
-padding: 2.5rem 3rem;
-width: 100%;
-max-width: 420px;
-box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  background: #fff;
+  border-radius: 24px;
+  padding: 2.5rem 3rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
 }
 
 .auth-title {
-text-align: center;
-font-size: 1.8rem;
-margin-bottom: 0.3rem;
-color: #3A2A23;
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 0.3rem;
+  color: #3A2A23;
 }
 
 .auth-subtitle {
-text-align: center;
-font-size: 0.95rem;
-color: #8A6E5A;
-margin-bottom: 2rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #8A6E5A;
+  margin-bottom: 2rem;
 }
 
 .auth-input {
-border-radius: 12px;
-padding: 0.6rem 0.8rem;
+  border-radius: 12px;
+  padding: 0.6rem 0.8rem;
 }
 
 .auth-input input {
@@ -38,45 +39,54 @@ padding: 0.6rem 0.8rem;
   padding: 0.6rem 0.8rem;
   border-radius: 12px;
   border: 1px solid #C4937A;
-  background: #f0f0f0; /* gris clair pour tous les champs */
+  background: #f0f0f0;
   box-sizing: border-box;
 }
 
 .auth-button {
-width: 100%;
-margin-top: 1rem;
-padding: 0.8rem 1rem;
-
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
   background: #C4937A;
   border: 2px solid #C4937A;
-  border-radius: 20px;
-
+  border-radius: 25px;
   color: #fff;
   font-weight: 600;
   font-size: 1rem;
-
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .auth-button:hover {
-  background: #D4AE9A; /* terracotta plus clair */
+  background: #D4AE9A;
   border-color: #D4AE9A;
 }
 
 .auth-links {
-margin-top: 1.5rem;
-text-align: center;
-
+  margin-top: 1.5rem;
+  text-align: center;
 
   a {
-  color: #C4937A;
-  font-size: 0.9rem;
-  text-decoration: none;
-
+    color: #C4937A;
+    font-size: 0.9rem;
+    text-decoration: none;
 
     &:hover {
-    text-decoration: underline;
+      text-decoration: underline;
     }
+  }
+}
+
+// Responsive - Tablet (992px)
+@media (max-width: 992px) {
+  .auth-container {
+    padding: 50px 60px;
+  }
+}
+
+// Responsive - Mobile (640px)
+@media (max-width: 640px) {
+  .auth-container {
+    padding: 40px 30px;
   }
 }
