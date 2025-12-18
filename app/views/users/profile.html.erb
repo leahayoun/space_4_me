@@ -1,147 +1,140 @@
-<h1>Mon profil</h1>
+<%# app/views/users/profile.html.erb %>
 
-<p><strong>Prénom :</strong> <%= @user.first_name %></p>
-<p><strong>Nom :</strong> <%= @user.last_name %></p>
-<p><strong>Sexe à la naissance :</strong> <%= @user.birth_sex %></p>
-<p><strong>Date de naissance :</strong> <%= @user.date_of_birth %></p>
-<p><strong>Genre :</strong> <%= @user.gender %></p>
+<div class="profile-container">
+  <!-- Back button -->
+  <div class="btn-back">
+    <%= link_to dashboard_path, class: "btn-link border-0 ps-2" do %>
+      <i class="fas fa-arrow-left me-2"></i>
+      Dashboard
+    <% end %>
+  </div>
 
-<p><strong>Traitements hormonaux :</strong></p>
-<ul>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.treatment_androtardyl %> >
-    Androtardyl
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.treatment_nebido %> >
-    Nebido
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.treatment_bicalutamide %> >
-    Bicalutamide
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.treatment_decapeptyl %> >
-    Décapeptyl
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.treatment_lupron %> >
-    Lupron
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.treatment_progesterone %> >
-    Progestérone
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.treatment_estreva %> >
-    Estreva (gel)
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.treatment_oestrodose %> >
-    Œstrodose (gel)
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.treatment_oesclim %> >
-    Oesclim (patch)
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.treatment_dermestril %> >
-    Dermestril (patch)
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.treatment_provames %> >
-    Provames (comprimés)
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.treatment_estrofem %> >
-    Estrofem (comprimés)
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.treatment_progynova %> >
-    Progynova (comprimés)
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.treatment_neofollin %> >
-    Neofollin (Injection)
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.treatment_gynodian %> >
-    Gynodian Depot (Injection)
-  </li>
-</ul>
+  <!-- User Info Card -->
+  <div class="profile-card profile-header-card">
+    <div class="profile-avatar">
+      <i class="fas fa-user"></i>
+    </div>
+    <div class="profile-header-info">
+      <h1 class="profile-name"><%= @user.first_name %> <%= @user.last_name %></h1>
+      <p class="profile-email"><%= @user.email %></p>
+    </div>
+  </div>
 
-<p><strong>Opérations :</strong></p>
-<ul>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.operation_torsoplastie %> >
-    Torsoplastie (mastectomie)
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.operation_phalloplastie %> >
-    Phalloplastie
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.operation_metaiodoplastie %> >
-    Méta (métaidoïoplastie)
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.operation_hysterectomie %> >
-    Hystérectomie
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.exercices_voix_m %> >
-    Exercices vocales
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.sport %> >
-    Sport·s
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.operation_fronto_orbital_contouring %> >
-    Fronto-orbital contouring (opération des arcades sourcillières)
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.operation_rhinoplastie %> >
-    Rhinoplastie
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.operation_genioplastie %> >
-    Génioplastie (Mandibular contouring)
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.operation_tracheal_shave %> >
-    Tracheal shave (réduction de la pomme d’Adam)
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.operation_glottoplastie %> >
-    Glottoplastie (chirurgie des cordes vocales)
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.operation_vaginoplastie %> >
-    Vaginoplastie
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.operation_labiaplastie %> >
-    Labiaplastie
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.operation_orchiectomie %> >
-    Orchiectomie
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.operation_liposculpture_feminisante %> >
-    Liposculpture féminisante
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.operation_bbl %> >
-    Brazilian Butt Lift (BBL)
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.exercices_voix_f %> >
-    Exercices vocales
-  </li>
-  <li>
-    <input type="checkbox" disabled <%= "checked" if @user.epilation_laser %> >
-    Epilation laser (définitve)
-  </li>
-</ul>
+  <!-- Personal Info Card -->
+  <div class="profile-card">
+    <div class="profile-section-header">
+      <i class="fas fa-id-card"></i>
+      <h2>Informations personnelles</h2>
+    </div>
+
+    <div class="profile-info-grid">
+      <% if @user.gender.present? %>
+        <div class="profile-info-item">
+          <span class="profile-info-label">Genre</span>
+          <span class="profile-info-value"><%= @user.gender %></span>
+        </div>
+      <% end %>
+
+      <% if @user.birth_sex.present? %>
+        <div class="profile-info-item">
+          <span class="profile-info-label">Sexe de naissance</span>
+          <span class="profile-info-value"><%= @user.birth_sex %></span>
+        </div>
+      <% end %>
+
+      <% if @user.date_of_birth.present? %>
+        <div class="profile-info-item">
+          <span class="profile-info-label">Date de naissance</span>
+          <span class="profile-info-value"><%= l(@user.date_of_birth, format: :long) %></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%# Collect active treatments %>
+  <% treatments = [] %>
+  <% treatments << "Androtardyl" if @user.treatment_androtardyl %>
+  <% treatments << "Nebido" if @user.treatment_nebido %>
+  <% treatments << "Bicalutamide" if @user.treatment_bicalutamide %>
+  <% treatments << "Decapeptyl" if @user.treatment_decapeptyl %>
+  <% treatments << "Lupron" if @user.treatment_lupron %>
+  <% treatments << "Progestérone" if @user.treatment_progesterone %>
+  <% treatments << "Estreva (gel)" if @user.treatment_estreva %>
+  <% treatments << "Oestrodose (gel)" if @user.treatment_oestrodose %>
+  <% treatments << "Oesclim (patch)" if @user.treatment_oesclim %>
+  <% treatments << "Dermestril (patch)" if @user.treatment_dermestril %>
+  <% treatments << "Provames" if @user.treatment_provames %>
+  <% treatments << "Estrofem" if @user.treatment_estrofem %>
+  <% treatments << "Progynova" if @user.treatment_progynova %>
+  <% treatments << "Neofollin (injection)" if @user.treatment_neofollin %>
+  <% treatments << "Gynodian Depot (injection)" if @user.treatment_gynodian %>
+
+  <% if treatments.any? %>
+    <!-- Treatments Card -->
+    <div class="profile-card">
+      <div class="profile-section-header">
+        <i class="fas fa-pills"></i>
+        <h2>Traitements hormonaux</h2>
+        <span class="profile-count-badge"><%= treatments.count %></span>
+      </div>
+
+      <div class="profile-tags">
+        <% treatments.each do |treatment| %>
+          <span class="profile-tag profile-tag--treatment">
+            <i class="fas fa-check me-1"></i>
+            <%= treatment %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <%# Collect active operations/procedures %>
+  <% operations = [] %>
+  <% operations << "Torsoplastie" if @user.operation_torsoplastie %>
+  <% operations << "Phalloplastie" if @user.operation_phalloplastie %>
+  <% operations << "Métaidoïoplastie" if @user.operation_metaiodoplastie %>
+  <% operations << "Hystérectomie" if @user.operation_hysterectomie %>
+  <% operations << "Exercices vocaux (M)" if @user.exercices_voix_m %>
+  <% operations << "Sport" if @user.sport %>
+  <% operations << "FFS (Fronto-orbital)" if @user.operation_fronto_orbital_contouring %>
+  <% operations << "Rhinoplastie" if @user.operation_rhinoplastie %>
+  <% operations << "Génioplastie" if @user.operation_genioplastie %>
+  <% operations << "Tracheal shave" if @user.operation_tracheal_shave %>
+  <% operations << "Glottoplastie" if @user.operation_glottoplastie %>
+  <% operations << "Vaginoplastie" if @user.operation_vaginoplastie %>
+  <% operations << "Labiaplastie" if @user.operation_labiaplastie %>
+  <% operations << "Orchiectomie" if @user.operation_orchiectomie %>
+  <% operations << "Liposculpture féminisante" if @user.operation_liposculpture_feminisante %>
+  <% operations << "BBL" if @user.operation_bbl %>
+  <% operations << "Exercices vocaux (F)" if @user.exercices_voix_f %>
+  <% operations << "Épilation laser" if @user.epilation_laser %>
+
+  <% if operations.any? %>
+    <!-- Operations Card -->
+    <div class="profile-card">
+      <div class="profile-section-header">
+        <i class="fas fa-hospital"></i>
+        <h2>Opérations / Procédures</h2>
+        <span class="profile-count-badge"><%= operations.count %></span>
+      </div>
+
+      <div class="profile-tags">
+        <% operations.each do |operation| %>
+          <span class="profile-tag profile-tag--operation">
+            <i class="fas fa-check me-1"></i>
+            <%= operation %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- Edit Button -->
+  <div class="profile-actions">
+    <%= link_to edit_user_registration_path, class: "profile-edit-btn" do %>
+      <i class="fas fa-pen me-2"></i>
+      Modifier mon profil
+    <% end %>
+  </div>
+</div>

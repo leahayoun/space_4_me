@@ -1,0 +1,523 @@
+// _themes.scss
+// Variables CSS pour le mode sombre / clair
+// Utilise l'attribut data-theme sur <html>
+
+// Mode clair (par défaut)
+:root,
+[data-theme="light"] {
+  // Couleurs de fond
+  --bg-primary: #FAF8F3;       // cream
+  --bg-secondary: #F0EDE5;     // cream-dark
+  --bg-card: #FFFEF9;          // warm-white
+
+  // Couleurs de texte
+  --text-primary: #4A4A42;     // text
+  --text-secondary: #7A7A6E;   // text-light
+  --text-muted: #9A9A8E;       // text-muted
+
+  // Couleurs d'accent (restent les mêmes)
+  --accent-sage: #A8B5A0;
+  --accent-sage-light: #C5CFC0;
+  --accent-sage-dark: #8A9982;
+  --accent-olive: #6B7B5E;
+  --accent-olive-dark: #525F48;
+  --accent-terracotta: #C4937A;
+  --accent-terracotta-light: #D4AE9A;
+
+  // Bordures et ombres
+  --border-color: rgba(197, 207, 192, 0.3);
+  --shadow-color: rgba(168, 181, 160, 0.1);
+
+  // Navbar
+  --navbar-bg: #FFFEF9;
+  --navbar-text: #4A4A42;
+
+  // Inputs
+  --input-bg: #ffffff;
+  --input-border: #E6CFC5;
+}
+
+// Mode sombre
+[data-theme="dark"] {
+  // Couleurs de fond
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #242424;
+  --bg-card: #2a2a2a;
+
+  // Couleurs de texte - MEILLEUR CONTRASTE
+  --text-primary: #f0f0f0;
+  --text-secondary: #c5c5c5;
+  --text-muted: #999999;
+
+  // Couleurs d'accent (légèrement plus vives pour le dark)
+  --accent-sage: #b8c5b0;
+  --accent-sage-light: #9aaa92;
+  --accent-sage-dark: #7a8b6e;
+  --accent-olive: #a8b898;
+  --accent-olive-dark: #c5d5b5;
+  --accent-terracotta: #e4bea9;
+  --accent-terracotta-light: #d4a48a;
+
+  // Bordures et ombres
+  --border-color: rgba(255, 255, 255, 0.12);
+  --shadow-color: rgba(0, 0, 0, 0.4);
+
+  // Navbar
+  --navbar-bg: #1e1e1e;
+  --navbar-text: #f0f0f0;
+
+  // Inputs
+  --input-bg: #333333;
+  --input-border: #505050;
+}
+
+// Application des variables sur les éléments de base
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+// Classes utilitaires pour le thème
+.theme-bg-primary {
+  background-color: var(--bg-primary);
+}
+
+.theme-bg-secondary {
+  background-color: var(--bg-secondary);
+}
+
+.theme-bg-card {
+  background-color: var(--bg-card);
+}
+
+.theme-text-primary {
+  color: var(--text-primary);
+}
+
+.theme-text-secondary {
+  color: var(--text-secondary);
+}
+
+.theme-text-muted {
+  color: var(--text-muted);
+}
+
+// ======================
+// Overrides pour le mode sombre
+// ======================
+
+[data-theme="dark"] {
+  // Header / Navbar
+  .app-header {
+    background: var(--navbar-bg) !important;
+    border-bottom-color: var(--border-color) !important;
+  }
+
+  .app-header .app-name {
+    background: linear-gradient(135deg, #e4bea9 30%, #b8c5b0 70%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .app-header .menu-toggle {
+    color: var(--text-secondary);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+    }
+  }
+
+  .app-header .dropdown-menu {
+    background: var(--bg-card) !important;
+    border-color: var(--border-color) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .app-header .dropdown-header {
+    border-bottom-color: var(--border-color) !important;
+  }
+
+  .app-header .user-details strong {
+    color: var(--text-primary) !important;
+  }
+
+  .app-header .user-details small {
+    color: var(--text-secondary) !important;
+  }
+
+  .app-header .dropdown-item {
+    color: var(--text-primary) !important;
+
+    i {
+      color: var(--text-secondary) !important;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08) !important;
+      color: var(--text-primary) !important;
+    }
+  }
+
+  .app-header .dropdown-divider {
+    background: var(--border-color) !important;
+  }
+
+  // Profile page
+  .profile-container {
+    background: var(--bg-secondary) !important;
+  }
+
+  .profile-card {
+    background: var(--bg-card) !important;
+    border-color: var(--border-color) !important;
+  }
+
+  .profile-name {
+    color: var(--text-primary) !important;
+  }
+
+  .profile-email {
+    color: var(--text-secondary) !important;
+  }
+
+  .profile-section-header h2 {
+    color: var(--text-primary) !important;
+  }
+
+  .profile-section-header i {
+    color: var(--accent-terracotta) !important;
+  }
+
+  .profile-info-item {
+    background: rgba(255, 255, 255, 0.06) !important;
+  }
+
+  .profile-info-label {
+    color: var(--text-muted) !important;
+  }
+
+  .profile-info-value {
+    color: var(--text-primary) !important;
+  }
+
+  .profile-tag--treatment,
+  .profile-tag--operation {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+  }
+
+  // Dashboard
+  .mobile-dashboard {
+    background: var(--bg-secondary) !important;
+  }
+
+  .dashboard-header h1,
+  .d-flex.justify-content-between h1 {
+    color: var(--text-primary) !important;
+  }
+
+  .dashboard-header p {
+    color: var(--text-secondary) !important;
+  }
+
+  .dashboard-section {
+    background: var(--bg-card) !important;
+    border-color: var(--border-color) !important;
+  }
+
+  .dashboard-section .section-header h2 {
+    color: var(--text-primary) !important;
+  }
+
+  // =====================
+  // CALENDAR - avec !important
+  // =====================
+  .calendar-wrapper {
+    background: var(--bg-card) !important;
+    border-color: var(--border-color) !important;
+  }
+
+  .calendar-wrapper .section-header h2 {
+    color: var(--text-primary) !important;
+  }
+
+  .calendar-navigation {
+    background: var(--bg-secondary) !important;
+    border-color: var(--border-color) !important;
+
+    h3 {
+      color: var(--accent-terracotta) !important;
+    }
+
+    .nav-btn {
+      background: var(--bg-card) !important;
+      border-color: var(--border-color) !important;
+      color: var(--accent-terracotta) !important;
+
+      &:hover {
+        background: var(--accent-terracotta) !important;
+        color: #1a1a1a !important;
+      }
+    }
+  }
+
+  .view-switcher {
+    background: var(--bg-secondary) !important;
+    border-color: var(--border-color) !important;
+
+    .view-btn {
+      color: var(--text-secondary) !important;
+
+      &:hover {
+        background: var(--accent-terracotta-light) !important;
+        color: #1a1a1a !important;
+      }
+
+      &.active {
+        background: var(--accent-terracotta) !important;
+        color: #1a1a1a !important;
+      }
+    }
+  }
+
+  .simple-calendar {
+    background: var(--bg-secondary) !important;
+
+    table {
+      background: var(--bg-secondary) !important;
+
+      thead tr:first-child th {
+        background: var(--bg-secondary) !important;
+        color: var(--accent-terracotta) !important;
+        border-bottom-color: var(--border-color) !important;
+      }
+
+      td {
+        background: var(--bg-card) !important;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.08) !important;
+        }
+
+        &.today {
+          background: rgba(228, 190, 169, 0.15) !important;
+
+          &::before {
+            border-color: var(--accent-terracotta) !important;
+          }
+        }
+
+        &.prev-month,
+        &.next-month,
+        &.other-month {
+          background: var(--bg-secondary) !important;
+          opacity: 0.5 !important;
+        }
+      }
+    }
+  }
+
+  .calendar-day .day-number {
+    color: var(--text-primary) !important;
+  }
+
+  .calendar-day.other-month .day-number,
+  td.other-month .calendar-day .day-number {
+    color: var(--text-muted) !important;
+  }
+
+  td.today .calendar-day .day-number {
+    background: var(--accent-terracotta) !important;
+    color: #1a1a1a !important;
+  }
+
+  // Timeline week view
+  .timeline-week-view {
+    background: var(--bg-secondary) !important;
+
+    .timeline-day-row {
+      border-bottom-color: var(--border-color) !important;
+
+      &.today {
+        background: rgba(228, 190, 169, 0.1) !important;
+      }
+
+      .day-label {
+        .day-name {
+          color: var(--accent-terracotta) !important;
+        }
+
+        .day-date {
+          color: var(--text-primary) !important;
+        }
+      }
+
+      .timeline-events {
+        .timeline-event .event-block {
+          background: var(--bg-card) !important;
+
+          .event-time {
+            color: var(--text-muted) !important;
+          }
+
+          .event-title {
+            color: var(--text-primary) !important;
+          }
+
+          .event-type {
+            color: var(--text-secondary) !important;
+          }
+        }
+
+        .more-events .more-events-block {
+          background: var(--bg-card) !important;
+          border-color: var(--border-color) !important;
+          color: var(--accent-terracotta) !important;
+
+          small {
+            color: var(--text-muted) !important;
+          }
+        }
+
+        .no-events {
+          color: var(--text-muted) !important;
+
+          .add-event-link {
+            color: var(--accent-terracotta) !important;
+          }
+        }
+      }
+    }
+  }
+
+  // =====================
+  // TASKS
+  // =====================
+  .diaries-container {
+    background: var(--bg-secondary) !important;
+  }
+
+  .tasks-header__title {
+    color: var(--accent-olive-dark) !important;
+  }
+
+  .task-column {
+    background: var(--bg-card) !important;
+    border-color: var(--border-color) !important;
+
+    &__header {
+      // Keep gradient but adjust slightly
+      background: linear-gradient(135deg, #7a8b6e 0%, #6a7b5e 100%) !important;
+    }
+
+    &__body {
+      background: var(--bg-card) !important;
+    }
+
+    &__empty {
+      color: var(--text-muted) !important;
+    }
+  }
+
+  .task-card {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: var(--border-color) !important;
+
+    &__title {
+      color: var(--text-primary) !important;
+    }
+
+    &__description {
+      color: var(--text-secondary) !important;
+    }
+
+    &__delete {
+      color: var(--text-muted) !important;
+    }
+  }
+
+  .task-form {
+    background: var(--bg-card) !important;
+    border-color: var(--border-color) !important;
+
+    &__label {
+      color: var(--text-muted) !important;
+    }
+
+    &__input,
+    &__select,
+    &__textarea {
+      background: var(--input-bg) !important;
+      border-color: var(--input-border) !important;
+      color: var(--text-primary) !important;
+
+      &::placeholder {
+        color: var(--text-muted) !important;
+      }
+
+      &:focus {
+        background: var(--bg-card) !important;
+        border-color: var(--accent-sage) !important;
+      }
+    }
+  }
+
+  // =====================
+  // APPOINTMENTS / EVENTS
+  // =====================
+  .appointment-list-card {
+    background: var(--bg-card) !important;
+    border-color: var(--border-color) !important;
+
+    .card-title {
+      color: var(--text-primary) !important;
+    }
+
+    .text-muted {
+      color: var(--text-secondary) !important;
+
+      i {
+        color: var(--text-secondary) !important;
+      }
+    }
+
+    .appointment-notes-preview {
+      border-top-color: var(--border-color) !important;
+      color: var(--text-secondary) !important;
+
+      i {
+        color: var(--text-muted) !important;
+      }
+    }
+  }
+
+  // Delete modal
+  .delete-modal {
+    background: var(--bg-card) !important;
+  }
+
+  .delete-modal-title {
+    color: var(--text-primary) !important;
+  }
+
+  .delete-modal-text {
+    color: var(--text-secondary) !important;
+
+    span {
+      color: var(--text-primary) !important;
+    }
+  }
+
+  .delete-modal-cancel {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: var(--text-primary) !important;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.15) !important;
+    }
+  }
+
+}

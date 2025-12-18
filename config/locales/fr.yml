@@ -174,8 +174,38 @@ fr:
     feelings: "Humeurs"
     tasks: "Tâches"
     profile: "Profil"
+    settings: "Paramètres"
     logout: "Déconnexion"
     login: "Connexion"
+    dark_mode: "Mode sombre"
+
+  # ========== Profile ==========
+  profile:
+    title: "Profil"
+    personal_info: "Informations personnelles"
+    gender: "Genre"
+    birth_sex: "Sexe de naissance"
+    date_of_birth: "Date de naissance"
+    treatments: "Traitements hormonaux"
+    operations: "Opérations / Procédures"
+    edit_profile: "Modifier mon profil"
+
+  # ========== Footer ==========
+  footer:
+    dashboard: "Dashboard"
+    journal: "Journal"
+    moods: "Humeurs"
+    tasks: "Tâches"
+
+  # ========== Menu ==========
+  menu:
+    my_profile: "Mon profil"
+    events: "Les Evènements"
+    settings: "Paramètres"
+    dark_mode: "Mode sombre"
+    logout: "Déconnexion"
+    login: "Connexion"
+    signup: "Inscription"
 
   # ========== ActiveRecord / Model Attributes ==========
   activerecord:
@@ -226,6 +256,19 @@ fr:
         too_short: "est trop court (minimum %{count} caractères)"
         too_long: "est trop long (maximum %{count} caractères)"
         confirmation: "ne correspond pas à la confirmation"
+
+  # ========== Settings ==========
+  settings:
+    title: "Paramètres"
+    language: "Langue / Language"
+    language_updated: "Langue mise à jour avec succès"
+    treatments_operations: "Traitements & Opérations"
+    treatments_description: "Mettre à jour vos informations médicales (traitements hormonaux, opérations, procédures)."
+    edit_treatments: "Modifier mes traitements"
+    edit_operations: "Modifier mes opérations"
+    export_data: "Exporter mes données"
+    export_description: "Téléchargez vos entrées de journal, tâches et rendez-vous au format JSON."
+    download_data: "Télécharger mes données"
 
   # ========== Helpers ==========
   helpers:

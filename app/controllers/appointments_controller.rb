@@ -46,7 +46,7 @@ class AppointmentsController < ApplicationController
   def show
     @appointment = Appointment.find(params[:id])
     if @appointment.user != current_user
-    redirect_to appointments_path, alert: "You are not authorized to view this appointment."
+    redirect_to appointments_path # alert: "You are not authorized to view this appointment."
     end
   end
 
@@ -98,7 +98,7 @@ end
     @appointment = Appointment.new(appointment_params)
     @appointment.user = current_user
     if @appointment.save
-      redirect_to root_path, notice: 'Event Created!'
+      redirect_to root_path, notice: 'Evènement créé'
     else
       render :new, status: :unprocessable_entity
     end
@@ -124,7 +124,7 @@ end
   def destroy
     @appointment = Appointment.find(params[:id])
     @appointment.destroy
-    redirect_to appointments_path, notice: 'Appointment deleted successfully.'
+    redirect_to appointments_path, notice: 'Evènement supprimé avec succès'
   end
 
 

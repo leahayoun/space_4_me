@@ -29,3 +29,58 @@
 
 en:
   hello: "Hello world"
+
+  # ========== Navigation ==========
+  navigation:
+    home: "Home"
+    dashboard: "Dashboard"
+    appointments: "Appointments"
+    diaries: "Journal"
+    feelings: "Moods"
+    tasks: "Tasks"
+    profile: "Profile"
+    settings: "Settings"
+    logout: "Logout"
+    login: "Login"
+    dark_mode: "Dark mode"
+
+  # ========== Settings ==========
+  settings:
+    title: "Settings"
+    language: "Language"
+    language_updated: "Language updated successfully"
+    treatments_operations: "Treatments & Operations"
+    treatments_description: "Update your medical information (hormonal treatments, operations, procedures)."
+    edit_treatments: "Edit my treatments"
+    edit_operations: "Edit my operations"
+    export_data: "Export my data"
+    export_description: "Download your journal entries, tasks and appointments as JSON."
+    download_data: "Download my data"
+
+  # ========== Profile ==========
+  profile:
+    title: "Profile"
+    personal_info: "Personal information"
+    gender: "Gender"
+    birth_sex: "Birth sex"
+    date_of_birth: "Date of birth"
+    treatments: "Hormonal treatments"
+    operations: "Operations / Procedures"
+    edit_profile: "Edit my profile"
+
+  # ========== Footer ==========
+  footer:
+    dashboard: "Dashboard"
+    journal: "Journal"
+    moods: "Moods"
+    tasks: "Tasks"
+
+  # ========== Menu ==========
+  menu:
+    my_profile: "My profile"
+    events: "Events"
+    settings: "Settings"
+    dark_mode: "Dark mode"
+    logout: "Logout"
+    login: "Login"
+    signup: "Sign up"
