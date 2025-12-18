@@ -12,6 +12,11 @@ Rails.application.routes.draw do
   # page de profil de l'utilisateur connecté
   get "profile", to: "users#profile", as: :profile
 
+  # page des paramètres
+  get "settings", to: "users#settings", as: :settings
+  post "settings/update_locale", to: "users#update_locale", as: :update_locale
+  get "settings/export_data", to: "users#export_data", as: :export_data
+
   resources :onboarding, only: [:show, :update]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -20,15 +20,25 @@ User.destroy_all
 puts "👤 Création de l'utilisateur de test..."
 
 # Création d'un utilisateur avec Devise
+# Profil cohérent : transition MtF (Male to Female)
 user = User.create!(
   email: "n.dupont@mail.com",
   password: "123456",
-  first_name: "Nathan",
+  first_name: "Nathalie",
   last_name: "Dupont",
-  birth_sex: "Homme",
-  gender: "Homme",
+  birth_sex: "Masculin",
+  gender: "Femme",
   date_of_birth: Date.new(1990, 5, 15),
-  onboarding: true
+  onboarding: true,
+
+  # Traitements hormonaux féminisants (MtF)
+  treatment_oestrodose: true,
+  treatment_progesterone: true,
+
+  # Opérations/procédures réalisées ou en cours
+  operation_fronto_orbital_contouring: true,
+  epilation_laser: true,
+  exercices_voix_f: true
 )
 
 puts "✅ Utilisateur créé : #{user.first_name} #{user.last_name}"

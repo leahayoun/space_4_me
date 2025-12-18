@@ -32,7 +32,7 @@
     <meta name="twitter:image" content="<%= image_url('og_image.png') %>">
   </head>
 
-  <body>
+  <body data-controller="theme">
     <%= link_to "Skip to main content", "#main-content", class: "visually-hidden-focusable" %>
 
     <%= render "shared/app_header" %>

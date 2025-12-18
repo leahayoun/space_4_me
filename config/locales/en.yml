@@ -29,3 +29,6 @@
 
 en:
   hello: "Hello world"
+
+  settings:
+    language_updated: "Language updated successfully"

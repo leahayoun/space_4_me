@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!  # Toutes les pages nécessitent login par défaut
   before_action :configure_permitted_parameters, if: :devise_controller? # Pour ajouter des champs personnalisés à Devise
+  before_action :set_locale # Pour le changement de langue FR/EN
+
+  def set_locale
+    I18n.locale = cookies[:locale] || I18n.default_locale
+  end
 
   def after_sign_in_path_for(resource)
     if current_user.onboarding

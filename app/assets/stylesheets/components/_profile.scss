@@ -1,0 +1,274 @@
+// Profile page styles
+@import "diaries/variables";
+
+.profile-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px 40px;
+  padding-bottom: 100px;
+  background: $cream-dark;
+  min-height: 100vh;
+}
+
+// Reuse btn-back from dashboard
+.profile-container .btn-back {
+  margin-bottom: 1.5rem;
+
+  .btn-link {
+    color: $olive;
+    background: transparent;
+    border: none;
+    padding: 0.5rem 0;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s;
+
+    &:hover {
+      color: darken($olive, 10%);
+      transform: translateX(-4px);
+    }
+
+    i {
+      transition: transform 0.3s;
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+// Cards
+.profile-card {
+  background: $warm-white;
+  border-radius: 20px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 4px 20px rgba($sage, 0.1);
+  border: 1px solid rgba($sage-light, 0.3);
+}
+
+// Header card with avatar
+.profile-header-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.75rem;
+}
+
+.profile-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, $sage 0%, $sage-dark 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  i {
+    font-size: 1.75rem;
+    color: $warm-white;
+  }
+}
+
+.profile-header-info {
+  flex: 1;
+}
+
+.profile-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $olive-dark;
+  margin: 0 0 0.25rem 0;
+}
+
+.profile-email {
+  font-size: 0.95rem;
+  color: $text-light;
+  margin: 0;
+}
+
+// Section headers
+.profile-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba($sage-light, 0.4);
+
+  i {
+    font-size: 1.1rem;
+    color: $terracotta;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $olive-dark;
+    margin: 0;
+    flex: 1;
+  }
+}
+
+.profile-count-badge {
+  background: rgba($sage, 0.2);
+  color: $olive;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+// Info grid (personal info)
+.profile-info-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.profile-info-item {
+  background: rgba($sage-light, 0.15);
+  border-radius: 12px;
+  padding: 0.85rem 1.1rem;
+  min-width: 140px;
+}
+
+.profile-info-label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: $text-muted;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.profile-info-value {
+  display: block;
+  font-size: 1rem;
+  color: $olive-dark;
+  font-weight: 500;
+}
+
+// Tags (treatments & operations)
+.profile-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.profile-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  i {
+    font-size: 0.75rem;
+  }
+}
+
+.profile-tag--treatment {
+  background: rgba($sage, 0.15);
+  color: $olive-dark;
+  border: 1px solid rgba($sage, 0.3);
+}
+
+.profile-tag--operation {
+  background: rgba($terracotta-light, 0.2);
+  color: darken($terracotta, 15%);
+  border: 1px solid rgba($terracotta-light, 0.4);
+}
+
+// Edit button
+.profile-actions {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.profile-edit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 2rem;
+  background: linear-gradient(135deg, $sage 0%, $sage-dark 100%);
+  color: $warm-white;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba($sage, 0.3);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba($sage, 0.4);
+    color: $warm-white;
+  }
+
+  i {
+    font-size: 0.9rem;
+  }
+}
+
+// Responsive tablet
+@media (max-width: 992px) {
+  .profile-container {
+    padding: 40px 28px;
+    padding-bottom: 100px;
+  }
+
+  .profile-card {
+    padding: 1.25rem;
+  }
+
+  .profile-header-card {
+    padding: 1.5rem;
+  }
+}
+
+// Responsive mobile
+@media (max-width: 640px) {
+  .profile-container {
+    padding: 30px 18px;
+    padding-bottom: 100px;
+  }
+
+  .profile-header-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .profile-avatar {
+    width: 80px;
+    height: 80px;
+
+    i {
+      font-size: 2rem;
+    }
+  }
+
+  .profile-name {
+    font-size: 1.35rem;
+  }
+
+  .profile-info-grid {
+    flex-direction: column;
+  }
+
+  .profile-info-item {
+    min-width: 100%;
+  }
+
+  .profile-tag {
+    font-size: 0.85rem;
+    padding: 0.45rem 0.9rem;
+  }
+
+  .profile-edit-btn {
+    width: 100%;
+  }
+}

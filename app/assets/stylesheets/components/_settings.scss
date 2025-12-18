@@ -1,0 +1,246 @@
+// Settings page styles
+@import "diaries/variables";
+
+.settings-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px 40px;
+  padding-bottom: 100px;
+  background: $cream-dark;
+  min-height: 100vh;
+}
+
+// Reuse btn-back from dashboard
+.settings-container .btn-back {
+  margin-bottom: 1.5rem;
+
+  .btn-link {
+    color: $olive;
+    background: transparent;
+    border: none;
+    padding: 0.5rem 0;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s;
+
+    &:hover {
+      color: darken($olive, 10%);
+      transform: translateX(-4px);
+    }
+
+    i {
+      transition: transform 0.3s;
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+// Page header
+.settings-header {
+  margin-bottom: 2rem;
+
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: $olive-dark;
+    margin: 0;
+
+    i {
+      color: $terracotta;
+    }
+  }
+}
+
+// Cards
+.settings-card {
+  background: $warm-white;
+  border-radius: 20px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 4px 20px rgba($sage, 0.1);
+  border: 1px solid rgba($sage-light, 0.3);
+}
+
+// Section headers
+.settings-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba($sage-light, 0.4);
+
+  i {
+    font-size: 1.1rem;
+    color: $terracotta;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $olive-dark;
+    margin: 0;
+  }
+}
+
+// Description text
+.settings-description {
+  font-size: 0.95rem;
+  color: $text-light;
+  line-height: 1.6;
+  margin: 0 0 1.25rem 0;
+}
+
+// Language buttons
+.settings-language-options {
+  display: flex;
+  gap: 1rem;
+}
+
+.settings-lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background: rgba($sage-light, 0.15);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba($sage-light, 0.25);
+    border-color: $sage;
+  }
+
+  &.active {
+    background: rgba($sage, 0.2);
+    border-color: $sage;
+
+    .lang-flag {
+      background: $sage;
+      color: $warm-white;
+    }
+  }
+
+  .lang-flag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba($sage, 0.2);
+    color: $olive-dark;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+
+  .lang-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: $olive-dark;
+  }
+}
+
+// Links for treatments/operations
+.settings-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.settings-link-btn {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  background: rgba($sage-light, 0.1);
+  border-radius: 12px;
+  color: $olive;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba($sage-light, 0.25);
+    color: $olive-dark;
+    transform: translateX(4px);
+  }
+
+  i {
+    color: $sage-dark;
+    transition: color 0.3s;
+  }
+
+  &:hover i {
+    color: $terracotta;
+  }
+}
+
+// Export button
+.settings-export {
+  text-align: center;
+}
+
+.settings-export-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 2rem;
+  background: linear-gradient(135deg, $terracotta 0%, $terracotta-light 100%);
+  color: $warm-white;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba($terracotta, 0.3);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba($terracotta, 0.4);
+    color: $warm-white;
+  }
+
+  i {
+    font-size: 1rem;
+  }
+}
+
+// Responsive tablet
+@media (max-width: 992px) {
+  .settings-container {
+    padding: 40px 28px;
+    padding-bottom: 100px;
+  }
+
+  .settings-card {
+    padding: 1.25rem;
+  }
+}
+
+// Responsive mobile
+@media (max-width: 640px) {
+  .settings-container {
+    padding: 30px 18px;
+    padding-bottom: 100px;
+  }
+
+  .settings-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .settings-language-options {
+    flex-direction: column;
+  }
+
+  .settings-lang-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .settings-export-btn {
+    width: 100%;
+  }
+}

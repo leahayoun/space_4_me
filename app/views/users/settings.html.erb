@@ -1,0 +1,79 @@
+<%# app/views/users/settings.html.erb %>
+
+<div class="settings-container">
+  <!-- Back button -->
+  <div class="btn-back">
+    <%= link_to dashboard_path, class: "btn-link border-0 ps-2" do %>
+      <i class="fas fa-arrow-left me-2"></i>
+      Dashboard
+    <% end %>
+  </div>
+
+  <!-- Page Title -->
+  <div class="settings-header">
+    <h1><i class="fas fa-cog me-2"></i>Paramètres</h1>
+  </div>
+
+  <!-- Language Card -->
+  <div class="settings-card">
+    <div class="settings-section-header">
+      <i class="fas fa-globe"></i>
+      <h2>Langue / Language</h2>
+    </div>
+
+    <div class="settings-language-options">
+      <%= button_to update_locale_path(locale: 'fr'), method: :post, class: "settings-lang-btn #{I18n.locale == :fr ? 'active' : ''}" do %>
+        <span class="lang-flag">FR</span>
+        <span class="lang-name">Français</span>
+      <% end %>
+
+      <%= button_to update_locale_path(locale: 'en'), method: :post, class: "settings-lang-btn #{I18n.locale == :en ? 'active' : ''}" do %>
+        <span class="lang-flag">EN</span>
+        <span class="lang-name">English</span>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Update Treatments/Operations Card -->
+  <div class="settings-card">
+    <div class="settings-section-header">
+      <i class="fas fa-pills"></i>
+      <h2>Traitements & Opérations</h2>
+    </div>
+
+    <p class="settings-description">
+      Mettre à jour vos informations médicales (traitements hormonaux, opérations, procédures).
+    </p>
+
+    <div class="settings-links">
+      <%= link_to onboarding_path(:step3), class: "settings-link-btn" do %>
+        <i class="fas fa-syringe me-2"></i>
+        Modifier mes traitements
+      <% end %>
+
+      <%= link_to onboarding_path(:step4), class: "settings-link-btn" do %>
+        <i class="fas fa-hospital me-2"></i>
+        Modifier mes opérations
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Export Data Card -->
+  <div class="settings-card">
+    <div class="settings-section-header">
+      <i class="fas fa-download"></i>
+      <h2>Exporter mes données</h2>
+    </div>
+
+    <p class="settings-description">
+      Téléchargez vos entrées de journal, tâches et rendez-vous au format JSON.
+    </p>
+
+    <div class="settings-export">
+      <%= link_to export_data_path, class: "settings-export-btn" do %>
+        <i class="fas fa-file-download me-2"></i>
+        Télécharger mes données
+      <% end %>
+    </div>
+  </div>
+</div>

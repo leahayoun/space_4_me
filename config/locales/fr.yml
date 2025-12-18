@@ -227,6 +227,10 @@ fr:
         too_long: "est trop long (maximum %{count} caractères)"
         confirmation: "ne correspond pas à la confirmation"
 
+  # ========== Settings ==========
+  settings:
+    language_updated: "Langue mise à jour avec succès"
+
   # ========== Helpers ==========
   helpers:
     submit:
