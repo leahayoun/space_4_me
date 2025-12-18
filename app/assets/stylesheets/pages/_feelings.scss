@@ -32,7 +32,6 @@
   justify-items: center;
 }
 
-
 /* Cases uniformes */
 .feeling-item,
 .symptom-item {
@@ -67,11 +66,10 @@
   margin: 0;
   padding: 0;
   cursor: pointer;
-  position: absolute;      /* pour rester par-dessus la case */
+  position: absolute;     /* pour rester par-dessus la case */
   top: 0;
   left: 0;
 }
-
 
 /* Case sélectionnée */
 .feeling-item.selected,
@@ -134,9 +132,78 @@
   font-size: 1rem;
 }
 
+/* Focus sur le champ Dysphorie */
+#feeling_dysphoria:focus {
+  outline: none;
+  border-color: #C4937A;
+  box-shadow: 0 0 0 2px rgba(196, 147, 122, 0.25);
+}
+
 #dysphoria_counter {
   text-align: right;
   color: #777;
   margin-top: 0.5rem;
   font-size: 0.9rem;
+}
+
+/* Couleur du texte – page humeurs */
+.page-title,
+.page-subtitle,
+.feelings-section,
+.feelings-container {
+  color: $text;
+}
+
+/* Inputs et textarea n’héritent pas toujours */
+.feelings-section input,
+.feelings-section textarea {
+  color: $text;
+}
+
+/* Focus sur les champs "Autre·s" */
+.feeling-item input[type="text"]:focus {
+  outline: none;
+  border-color: #C4937A;
+  box-shadow: 0 0 0 2px rgba(196, 147, 122, 0.25);
+}
+
+/* Quand on clique dans "Autre·s", la carte prend aussi le style selected */
+.feeling-item:focus-within {
+  border-color: #C4937A;
+  background: #F5E8E0;
+}
+
+
+
+/* Cacher le checkbox natif */
+.feeling-item input[type="checkbox"] {
+  display: none;
+}
+
+/* Styles uniquement pour la case "Autre humeur" */
+.feelings-container .feeling-item.other-mood .label::after {
+  content: "";
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-radius: 4px;
+  border: 2px solid rgba(0, 0, 0, 0);;
+  margin: 6px auto 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Styles uniquement pour la case "Autre symptôme" */
+.feelings-container .feeling-item.other-symptom .label::after {
+  content: "";
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-radius: 4px;
+  border: 2px solid rgba(0, 0, 0, 0);;
+  margin: 6px auto 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
