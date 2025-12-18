@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @task = Task.new(tag: "médical")
+    @task = Task.new(tag: "medical")
     @tasks_by_tag = current_user.tasks.order(created_at: :desc).group_by(&:tag)
   end
 
