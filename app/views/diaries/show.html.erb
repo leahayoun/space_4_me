@@ -1,4 +1,4 @@
-<div class="diaries-container">
+<div class="diaries-container" data-controller="delete-modal">
 
   <%= link_to diaries_path, class: "back-button" do %>
     ← Retour à mes entrées
@@ -20,12 +20,43 @@
       <%= link_to edit_diary_path(@diary), class: "btn-action" do %>
         Modifier
       <% end %>
-      <%= link_to diary_path(@diary),
-          data: { turbo_method: :delete, turbo_confirm: "Tu es sûr·e de vouloir supprimer ?" },
-          class: "btn-action btn-action--danger" do %>
+      <%= link_to "#",
+          class: "btn-action btn-action--danger",
+          data: {
+            action: "click->delete-modal#open",
+            delete_url: diary_path(@diary),
+            appointment_title: @diary.title
+          } do %>
         Supprimer
       <% end %>
     </div>
   </article>
 
+  <!-- Delete Confirmation Modal -->
+  <div data-delete-modal-target="overlay"
+       data-action="click->delete-modal#closeOnOverlay"
+       class="delete-modal-overlay">
+    <div class="delete-modal">
+      <div class="delete-modal-icon">
+        <i class="fas fa-trash-alt"></i>
+      </div>
+      <h3 class="delete-modal-title">Supprimer cette entrée ?</h3>
+      <p class="delete-modal-text">
+        <span data-delete-modal-target="eventName"></span>
+      </p>
+      <p class="delete-modal-warning">Cette action est irréversible.</p>
+      <div class="delete-modal-actions">
+        <button type="button"
+                class="delete-modal-btn delete-modal-cancel"
+                data-action="click->delete-modal#close">
+          Annuler
+        </button>
+        <%= form_tag "", method: :delete, data: { delete_modal_target: "form" }, class: "delete-modal-form" do %>
+          <button type="submit" class="delete-modal-btn delete-modal-confirm">
+            Supprimer
+          </button>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

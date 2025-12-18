@@ -1,7 +1,7 @@
 
 <div class="mobile-dashboard">
-  <!-- 1. title and view switcher -->
-  <section class="dashboard-section calendar-section">
+  <!-- Calendar: title + switcher + navigation + calendar body -->
+  <div class="calendar-wrapper">
     <div class="section-header">
       <h2>Calendrier</h2>
 
@@ -16,17 +16,13 @@
       </div>
     </div>
 
-    <!-- 2. date navigation -->
     <%= render "calendar_navigation" %>
-  </section>
 
-  <!-- 3. calendar body (will automatically show month/week view based on @view_type) -->
-<section class="dashboard-section">
-  <%= render "simple_calendar",
-             appointments: @appointments,
-             view_type: @view_type,
-             current_date: @current_date || Date.today %>
-</section>
+    <%= render "simple_calendar",
+               appointments: @appointments,
+               view_type: @view_type,
+               current_date: @current_date || Date.today %>
+  </div>
 
   <!-- 4. reminders -->
   <%= render "reminders_section", appointments: @appointments %>

@@ -1,4 +1,4 @@
-<div class="diary-page-container">
+<div class="diary-page-container" data-controller="delete-modal">
   <div class="diary-welcome">
     <div class="diary-welcome__text text-center">
       <h1 class="diary-welcome__title">Bienvenue dans ton journal</h1>
@@ -41,15 +41,46 @@
 
         <div class="diary-page-card__footer">
           <%= link_to "Modifier", edit_diary_path(diary), class: "diary-page-card__action" %>
-          <%= link_to "Supprimer", diary_path(diary),
-                data: { turbo_method: :delete, turbo_confirm: "Supprimer ce journal ?" },
-                class: "diary-page-card__action diary-page-card__action--danger" %>
+          <%= link_to "Supprimer", "#",
+                class: "diary-page-card__action diary-page-card__action--danger",
+                data: {
+                  action: "click->delete-modal#open",
+                  delete_url: diary_path(diary),
+                  appointment_title: diary.title
+                } %>
         </div>
       </div>
     <% end %>
   </div>
-</div>
 
+  <!-- Delete Confirmation Modal -->
+  <div data-delete-modal-target="overlay"
+       data-action="click->delete-modal#closeOnOverlay"
+       class="delete-modal-overlay">
+    <div class="delete-modal">
+      <div class="delete-modal-icon">
+        <i class="fas fa-trash-alt"></i>
+      </div>
+      <h3 class="delete-modal-title">Supprimer cette entrée ?</h3>
+      <p class="delete-modal-text">
+        <span data-delete-modal-target="eventName"></span>
+      </p>
+      <p class="delete-modal-warning">Cette action est irréversible.</p>
+      <div class="delete-modal-actions">
+        <button type="button"
+                class="delete-modal-btn delete-modal-cancel"
+                data-action="click->delete-modal#close">
+          Annuler
+        </button>
+        <%= form_tag "", method: :delete, data: { delete_modal_target: "form" }, class: "delete-modal-form" do %>
+          <button type="submit" class="delete-modal-btn delete-modal-confirm">
+            Supprimer
+          </button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <%# modif après la ligne 30, avant code : <%= truncate(diary.content.to_plain_text, length: 100)%>
