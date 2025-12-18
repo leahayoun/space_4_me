@@ -220,39 +220,241 @@ body .day-details-container {
   }
 }
 
-/* ==================== OPTION NUCLÉAIRE ==================== */
-/* Si rien ne fonctionne, utiliser cette solution ultime */
+/* ==================== NEW DAY DETAILS STYLES ==================== */
+/* Unified styles matching other appointment views with olive/green tones */
 
-body[data-controller="appointments"][data-action="day_details"],
-body.day-details-page {
-  /* Réinitialiser tous les styles Bootstrap */
-  .day-details-container {
-    * {
-      box-sizing: border-box !important;
-    }
+// Card within day-details
+.day-details-card {
+  background: $warm-white;
+}
 
-    /* Remplacer complètement les cartes */
-    .card,
-    div[class*="card"] {
-      all: unset !important;
-      display: block !important;
-      background: $warm-white !important;
-      border: 1px solid rgba($sage, 0.3) !important;
-      border-radius: 24px !important;
-      box-shadow: 0 8px 40px rgba($sage, 0.12) !important;
-      margin-bottom: 30px !important;
-      overflow: hidden !important;
-    }
+// Header section
+.day-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba($sage, 0.2);
+}
 
-    /* Remplacer complètement les listes */
-    .list-group,
-    .list-group-item,
-    div[class*="list-group"] {
-      all: unset !important;
-      display: block !important;
-      background: $warm-white !important;
-      border-bottom: 1px solid rgba($sage-light, 0.4) !important;
-      padding: 25px 30px !important;
+.day-details-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $olive-dark;
+  margin: 0 0 0.5rem 0;
+
+  i {
+    color: $sage;
+  }
+}
+
+.day-details-date {
+  color: $text-light;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.badge.bg-today {
+  background: linear-gradient(135deg, $sage 0%, $sage-dark 100%);
+  color: $warm-white;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+.btn-add-event {
+  background: linear-gradient(135deg, $sage 0%, $sage-dark 100%);
+  color: $warm-white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba($sage, 0.3);
+    color: $warm-white;
+  }
+}
+
+// Events header
+.day-details-events-header {
+  margin-bottom: 1rem;
+
+  h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $olive;
+    margin: 0;
+    display: flex;
+    align-items: center;
+
+    i {
+      color: $sage;
     }
+  }
+}
+
+.badge.bg-count {
+  background: rgba($sage, 0.2);
+  color: $olive;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  margin-left: 0.5rem;
+}
+
+.badge.bg-event-type {
+  background: linear-gradient(135deg, $sage-light 0%, $sage 100%);
+  color: $warm-white;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+}
+
+// Events list
+.day-details-events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+// Individual event card
+.day-details-event-card {
+  background: rgba($terracotta-light, 0.15);
+  border-radius: 16px;
+  padding: 1rem;
+  border: 1px solid rgba($terracotta-light, 0.3);
+  transition: all 0.3s;
+
+  &:hover {
+    background: rgba($terracotta-light, 0.25);
+    box-shadow: 0 4px 12px rgba($terracotta, 0.12);
+    border-color: rgba($terracotta-light, 0.5);
+  }
+}
+
+.day-details-event-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.day-details-event-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.day-details-event-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: $olive-dark;
+  margin: 0 0 0.5rem 0;
+}
+
+.day-details-event-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+
+  span {
+    font-size: 0.85rem;
+    color: $text-light;
+
+    i {
+      color: $sage;
+    }
+  }
+}
+
+.day-details-event-address {
+  font-size: 0.85rem;
+  color: $text-light;
+  margin: 0.5rem 0 0 0;
+
+  i {
+    color: $sage;
+  }
+}
+
+.day-details-event-notes {
+  font-size: 0.9rem;
+  color: $text;
+  margin: 0.75rem 0 0 0;
+  padding-top: 0.75rem;
+  border-top: 1px dashed rgba($sage, 0.3);
+}
+
+// Empty state
+.day-details-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+
+  i {
+    font-size: 3rem;
+    color: $sage-light;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  h5 {
+    color: $olive;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: $text-light;
+    margin: 0;
+  }
+}
+
+// Green icon buttons (for day_details)
+.appointment-icon-view-green {
+  background: rgba($sage, 0.15);
+  color: $sage-dark;
+
+  &:hover {
+    background: $sage;
+    color: white;
+    box-shadow: 0 3px 10px rgba($sage, 0.3);
+  }
+}
+
+.appointment-icon-edit-green {
+  background: rgba($olive, 0.12);
+  color: $olive;
+
+  &:hover {
+    background: $olive;
+    color: white;
+    box-shadow: 0 3px 10px rgba($olive, 0.3);
+  }
+}
+
+// Responsive
+@media (max-width: 640px) {
+  .day-details-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .btn-add-event {
+    width: 100%;
+    text-align: center;
+  }
+
+  .day-details-event-info {
+    flex-direction: column;
+    gap: 0.25rem;
   }
 }

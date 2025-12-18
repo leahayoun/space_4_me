@@ -82,24 +82,15 @@ end
   def new
     @appointment = Appointment.new
 
-    # facilité la manip à l'user si l'user vient du calendrier avec une date déjà selectioné * qui ne marche pas pour le moment
-    # if params[:date].present?
-    #   @appointment.date = Date.parse(params[:date])
-    # end
-
-
     if params[:date].present?
       begin
         @appointment.date = Date.parse(params[:date])
       rescue ArgumentError
-        # si la date est invalide, utiliser aujourd'hui
         @appointment.date = Date.today
       end
     else
-    # si pas de date, mettre aujourd'hui par défaut
-        @appointment.date = Date.today
+      @appointment.date = Date.today
     end
-
   end
 
   # 4-create pas de view
