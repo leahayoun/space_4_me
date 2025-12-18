@@ -775,3 +775,70 @@ body .simple-calendar table.table-striped {
     }
   }
 }
+
+/* ===================== CALENDAR WRAPPER ===================== */
+/* Container that wraps title + switcher + navigation + calendar body */
+.calendar-wrapper {
+  background: $warm-white;
+  margin: 1rem;
+  border-radius: 18px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid $sage-light;
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+
+    h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: $olive-dark;
+    }
+  }
+
+  .view-switcher {
+    margin-bottom: 0;
+  }
+
+  .calendar-navigation {
+    margin-bottom: 1rem;
+  }
+
+  .simple-calendar,
+  .timeline-week-view {
+    margin-top: 0;
+  }
+}
+
+/* Tablet (≤ 992px) */
+@media (max-width: 992px) {
+  .calendar-wrapper {
+    margin: 0.75rem;
+    padding: 1rem;
+  }
+}
+
+/* Mobile (≤ 640px) */
+@media (max-width: 640px) {
+  .calendar-wrapper {
+    margin: 0.5rem;
+    padding: 1rem;
+    padding-top: 1.25rem;
+
+    .section-header {
+      margin-bottom: 1.5rem;
+
+      h2 {
+        font-size: 1.1rem;
+      }
+    }
+
+    .calendar-navigation {
+      margin-bottom: 0.5rem;
+    }
+  }
+}
