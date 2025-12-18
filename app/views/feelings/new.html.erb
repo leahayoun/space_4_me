@@ -1,78 +1,81 @@
-<h1 class="page-title">Mon ressenti du jour</h1>
-<p class="page-subtitle"><%= l(@date, format: :long) %></p>
+<div class="diaries-container">
 
-<%= form_with model: @feeling, url: feelings_path, method: :post, local: true do |f| %>
-  <%= f.hidden_field :date, value: @date %>
+  <h1 class="page-title">Mon ressenti du jour</h1>
+  <p class="page-subtitle"><%= l(@date, format: :long) %></p>
 
-  <!-- HUMEURS -->
-  <div class="feelings-container feelings-section">
-    <h2>Humeurs</h2>
-    <div class="feelings-grid">
-      <% Mood.all.each do |mood| %>
-        <% existing = @feeling&.moods&.include?(mood) %>
-        <label class="feeling-item <%= 'selected' if existing %>">
-          <%= f.check_box :mood_ids, { multiple: true, class: 'display:none' }, mood.id, nil %>
-          <span class="emoji"><%= mood.icon %></span>
-          <span class="label"><%= mood.name %></span>
+  <%= form_with model: @feeling, url: feelings_path, method: :post, local: true do |f| %>
+    <%= f.hidden_field :date, value: @date %>
+
+    <!-- HUMEURS -->
+    <div class="feelings-container feelings-section">
+      <h2>Humeurs</h2>
+      <div class="feelings-grid">
+        <% Mood.all.each do |mood| %>
+          <% existing = @feeling&.moods&.include?(mood) %>
+          <label class="feeling-item <%= 'selected' if existing %>">
+            <%= f.check_box :mood_ids, { multiple: true, class: 'display:none' }, mood.id, nil %>
+            <span class="emoji"><%= mood.icon %></span>
+            <span class="label"><%= mood.name %></span>
+          </label>
+        <% end %>
+
+        <!-- Case pour "Autre humeur" -->
+        <label class="feeling-item other-mood">
+          <span class="emoji">✍️</span>
+          <span class="label">Autre·s</span>
+          <%= f.text_field :custom_mood, maxlength: 100, placeholder: "Écris ici ..)" %>
         </label>
-      <% end %>
-
-      <!-- Case pour "Autre humeur" -->
-      <label class="feeling-item other-mood">
-        <span class="emoji">✍️</span>
-        <span class="label">Autre·s</span>
-        <%= f.text_field :custom_mood, maxlength: 100, placeholder: "Écris ici ..)" %>
-      </label>
+      </div>
     </div>
-  </div>
 
-  <!-- SYMPTÔMES -->
-  <div class="symptoms-container feelings-section">
-    <h2>Symptômes</h2>
-    <div class="feelings-grid">
-      <% Symptom.all.each do |symptom| %>
-        <% existing = @feeling&.symptoms&.include?(symptom) %>
-        <label class="feeling-item <%= 'selected' if existing %>">
-          <%= f.check_box :symptom_ids, { multiple: true, class: 'display:none' }, symptom.id, nil %>
-          <span class="label"><%= symptom.name %></span>
+    <!-- SYMPTÔMES -->
+    <div class="symptoms-container feelings-section">
+      <h2>Symptômes</h2>
+      <div class="feelings-grid">
+        <% Symptom.all.each do |symptom| %>
+          <% existing = @feeling&.symptoms&.include?(symptom) %>
+          <label class="feeling-item <%= 'selected' if existing %>">
+            <%= f.check_box :symptom_ids, { multiple: true, class: 'display:none' }, symptom.id, nil %>
+            <span class="label"><%= symptom.name %></span>
+          </label>
+        <% end %>
+
+        <!-- Case pour "Autre symptôme" -->
+        <label class="feeling-item other-symptom">
+          <span class="label">Autre·s</span>
+          <%= f.text_field :custom_symptom, maxlength: 100, placeholder: "Écris ici .." %>
         </label>
-      <% end %>
-
-      <!-- Case pour "Autre symptôme" -->
-      <label class="feeling-item other-symptom">
-        <span class="label">Autre·s</span>
-        <%= f.text_field :custom_symptom, maxlength: 100, placeholder: "Écris ici .." %>
-      </label>
+      </div>
     </div>
-  </div>
 
-  <!-- DYSHPORIE -->
-  <div class="feelings-section">
-    <h2>Dysphorie</h2>
-    <%= f.text_area :dysphoria, id: "feeling_dysphoria", maxlength: 5000, placeholder: "Décris ton ressenti..." %>
-  </div>
+    <!-- DYSHPORIE -->
+    <div class="feelings-section">
+      <h2>Dysphorie</h2>
+      <%= f.text_area :dysphoria, id: "feeling_dysphoria", maxlength: 5000, placeholder: "Décris ton ressenti..." %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Enregistrer", class: "btn-primary" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "Enregistrer", class: "btn-primary" %>
+    </div>
+  <% end %>
 
-<script>
-  document.addEventListener("turbo:load", () => {
-  // Pour toutes les cases à cocher humeurs et symptômes
-    document.querySelectorAll('.feeling-item input[type="checkbox"]').forEach((checkbox) => {
-      // Mettre la classe selected initialement selon l'état checked
-      const label = checkbox.closest('.feeling-item');
-      if (checkbox.checked) label.classList.add('selected');
+  <script>
+    document.addEventListener("turbo:load", () => {
+    // Pour toutes les cases à cocher humeurs et symptômes
+      document.querySelectorAll('.feeling-item input[type="checkbox"]').forEach((checkbox) => {
+        // Mettre la classe selected initialement selon l'état checked
+        const label = checkbox.closest('.feeling-item');
+        if (checkbox.checked) label.classList.add('selected');
 
-      // Ajouter l'événement change pour mettre à jour la classe
-      checkbox.addEventListener('change', () => {
-        if (checkbox.checked) {
-          label.classList.add('selected');
-        } else {
-          label.classList.remove('selected');
-        }
+        // Ajouter l'événement change pour mettre à jour la classe
+        checkbox.addEventListener('change', () => {
+          if (checkbox.checked) {
+            label.classList.add('selected');
+          } else {
+            label.classList.remove('selected');
+          }
+        });
       });
     });
-  });
-</script>
+  </script>
+</div>

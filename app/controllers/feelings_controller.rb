@@ -11,7 +11,7 @@ class FeelingsController < ApplicationController
     @feeling = current_user.feelings.find_or_initialize_by(date: @date)
 
     if @feeling.update(feeling_params)
-      redirect_to root_path, notice: "Feelings enregistré 🌱"
+      redirect_to root_path, notice: "Humeur enregistrée 🌱"
     else
       render :new, status: :unprocessable_entity
     end
