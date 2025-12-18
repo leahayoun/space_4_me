@@ -18,10 +18,10 @@
       <% end %>
 
       <!-- Case pour "Autre humeur" -->
-      <label class="feeling-item">
+      <label class="feeling-item other-mood">
         <span class="emoji">✍️</span>
         <span class="label">Autre·s</span>
-        <%= f.text_field :custom_mood, maxlength: 100, placeholder: "Écris ici ton humeur (max 100 caractères)" %>
+        <%= f.text_field :custom_mood, maxlength: 100, placeholder: "Écris ici ..)" %>
       </label>
     </div>
   </div>
@@ -39,9 +39,9 @@
       <% end %>
 
       <!-- Case pour "Autre symptôme" -->
-      <label class="feeling-item">
+      <label class="feeling-item other-symptom">
         <span class="label">Autre·s</span>
-        <%= f.text_field :custom_symptom, maxlength: 100, placeholder: "Écris ici ton symptôme (max 100 caractères)" %>
+        <%= f.text_field :custom_symptom, maxlength: 100, placeholder: "Écris ici .." %>
       </label>
     </div>
   </div>
@@ -58,7 +58,7 @@
 <% end %>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("turbo:load", () => {
   // Pour toutes les cases à cocher humeurs et symptômes
     document.querySelectorAll('.feeling-item input[type="checkbox"]').forEach((checkbox) => {
       // Mettre la classe selected initialement selon l'état checked
