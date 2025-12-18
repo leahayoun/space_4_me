@@ -1,24 +1,20 @@
 <%# app/views/appointments/new.html.erb %>
-<div class="container py-4">
-  <!-- back btn-->
-  <div class="mb-4">
-    <%= link_to appointments_path, class: "btn btn-link text-decoration-none border-0 ps-0" do %>
+<div class="mobile-dashboard">
+  <!-- Back button -->
+  <div class="btn-back">
+    <%= link_to appointments_path, class: "btn-link border-0 ps-2" do %>
       <i class="fas fa-arrow-left me-2"></i>
-      Retour aux Evènements
+      Retour à la liste
     <% end %>
   </div>
 
-  <%# create %>
-  <div class="card appointment-form-card">
-    <div class="card-header">
-      <h2 class="mb-0">
-        <i class="fas fa-calendar-plus me-2"></i>
-        Nouveau evènement
-      </h2>
-    </div>
+  <!-- Form card -->
+  <div class="dashboard-section">
+    <h2 class="appointment-form-title">
+      <i class="fas fa-calendar-plus"></i>
+      Nouveau evènement
+    </h2>
 
-    <div class="card-body">
-      <%= render "form_appoint", appointment: @appointment %>
-    </div>
+    <%= render "form_appoint", appointment: @appointment %>
   </div>
 </div>
