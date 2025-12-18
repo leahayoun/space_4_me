@@ -21,9 +21,9 @@ puts "👤 Création de l'utilisateur de test..."
 
 # Création d'un utilisateur avec Devise
 user = User.create!(
-  email: "test@example.com",
-  password: "password123",
-  first_name: "Jean",
+  email: "n.dupont@mail.com",
+  password: "123456",
+  first_name: "Nathan",
   last_name: "Dupont",
   birth_sex: "Homme",
   gender: "Homme",
@@ -414,8 +414,8 @@ puts "  💭 États émotionnels : #{Feeling.count}"
 puts "  📝 Tâches : #{Task.count}"
 puts ""
 puts "🔐 INFORMATIONS DE CONNEXION :"
-puts "  📧 Email : test@example.com"
-puts "  🔑 Mot de passe : password123"
+puts "  📧 Email : n.dupont@mail.com"
+puts "  🔑 Mot de passe : 123456"
 puts ""
 puts "=" * 50
 puts "Pour réinitialiser : rails db:drop db:create db:migrate db:seed"
