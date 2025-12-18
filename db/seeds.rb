@@ -355,45 +355,41 @@ puts "📝 Création des tâches/checklists..."
 
 tasks_data = [
   {
+    title: "RDV orthophoniste",
+    description: "Première séance pour le travail sur la voix",
+    tag: "medical",
+    user: user
+  },
+  {
     title: "Pharmacie",
     description: "Acheter Œstrodose et Androcur pour le mois prochain",
-    tag: "Santé",
-    user: user,
-    created_at: Date.today
+    tag: "medical",
+    user: user
   },
   {
-    title: "Prise de sang",
-    description: "Contrôle hormonal trimestriel - être à jeun",
-    tag: "Médical",
-    user: user,
-    created_at: Date.today - 2.days
+    title: "Informer la banque",
+    description: "Prendre RDV pour mettre à jour les infos et commander une nouvelle carte",
+    tag: "administratif",
+    user: user
   },
   {
-    title: "Yoga",
-    description: "Séance de 30 minutes pour la souplesse et la détente",
-    tag: "Bien-être",
-    user: user,
-    created_at: Date.today - 1.day
-  },
-  {
-    title: "Administratif",
+    title: "Changement prénom",
     description: "Envoyer le dossier de changement d'état civil",
-    tag: "Administratif",
-    user: user,
-    created_at: Date.today - 3.days
+    tag: "administratif",
+    user: user
   },
   {
     title: "RDV coiffeur",
-    description: "Essayer une nouvelle coupe plus féminine",
-    tag: "Apparence",
-    user: user,
-    created_at: Date.today
+    description: "Essayer une nouvelle coupe",
+    tag: "autres",
+    user: user
   }
 ]
 
 tasks_data.each do |task_data|
   Task.create!(task_data)
 end
+
 
 puts "✅ #{Task.count} tâches créées"
 
