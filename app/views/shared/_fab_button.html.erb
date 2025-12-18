@@ -16,15 +16,16 @@
     <span>Evènement</span>
   <% end %>
 
+  <%= link_to new_diary_path, class: "fab-item" do %>
+    <i class="fas fa-book"></i>
+    <span>Journal</span>
+  <% end %>
+
   <%= link_to new_feeling_path, class: "fab-item" do %>
     <i class="fas fa-smile"></i>
     <span>Humeur</span>
   <% end %>
 
-  <%= link_to new_diary_path, class: "fab-item" do %>
-    <i class="fas fa-sticky-note"></i>
-    <span>Journal</span>
-  <% end %>
 
   <%= link_to tasks_path, class: "fab-item" do %>
     <i class="fas fa-tasks"></i>
