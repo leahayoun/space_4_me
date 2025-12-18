@@ -5,18 +5,11 @@
     <%# Logo + App Name - aligné à gauche %>
     <div class="app-brand">
       <div class="app-logo">
-        <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-          <!-- Logo minimal: un cercle avec une vague -->
-          <circle cx="16" cy="16" r="14" fill="<%= @logo_color || '#C4937A' %>"/>
-          <path d="M8 18C10 16 14 16 16 18C18 20 22 20 24 18"
-                stroke="white"
-                stroke-width="2"
-                stroke-linecap="round"/>
-        </svg>
+        <%= image_tag "logo_S4M.png", width: 28, height: 28, alt: "Logo" %>
       </div>
 
       <div class="app-name">
-        <span>Space for me</span>
+        <span>Space 4 Me</span>
       </div>
     </div>
 
